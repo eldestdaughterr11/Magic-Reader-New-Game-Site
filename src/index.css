@@ -229,7 +229,7 @@ header {
     background-color: var(--button-bg);
     color: white;
     font-size: 1.2rem;
-    font-family: 'MedievalSharp', cursive;
+    font-family: 'Montserrat', sans-serif;
     text-transform: uppercase;
     letter-spacing: 2px;
     transition: all 0.3s;
