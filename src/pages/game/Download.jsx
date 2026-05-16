@@ -1,0 +1,61 @@
+import { Link } from 'react-router-dom';
+
+function Download() {
+  return (
+    <div style={{ maxWidth: '800px', margin: '0 auto', padding: '40px 20px', color: '#fff', textAlign: 'center' }}>
+      
+      {/* Sub Navigation */}
+      <div className="game-subnav">
+        <Link to="/game/gameplay" className="game-subnav__link">Gameplay</Link>
+        <Link to="/game/characters" className="game-subnav__link">Characters</Link>
+        <span className="game-subnav__current">Download</span>
+      </div>
+
+      <div style={{ marginTop: '50px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+        
+        {/* Poster Image */}
+        <div style={{ width: '100%', maxWidth: '400px', marginBottom: '30px', border: '5px solid #000', borderRadius: '5px', overflow: 'hidden', boxShadow: '0 10px 30px rgba(0,0,0,0.5)' }}>
+          <img 
+            src="/images/poster.png" 
+            alt="Magic Reader Game Poster" 
+            style={{ width: '100%', height: 'auto', display: 'block' }} 
+            onError={(e) => {
+              e.target.onerror = null; 
+              e.target.src = "https://via.placeholder.com/400x600/2a1a3d/ffffff?text=Save+your+image+as+poster.png+in+public/images"
+            }}
+          />
+        </div>
+
+        {/* Text */}
+        <h3 style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '1.4rem', color: '#e8c97c', marginBottom: '20px', fontWeight: '600' }}>
+          Download Magic Reader
+        </h3>
+
+        {/* Download Button */}
+        <a 
+          href="#" 
+          className="btn" 
+          style={{ 
+            backgroundColor: '#2a1a3d', 
+            color: '#fff', 
+            fontFamily: 'Montserrat, sans-serif', 
+            fontWeight: 'bold', 
+            fontSize: '1.2rem', 
+            padding: '15px 80px',
+            textDecoration: 'none',
+            borderRadius: '5px'
+          }}
+          onClick={(e) => {
+            e.preventDefault();
+            alert("The download link will be placed here once the game file is ready!");
+          }}
+        >
+          DOWNLOAD
+        </a>
+        
+      </div>
+    </div>
+  );
+}
+
+export default Download;

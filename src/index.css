@@ -109,7 +109,7 @@ header {
 }
 
 .logo-img.footer-logo {
-    height: 92px;
+    height: 150px;
 }
 
 .user-profile {
@@ -171,8 +171,9 @@ header {
 
 /* Sections */
 .section-title {
-    font-family: 'MedievalSharp', cursive;
+    font-family: 'Berkshire Swash', cursive;
     font-size: 3.5rem;
+    font-weight: 400;
     text-align: center;
     margin-bottom: 20px;
     color: var(--text-color);
@@ -640,7 +641,8 @@ body.auth-page .auth-form .btn:hover {
 }
 
 .auth-title {
-    font-family: 'MedievalSharp', cursive;
+    font-family: 'Berkshire Swash', cursive;
+    font-weight: 400;
     font-size: 3.5rem;
     color: #d4854a;
     margin-bottom: 10px;
@@ -784,8 +786,8 @@ body.auth-page .auth-form .btn:hover {
 }
 
 .game-subnav__current {
-    cursor: default;
-    pointer-events: none;
+    color: var(--nav-active-color);
+    cursor: pointer;
 }
 
 .download-hero-wrap {

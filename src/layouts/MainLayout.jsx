@@ -97,7 +97,7 @@ function MainLayout() {
                 className="logo-img footer-logo"
               />
             </Link>
-            <p style={{ marginTop: '10px' }}>
+            <p style={{ marginTop: '10px', fontSize: '1.1rem', fontWeight: '500' }}>
               Explore, Learn, and Play with Words!
             </p>
           </div>

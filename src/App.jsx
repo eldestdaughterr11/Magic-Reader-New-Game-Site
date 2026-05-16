@@ -3,6 +3,7 @@ import MainLayout from './layouts/MainLayout';
 import AuthLayout from './layouts/AuthLayout';
 import AdminLayout from './layouts/AdminLayout';
 import ProtectedRoute from './components/ProtectedRoute'; // <-- Import ProtectedRoute
+import Gameplay from './pages/game/Gameplay';
 
 import Home from './pages/Home';
 import Login from './pages/auth/Login';
@@ -12,11 +13,11 @@ import AdminDashboard from './pages/admin/AdminDashboard';
 import AdminLessons from './pages/admin/AdminLessons';
 import AdminUsers from './pages/admin/AdminUsers';
 
-// Placeholder components for incomplete pages
-const About = () => <div style={{textAlign: 'center', padding: '50px'}}><h1 className="section-title">About</h1><p>About page content.</p></div>;
-const Leaderboards = () => <div style={{textAlign: 'center', padding: '50px'}}><h1 className="section-title">Leaderboards</h1><p>Leaderboards page content.</p></div>;
-const Resources = () => <div style={{textAlign: 'center', padding: '50px'}}><h1 className="section-title">Resources</h1><p>Resources page content.</p></div>;
-const Gameplay = () => <div style={{textAlign: 'center', padding: '50px'}}><h1 className="section-title">Gameplay</h1><p>Gameplay page content.</p></div>;
+import Characters from './pages/game/Characters';
+import Download from './pages/game/Download';
+import Leaderboards from './pages/Leaderboards';
+import Resources from './pages/Resources';
+import About from './pages/About';
 
 function App() {
   return (
@@ -31,6 +32,8 @@ function App() {
           <Route path="/leaderboards" element={<Leaderboards />} />
           <Route path="/resources" element={<Resources />} />
           <Route path="/game/gameplay" element={<Gameplay />} />
+          <Route path="/game/characters" element={<Characters />} />
+          <Route path="/game/download" element={<Download />} />
         </Route>
         
         <Route element={<AuthLayout />}>

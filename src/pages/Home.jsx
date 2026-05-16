@@ -5,14 +5,14 @@ function Home() {
     <>
       <h1 className="section-title">Teaser Video</h1>
       
-      <div className="video-container">
-        <div className="play-button">
-          <i className="fa-solid fa-play" style={{ fontSize: '2rem', color: '#3d2b4f' }}></i>
-        </div>
-        {/* Progress bar simulation */}
-        <div style={{ position: 'absolute', bottom: '20px', left: '20px', right: '20px', height: '10px', background: 'rgba(255,255,255,0.3)', borderRadius: '5px' }}>
-          <div style={{ width: '40%', height: '100%', background: 'var(--accent-color)', borderRadius: '5px' }}></div>
-        </div>
+      <div className="video-container" style={{ background: 'transparent' }}>
+        <video 
+          controls 
+          style={{ width: '100%', height: '100%', borderRadius: '15px', objectFit: 'cover' }}
+        >
+          <source src="/videos/teaser.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
       </div>
 
       <h2 className="section-title" style={{ marginTop: '50px' }}>Story</h2>
