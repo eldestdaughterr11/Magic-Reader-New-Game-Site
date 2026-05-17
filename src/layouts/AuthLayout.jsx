@@ -74,13 +74,13 @@ function AuthLayout() {
             </h4>
             <ul>
               <li>
-                <a href="/resources#guides">Guides</a>
+                <a href="/resources#guides" onClick={(e) => { e.preventDefault(); alert('Guides content will be available soon!'); }}>Guides</a>
               </li>
               <li>
-                <a href="/resources#tips">Tips</a>
+                <a href="/resources#tips" onClick={(e) => { e.preventDefault(); alert('Tips content will be available soon!'); }}>Tips</a>
               </li>
               <li>
-                <a href="/resources#lessons">Lessons</a>
+                <a href="/resources#lessons" onClick={(e) => { e.preventDefault(); alert('Lessons content will be available soon!'); }}>Lessons</a>
               </li>
             </ul>
           </div>
