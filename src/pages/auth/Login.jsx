@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { auth, db } from '../../firebase';
-import { signInWithEmailAndPassword } from 'firebase/auth';
+import { signInWithEmailAndPassword, signOut } from 'firebase/auth';
 import { doc, getDoc } from 'firebase/firestore';
 
 function Login() {
@@ -23,12 +23,26 @@ function Login() {
       const userDocRef = doc(db, 'users', userCredential.user.uid);
       const userDocSnap = await getDoc(userDocRef);
       
-      alert('Login successful!');
+      if (userDocSnap.exists()) {
+        const userData = userDocSnap.data();
 
-      if (userDocSnap.exists() && userDocSnap.data().role === 'admin') {
-        navigate('/admin'); // Redirect admins to dashboard
+        if (userData.isBanned) {
+          await signOut(auth);
+          setError('Your account has been banned. Please contact support.');
+          setLoading(false);
+          return;
+        }
+
+        alert('Login successful!');
+
+        if (userData.role === 'admin') {
+          navigate('/admin'); // Redirect admins to dashboard
+        } else {
+          navigate('/home'); // Redirect students to home
+        }
       } else {
-        navigate('/home'); // Redirect students to home
+        alert('Login successful!');
+        navigate('/home');
       }
     } catch (err) {
       console.error(err);

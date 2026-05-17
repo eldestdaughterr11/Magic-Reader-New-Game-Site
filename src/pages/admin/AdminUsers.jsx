@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { db } from '../../firebase';
-import { collection, onSnapshot, deleteDoc, doc, query, orderBy } from 'firebase/firestore';
+import { collection, onSnapshot, doc, query, orderBy, updateDoc } from 'firebase/firestore';
 
 function AdminUsers() {
   const [users, setUsers] = useState([]);
@@ -22,13 +22,16 @@ function AdminUsers() {
     return () => unsubscribe();
   }, []);
 
-  const handleBanUser = async (id, name) => {
-    if (window.confirm(`Are you sure you want to ban ${name}? This action cannot be undone.`)) {
+  const handleToggleBan = async (id, name, currentStatus) => {
+    const action = currentStatus ? 'unban' : 'ban';
+    if (window.confirm(`Are you sure you want to ${action} ${name}?`)) {
       try {
-        await deleteDoc(doc(db, 'users', id));
-        alert(`${name} has been banned and removed from the list.`);
+        await updateDoc(doc(db, 'users', id), {
+          isBanned: !currentStatus
+        });
+        alert(`${name} has been ${action}ned.`);
       } catch (err) {
-        console.error('Error deleting user: ', err);
+        console.error(`Error ${action}ning user: `, err);
       }
     }
   };
@@ -64,11 +67,11 @@ function AdminUsers() {
                     View Profile
                   </button>
                   <button 
-                    className="cms-btn cms-btn-danger" 
-                    style={{ padding: '5px 10px', fontSize: '0.8rem' }}
-                    onClick={() => handleBanUser(user.id, user.name)}
+                    className={`cms-btn ${user.isBanned ? 'cms-btn-primary' : 'cms-btn-danger'}`}
+                    style={{ padding: '5px 10px', fontSize: '0.8rem', backgroundColor: user.isBanned ? '#4caf50' : '#d4854a' }}
+                    onClick={() => handleToggleBan(user.id, user.name, user.isBanned)}
                   >
-                    Ban User
+                    {user.isBanned ? 'Unban User' : 'Ban User'}
                   </button>
                 </td>
               </tr>
@@ -100,7 +103,7 @@ function AdminUsers() {
               <p><strong>Name:</strong> {selectedUser.name}</p>
               <p><strong>Email:</strong> {selectedUser.email}</p>
               <p><strong>Total Score:</strong> {selectedUser.score || 0}</p>
-              <p><strong>Status:</strong> Active</p>
+              <p><strong>Status:</strong> {selectedUser.isBanned ? 'Banned' : 'Active'}</p>
             </div>
             <div style={{ textAlign: 'right', marginTop: '20px' }}>
               <button 

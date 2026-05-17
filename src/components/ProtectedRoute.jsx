@@ -1,7 +1,7 @@
 import { Navigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { auth, db } from '../firebase';
-import { onAuthStateChanged } from 'firebase/auth';
+import { onAuthStateChanged, signOut } from 'firebase/auth';
 import { doc, getDoc } from 'firebase/firestore';
 
 function ProtectedRoute({ children, requireAdmin = false }) {
@@ -16,8 +16,22 @@ function ProtectedRoute({ children, requireAdmin = false }) {
         try {
           const userDocRef = doc(db, 'users', currentUser.uid);
           const userDocSnap = await getDoc(userDocRef);
-          if (userDocSnap.exists() && userDocSnap.data().role === 'admin') {
-            setIsAdmin(true);
+          if (userDocSnap.exists()) {
+            const userData = userDocSnap.data();
+            
+            if (userData.isBanned) {
+              await signOut(auth);
+              setUser(null);
+              setIsAdmin(false);
+              setLoading(false);
+              return;
+            }
+
+            if (userData.role === 'admin') {
+              setIsAdmin(true);
+            } else {
+              setIsAdmin(false);
+            }
           } else {
             setIsAdmin(false);
           }
