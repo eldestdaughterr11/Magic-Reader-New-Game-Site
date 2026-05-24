@@ -166,7 +166,7 @@ function AdminLessons() {
         </div>
       </div>
 
-      <div className="cms-card" style={{ overflowX: 'auto' }}>
+      <div className="cms-card admin-table-wrapper" style={{ overflowX: 'auto', margin: 0 }}>
         <table className="cms-table">
           <thead>
             <tr>
@@ -230,9 +230,10 @@ function AdminLessons() {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          zIndex: 1000
+          zIndex: 1000,
+          padding: '15px'
         }}>
-          <div className="cms-card" style={{ width: '450px', position: 'relative', maxHeight: '90vh', overflowY: 'auto' }}>
+          <div className="cms-card" style={{ width: '100%', maxWidth: '450px', margin: '0 auto', position: 'relative', maxHeight: '90vh', overflowY: 'auto' }}>
             <h3 style={{ marginTop: 0 }}>{editingLesson ? 'Edit Lesson' : 'Add New Lesson'}</h3>
             
             <form onSubmit={handleSave} style={{ paddingTop: '15px' }}>
@@ -308,7 +309,7 @@ function AdminLessons() {
   );
 }
 
-const matatagLessons = [
+const rawMatatagLessons = [
   {
     title: "Lesson 1: Using Context Clues",
     category: "Vocabulary Guide",
@@ -741,5 +742,10 @@ That evening, as they shared a sweet bowl of lanzones, Clara's father said, "Our
 4. How do you practice cooperation in your own family or school?`
   }
 ];
+
+const matatagLessons = rawMatatagLessons.map(lesson => ({
+  ...lesson,
+  contentText: lesson.contentText ? lesson.contentText.replace(/\*/g, '') : ''
+}));
 
 export default AdminLessons;

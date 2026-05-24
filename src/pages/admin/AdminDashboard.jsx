@@ -42,7 +42,7 @@ function AdminDashboard() {
     <div>
       <h2 className="admin-page-title">Dashboard Overview</h2>
       
-      <div style={{ display: 'flex', gap: '20px', marginBottom: '30px' }}>
+      <div className="admin-stats-grid">
         <div className="cms-card cms-card-stat" style={{ flex: 1, borderLeft: '5px solid #d1a7d1' }}>
           <h3>Total Users</h3>
           <p style={{ fontSize: '2rem', fontWeight: 'bold', margin: 0, color: '#fff' }}>{stats.totalUsers}</p>
@@ -59,28 +59,30 @@ function AdminDashboard() {
 
       <div className="cms-card">
         <h3>Recent Activity</h3>
-        <table className="cms-table">
-          <thead>
-            <tr>
-              <th>Action</th>
-              <th>User</th>
-              <th>Date/Time</th>
-            </tr>
-          </thead>
-          <tbody>
-            {activities.length > 0 ? activities.map(act => (
-              <tr key={act.id}>
-                <td>{act.action}</td>
-                <td>{act.user}</td>
-                <td>{new Date(act.timestamp).toLocaleString()}</td>
-              </tr>
-            )) : (
+        <div className="admin-table-wrapper">
+          <table className="cms-table">
+            <thead>
               <tr>
-                <td colSpan="3" style={{textAlign: 'center', padding: '20px'}}>No recent activity yet.</td>
+                <th>Action</th>
+                <th>User</th>
+                <th>Date/Time</th>
               </tr>
-            )}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {activities.length > 0 ? activities.map(act => (
+                <tr key={act.id}>
+                  <td>{act.action}</td>
+                  <td>{act.user}</td>
+                  <td>{new Date(act.timestamp).toLocaleString()}</td>
+                </tr>
+              )) : (
+                <tr>
+                  <td colSpan="3" style={{textAlign: 'center', padding: '20px'}}>No recent activity yet.</td>
+                </tr>
+              )}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );

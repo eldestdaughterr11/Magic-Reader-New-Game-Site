@@ -1,8 +1,10 @@
+import { useState } from 'react';
 import { Link, Outlet, useLocation } from 'react-router-dom';
 import { auth } from '../firebase';
 import { signOut } from 'firebase/auth';
 
 function MainLayout() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
   const currentPath = location.pathname;
 
@@ -25,13 +27,23 @@ function MainLayout() {
         </div>
       </div>
       <header>
-        <Link to="/home" className="logo-link">
+        <Link to="/home" className="logo-link" onClick={() => setIsMenuOpen(false)}>
           <img
             src="/images/magic-reader-logo.png"
             alt="Magic Reader"
             className="logo-img"
           />
         </Link>
+
+        {/* Mobile Hamburger toggle button */}
+        <button 
+          className="menu-toggle-btn"
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          aria-label="Toggle navigation menu"
+        >
+          <i className={isMenuOpen ? "fa-solid fa-xmark" : "fa-solid fa-bars"}></i>
+        </button>
+
         <nav className="nav-links">
           <Link to="/home" className={currentPath === '/home' ? 'active' : ''}>
             Home
@@ -81,6 +93,74 @@ function MainLayout() {
           </button>
         </div>
       </header>
+
+      {/* Mobile Navigation Backdrop Overlay */}
+      <div 
+        className={`mobile-nav-overlay ${isMenuOpen ? 'active' : ''}`}
+        onClick={() => setIsMenuOpen(false)}
+      ></div>
+
+      {/* Mobile Navigation Slide-out Drawer */}
+      <div className={`mobile-nav-drawer ${isMenuOpen ? 'open' : ''}`}>
+        <div className="mobile-nav-drawer-links">
+          <Link to="/home" className={currentPath === '/home' ? 'active' : ''} onClick={() => setIsMenuOpen(false)}>
+            Home
+          </Link>
+          <Link
+            to="/game/gameplay"
+            className={currentPath.includes('/game') ? 'active' : ''}
+            onClick={() => setIsMenuOpen(false)}
+          >
+            Game
+          </Link>
+          <Link
+            to="/leaderboards"
+            className={currentPath.includes('/leaderboards') ? 'active' : ''}
+            onClick={() => setIsMenuOpen(false)}
+          >
+            Leaderboards
+          </Link>
+          <Link
+            to="/resources"
+            className={currentPath.includes('/resources') ? 'active' : ''}
+            onClick={() => setIsMenuOpen(false)}
+          >
+            Resources
+          </Link>
+          <Link
+            to="/about"
+            className={currentPath.includes('/about') ? 'active' : ''}
+            onClick={() => setIsMenuOpen(false)}
+          >
+            About
+          </Link>
+        </div>
+        <div className="mobile-nav-drawer-actions">
+          <Link to="/login" className="user-profile" title="Login / Sign Up" onClick={() => setIsMenuOpen(false)}>
+            <i className="fa-regular fa-circle-user"></i>
+          </Link>
+          <button 
+            onClick={() => {
+              setIsMenuOpen(false);
+              handleLogout();
+            }} 
+            style={{
+              background: 'transparent', 
+              border: '1px solid #fff', 
+              color: '#fff', 
+              padding: '10px 15px', 
+              borderRadius: '20px', 
+              cursor: 'pointer',
+              fontFamily: 'Montserrat, sans-serif',
+              width: '100%',
+              textAlign: 'center'
+            }}
+          >
+            Log Out
+          </button>
+        </div>
+      </div>
+
       <div className="header-bottom-bar"></div>
 
       <main className="container fade-in">

@@ -25,8 +25,8 @@ function Gameplay() {
         
         <div style={{ display: 'flex', flexDirection: 'column', gap: '30px' }}>
           
-          <div style={{ display: 'flex', alignItems: 'center', gap: '30px', justifyContent: 'center' }}>
-            <div style={{ width: '180px', height: '140px', backgroundColor: 'rgba(255,255,255,0.05)', border: '1px dashed rgba(255,255,255,0.2)', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#aaa', fontStyle: 'italic', fontSize: '0.8rem' }}>
+          <div className="responsive-flex-row" style={{ gap: '20px' }}>
+            <div style={{ width: '180px', height: '140px', backgroundColor: 'rgba(255,255,255,0.05)', border: '1px dashed rgba(255,255,255,0.2)', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#aaa', fontStyle: 'italic', fontSize: '0.8rem', flexShrink: 0 }}>
                A Challenge Img
             </div>
             <p style={{ flex: '1', maxWidth: '400px', fontFamily: 'Montserrat, sans-serif', fontSize: '0.9rem', textAlign: 'center' }}>
@@ -34,8 +34,8 @@ function Gameplay() {
             </p>
           </div>
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: '30px', justifyContent: 'center' }}>
-            <div style={{ width: '180px', height: '140px', backgroundColor: 'rgba(255,255,255,0.05)', border: '1px dashed rgba(255,255,255,0.2)', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#aaa', fontStyle: 'italic', fontSize: '0.8rem' }}>
+          <div className="responsive-flex-row" style={{ gap: '20px' }}>
+            <div style={{ width: '180px', height: '140px', backgroundColor: 'rgba(255,255,255,0.05)', border: '1px dashed rgba(255,255,255,0.2)', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#aaa', fontStyle: 'italic', fontSize: '0.8rem', flexShrink: 0 }}>
                E Challenge Img
             </div>
             <p style={{ flex: '1', maxWidth: '400px', fontFamily: 'Montserrat, sans-serif', fontSize: '0.9rem', textAlign: 'center' }}>
@@ -43,8 +43,8 @@ function Gameplay() {
             </p>
           </div>
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: '30px', justifyContent: 'center' }}>
-            <div style={{ width: '180px', height: '140px', backgroundColor: 'rgba(255,255,255,0.05)', border: '1px dashed rgba(255,255,255,0.2)', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#aaa', fontStyle: 'italic', fontSize: '0.8rem' }}>
+          <div className="responsive-flex-row" style={{ gap: '20px' }}>
+            <div style={{ width: '180px', height: '140px', backgroundColor: 'rgba(255,255,255,0.05)', border: '1px dashed rgba(255,255,255,0.2)', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#aaa', fontStyle: 'italic', fontSize: '0.8rem', flexShrink: 0 }}>
                I Challenge Img
             </div>
             <p style={{ flex: '1', maxWidth: '400px', fontFamily: 'Montserrat, sans-serif', fontSize: '0.9rem', textAlign: 'center' }}>
@@ -52,8 +52,8 @@ function Gameplay() {
             </p>
           </div>
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: '30px', justifyContent: 'center' }}>
-            <div style={{ width: '180px', height: '140px', backgroundColor: 'rgba(255,255,255,0.05)', border: '1px dashed rgba(255,255,255,0.2)', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#aaa', fontStyle: 'italic', fontSize: '0.8rem' }}>
+          <div className="responsive-flex-row" style={{ gap: '20px' }}>
+            <div style={{ width: '180px', height: '140px', backgroundColor: 'rgba(255,255,255,0.05)', border: '1px dashed rgba(255,255,255,0.2)', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#aaa', fontStyle: 'italic', fontSize: '0.8rem', flexShrink: 0 }}>
                O Challenge Img
             </div>
             <p style={{ flex: '1', maxWidth: '400px', fontFamily: 'Montserrat, sans-serif', fontSize: '0.9rem', textAlign: 'center' }}>
@@ -61,8 +61,8 @@ function Gameplay() {
             </p>
           </div>
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: '30px', justifyContent: 'center' }}>
-            <div style={{ width: '180px', height: '140px', backgroundColor: 'rgba(255,255,255,0.05)', border: '1px dashed rgba(255,255,255,0.2)', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#aaa', fontStyle: 'italic', fontSize: '0.8rem' }}>
+          <div className="responsive-flex-row" style={{ gap: '20px' }}>
+            <div style={{ width: '180px', height: '140px', backgroundColor: 'rgba(255,255,255,0.05)', border: '1px dashed rgba(255,255,255,0.2)', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#aaa', fontStyle: 'italic', fontSize: '0.8rem', flexShrink: 0 }}>
                U Challenge Img
             </div>
             <p style={{ flex: '1', maxWidth: '400px', fontFamily: 'Montserrat, sans-serif', fontSize: '0.9rem', textAlign: 'center' }}>
@@ -77,8 +77,8 @@ function Gameplay() {
       <div style={{ marginBottom: '60px' }}>
         <h2 className="section-title" style={{ color: '#d4854a', fontSize: '2.2rem', marginBottom: '30px' }}>Objectives</h2>
         
-        <div style={{ display: 'flex', alignItems: 'center', gap: '40px', justifyContent: 'center' }}>
-          <div style={{ width: '220px', height: '220px', backgroundColor: 'rgba(255,255,255,0.05)', border: '1px dashed rgba(255,255,255,0.2)', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#aaa', fontStyle: 'italic', fontSize: '0.8rem' }}>
+        <div className="responsive-flex-row" style={{ gap: '30px' }}>
+          <div style={{ width: '220px', height: '220px', backgroundColor: 'rgba(255,255,255,0.05)', border: '1px dashed rgba(255,255,255,0.2)', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#aaa', fontStyle: 'italic', fontSize: '0.8rem', flexShrink: 0 }}>
              Vowel Stones Img
           </div>
           <div style={{ flex: '1', maxWidth: '500px', fontFamily: 'Montserrat, sans-serif', fontSize: '0.85rem', textAlign: 'center', lineHeight: '1.6' }}>
@@ -95,37 +95,39 @@ function Gameplay() {
       {/* Controls */}
       <div style={{ marginBottom: '60px' }}>
         <h2 className="section-title" style={{ color: '#d4854a', fontSize: '2.2rem', marginBottom: '30px' }}>Controls</h2>
-        <div style={{ display: 'flex', justifyContent: 'center' }}>
-          <table style={{ 
-            width: '100%', 
-            maxWidth: '550px', 
-            borderCollapse: 'collapse', 
-            backgroundColor: '#f5e6d3', 
-            color: '#3d2b4f',
-            fontFamily: 'Montserrat, sans-serif',
-            fontSize: '0.85rem',
-            textAlign: 'center',
-            boxShadow: '0 4px 10px rgba(0,0,0,0.3)'
-          }}>
-            <thead>
-              <tr>
-                <th style={{ padding: '12px', border: '1px solid #d1a7d1', borderBottom: '2px solid #3d2b4f' }}>Keystrokes</th>
-                <th style={{ padding: '12px', border: '1px solid #d1a7d1', borderBottom: '2px solid #3d2b4f' }}>Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><td style={{ padding: '10px', border: '1px solid #d1a7d1' }}>W</td><td style={{ padding: '10px', border: '1px solid #d1a7d1' }}>Move Forward</td></tr>
-              <tr><td style={{ padding: '10px', border: '1px solid #d1a7d1' }}>A</td><td style={{ padding: '10px', border: '1px solid #d1a7d1' }}>Move Left</td></tr>
-              <tr><td style={{ padding: '10px', border: '1px solid #d1a7d1' }}>S</td><td style={{ padding: '10px', border: '1px solid #d1a7d1' }}>Move Backward</td></tr>
-              <tr><td style={{ padding: '10px', border: '1px solid #d1a7d1' }}>D</td><td style={{ padding: '10px', border: '1px solid #d1a7d1' }}>Move Right</td></tr>
-              <tr><td style={{ padding: '10px', border: '1px solid #d1a7d1' }}>Spacebar</td><td style={{ padding: '10px', border: '1px solid #d1a7d1' }}>Jump</td></tr>
-              <tr><td style={{ padding: '10px', border: '1px solid #d1a7d1' }}>Left Mouse Button</td><td style={{ padding: '10px', border: '1px solid #d1a7d1' }}>Interaction (Puzzles)</td></tr>
-              <tr><td style={{ padding: '10px', border: '1px solid #d1a7d1' }}>Mouse</td><td style={{ padding: '10px', border: '1px solid #d1a7d1' }}>Look Around</td></tr>
-              <tr><td style={{ padding: '10px', border: '1px solid #d1a7d1' }}>E</td><td style={{ padding: '10px', border: '1px solid #d1a7d1' }}>Interact with NPCs</td></tr>
-              <tr><td style={{ padding: '10px', border: '1px solid #d1a7d1' }}>Esc</td><td style={{ padding: '10px', border: '1px solid #d1a7d1' }}>Menu/Pause</td></tr>
-              <tr><td style={{ padding: '10px', border: '1px solid #d1a7d1' }}>Left Shift</td><td style={{ padding: '10px', border: '1px solid #d1a7d1' }}>Sprint</td></tr>
-            </tbody>
-          </table>
+        <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
+          <div className="scrollable-wrapper" style={{ margin: 0, maxWidth: '550px', width: '100%' }}>
+            <table style={{ 
+              width: '100%', 
+              minWidth: '400px',
+              borderCollapse: 'collapse', 
+              backgroundColor: '#f5e6d3', 
+              color: '#3d2b4f',
+              fontFamily: 'Montserrat, sans-serif',
+              fontSize: '0.85rem',
+              textAlign: 'center',
+              boxShadow: '0 4px 10px rgba(0,0,0,0.3)'
+            }}>
+              <thead>
+                <tr>
+                  <th style={{ padding: '12px', border: '1px solid #d1a7d1', borderBottom: '2px solid #3d2b4f' }}>Keystrokes</th>
+                  <th style={{ padding: '12px', border: '1px solid #d1a7d1', borderBottom: '2px solid #3d2b4f' }}>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td style={{ padding: '10px', border: '1px solid #d1a7d1' }}>W</td><td style={{ padding: '10px', border: '1px solid #d1a7d1' }}>Move Forward</td></tr>
+                <tr><td style={{ padding: '10px', border: '1px solid #d1a7d1' }}>A</td><td style={{ padding: '10px', border: '1px solid #d1a7d1' }}>Move Left</td></tr>
+                <tr><td style={{ padding: '10px', border: '1px solid #d1a7d1' }}>S</td><td style={{ padding: '10px', border: '1px solid #d1a7d1' }}>Move Backward</td></tr>
+                <tr><td style={{ padding: '10px', border: '1px solid #d1a7d1' }}>D</td><td style={{ padding: '10px', border: '1px solid #d1a7d1' }}>Move Right</td></tr>
+                <tr><td style={{ padding: '10px', border: '1px solid #d1a7d1' }}>Spacebar</td><td style={{ padding: '10px', border: '1px solid #d1a7d1' }}>Jump</td></tr>
+                <tr><td style={{ padding: '10px', border: '1px solid #d1a7d1' }}>Left Mouse Button</td><td style={{ padding: '10px', border: '1px solid #d1a7d1' }}>Interaction (Puzzles)</td></tr>
+                <tr><td style={{ padding: '10px', border: '1px solid #d1a7d1' }}>Mouse</td><td style={{ padding: '10px', border: '1px solid #d1a7d1' }}>Look Around</td></tr>
+                <tr><td style={{ padding: '10px', border: '1px solid #d1a7d1' }}>E</td><td style={{ padding: '10px', border: '1px solid #d1a7d1' }}>Interact with NPCs</td></tr>
+                <tr><td style={{ padding: '10px', border: '1px solid #d1a7d1' }}>Esc</td><td style={{ padding: '10px', border: '1px solid #d1a7d1' }}>Menu/Pause</td></tr>
+                <tr><td style={{ padding: '10px', border: '1px solid #d1a7d1' }}>Left Shift</td><td style={{ padding: '10px', border: '1px solid #d1a7d1' }}>Sprint</td></tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
 

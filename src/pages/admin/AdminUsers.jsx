@@ -41,48 +41,50 @@ function AdminUsers() {
       <h2 className="admin-page-title">Manage Users</h2>
 
       <div className="cms-card">
-        <table className="cms-table">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Total Score</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {users.map(user => (
-              <tr key={user.id}>
-                <td style={{ fontSize: '0.8em', color: '#ccc' }}>{user.id.substring(0, 5)}...</td>
-                <td><strong>{user.name}</strong></td>
-                <td>{user.email}</td>
-                <td>{user.score || 0}</td>
-                <td style={{ display: 'flex', gap: '10px' }}>
-                  <button 
-                    className="cms-btn cms-btn-warning" 
-                    style={{ padding: '5px 10px', fontSize: '0.8rem' }}
-                    onClick={() => setSelectedUser(user)}
-                  >
-                    View Profile
-                  </button>
-                  <button 
-                    className={`cms-btn ${user.isBanned ? 'cms-btn-primary' : 'cms-btn-danger'}`}
-                    style={{ padding: '5px 10px', fontSize: '0.8rem', backgroundColor: user.isBanned ? '#4caf50' : '#d4854a' }}
-                    onClick={() => handleToggleBan(user.id, user.name, user.isBanned)}
-                  >
-                    {user.isBanned ? 'Unban User' : 'Ban User'}
-                  </button>
-                </td>
-              </tr>
-            ))}
-            {users.length === 0 && (
+        <div className="admin-table-wrapper">
+          <table className="cms-table">
+            <thead>
               <tr>
-                <td colSpan="5" style={{ textAlign: 'center', padding: '20px' }}>No users found in Firebase.</td>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Total Score</th>
+                <th>Actions</th>
               </tr>
-            )}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {users.map(user => (
+                <tr key={user.id}>
+                  <td style={{ fontSize: '0.8em', color: '#ccc' }}>{user.id.substring(0, 5)}...</td>
+                  <td><strong>{user.name}</strong></td>
+                  <td>{user.email}</td>
+                  <td>{user.score || 0}</td>
+                  <td style={{ display: 'flex', gap: '10px' }}>
+                    <button 
+                      className="cms-btn cms-btn-warning" 
+                      style={{ padding: '5px 10px', fontSize: '0.8rem' }}
+                      onClick={() => setSelectedUser(user)}
+                    >
+                      View Profile
+                    </button>
+                    <button 
+                      className={`cms-btn ${user.isBanned ? 'cms-btn-primary' : 'cms-btn-danger'}`}
+                      style={{ padding: '5px 10px', fontSize: '0.8rem', backgroundColor: user.isBanned ? '#4caf50' : '#d4854a' }}
+                      onClick={() => handleToggleBan(user.id, user.name, user.isBanned)}
+                    >
+                      {user.isBanned ? 'Unban User' : 'Ban User'}
+                    </button>
+                  </td>
+                </tr>
+              ))}
+              {users.length === 0 && (
+                <tr>
+                  <td colSpan="5" style={{ textAlign: 'center', padding: '20px' }}>No users found in Firebase.</td>
+                </tr>
+              )}
+            </tbody>
+          </table>
+        </div>
       </div>
 
       {/* Simple Modal for View Profile */}
@@ -94,9 +96,10 @@ function AdminUsers() {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          zIndex: 1000
+          zIndex: 1000,
+          padding: '15px'
         }}>
-          <div className="cms-card" style={{ width: '400px', position: 'relative' }}>
+          <div className="cms-card" style={{ width: '100%', maxWidth: '400px', margin: '0 auto', position: 'relative' }}>
             <h3 style={{ marginTop: 0 }}>User Profile</h3>
             <div style={{ padding: '20px 0', color: '#fff' }}>
               <p><strong>ID:</strong> {selectedUser.id}</p>

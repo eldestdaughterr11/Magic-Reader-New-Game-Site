@@ -203,3 +203,96 @@
   background-color: #c98236;
   color: #fff;
 }
+
+/* --- Mobile Admin Responsiveness --- */
+
+.admin-menu-btn {
+  display: none;
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  font-size: 1.6rem;
+  cursor: pointer;
+  padding: 5px;
+  line-height: 1;
+}
+
+.admin-stats-grid {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.admin-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin-bottom: 20px;
+  border-radius: 8px;
+}
+
+.admin-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(2px);
+  z-index: 998;
+}
+
+@media (max-width: 768px) {
+  .admin-menu-btn {
+    display: block;
+  }
+
+  .admin-sidebar {
+    position: fixed;
+    top: 0;
+    left: -260px;
+    height: 100vh;
+    z-index: 1000;
+    transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .admin-sidebar.open {
+    left: 0;
+  }
+
+  .admin-overlay.active {
+    display: block;
+  }
+
+  .admin-header {
+    padding: 15px;
+  }
+
+  .admin-header h1 {
+    font-size: 1.15rem;
+  }
+
+  .admin-profile span {
+    display: none; /* Hide profile name text on small screens, keep icon */
+  }
+
+  .admin-content {
+    padding: 15px;
+  }
+
+  .admin-stats-grid {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .admin-page-title {
+    font-size: 1.6rem;
+  }
+
+  /* Table styles inside CMS cards */
+  .cms-table {
+    min-width: 600px; /* Ensure table requires scrolling on mobile rather than squishing */
+  }
+}
+

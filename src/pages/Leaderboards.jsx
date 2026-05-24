@@ -53,40 +53,42 @@ function Leaderboards() {
         Leaderboard Table
       </h2>
       
-      <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '60px' }}>
-        <table style={{ 
-          width: '100%', 
-          maxWidth: '700px', 
-          borderCollapse: 'collapse', 
-          backgroundColor: '#f5e6d3', 
-          color: '#3d2b4f',
-          fontFamily: 'Montserrat, sans-serif',
-          fontSize: '0.9rem',
-          textAlign: 'center',
-          boxShadow: '0 4px 10px rgba(0,0,0,0.3)'
-        }}>
-          <thead>
-            <tr>
-              <th style={tableHeaderStyle}>Rank</th>
-              <th style={tableHeaderStyle}>Player</th>
-              <th style={tableHeaderStyle}>Score</th>
-            </tr>
-          </thead>
-          <tbody>
-            {leaderboard.map((user, index) => (
-              <tr key={user.id}>
-                <td style={tableCellStyle}>{index + 1}</td>
-                <td style={tableCellStyle}>{user.name}</td>
-                <td style={tableCellStyle}>{user.score || 0}</td>
-              </tr>
-            ))}
-            {leaderboard.length === 0 && (
+      <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '60px', width: '100%' }}>
+        <div className="scrollable-wrapper" style={{ margin: 0, maxWidth: '700px', width: '100%' }}>
+          <table style={{ 
+            width: '100%', 
+            minWidth: '450px',
+            borderCollapse: 'collapse', 
+            backgroundColor: '#f5e6d3', 
+            color: '#3d2b4f',
+            fontFamily: 'Montserrat, sans-serif',
+            fontSize: '0.9rem',
+            textAlign: 'center',
+            boxShadow: '0 4px 10px rgba(0,0,0,0.3)'
+          }}>
+            <thead>
               <tr>
-                <td colSpan="3" style={tableCellStyle}>No players found. Play the game to get ranked!</td>
+                <th style={tableHeaderStyle}>Rank</th>
+                <th style={tableHeaderStyle}>Player</th>
+                <th style={tableHeaderStyle}>Score</th>
               </tr>
-            )}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {leaderboard.map((user, index) => (
+                <tr key={user.id}>
+                  <td style={tableCellStyle}>{index + 1}</td>
+                  <td style={tableCellStyle}>{user.name}</td>
+                  <td style={tableCellStyle}>{user.score || 0}</td>
+                </tr>
+              ))}
+              {leaderboard.length === 0 && (
+                <tr>
+                  <td colSpan="3" style={tableCellStyle}>No players found. Play the game to get ranked!</td>
+                </tr>
+              )}
+            </tbody>
+          </table>
+        </div>
       </div>
 
       {/* Achievements Table Section */}
@@ -94,40 +96,42 @@ function Leaderboards() {
         Achievements
       </h2>
       
-      <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '40px' }}>
-        <table style={{ 
-          width: '100%', 
-          maxWidth: '700px', 
-          borderCollapse: 'collapse', 
-          backgroundColor: '#f5e6d3', 
-          color: '#3d2b4f',
-          fontFamily: 'Montserrat, sans-serif',
-          fontSize: '0.9rem',
-          textAlign: 'center',
-          boxShadow: '0 4px 10px rgba(0,0,0,0.3)'
-        }}>
-          <thead>
-            <tr>
-              <th style={tableHeaderStyle}>Rank</th>
-              <th style={tableHeaderStyle}>Player</th>
-              <th style={tableHeaderStyle}>Achievements</th>
-            </tr>
-          </thead>
-          <tbody>
-            {leaderboard.map((user, index) => (
-              <tr key={user.id + "_ach"}>
-                <td style={tableCellStyle}>{index + 1}</td>
-                <td style={tableCellStyle}>{user.name}</td>
-                <td style={tableCellStyle}>{getAchievement(user.score)}</td>
-              </tr>
-            ))}
-            {leaderboard.length === 0 && (
+      <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '40px', width: '100%' }}>
+        <div className="scrollable-wrapper" style={{ margin: 0, maxWidth: '700px', width: '100%' }}>
+          <table style={{ 
+            width: '100%', 
+            minWidth: '450px',
+            borderCollapse: 'collapse', 
+            backgroundColor: '#f5e6d3', 
+            color: '#3d2b4f',
+            fontFamily: 'Montserrat, sans-serif',
+            fontSize: '0.9rem',
+            textAlign: 'center',
+            boxShadow: '0 4px 10px rgba(0,0,0,0.3)'
+          }}>
+            <thead>
               <tr>
-                <td colSpan="3" style={tableCellStyle}>No players found.</td>
+                <th style={tableHeaderStyle}>Rank</th>
+                <th style={tableHeaderStyle}>Player</th>
+                <th style={tableHeaderStyle}>Achievements</th>
               </tr>
-            )}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {leaderboard.map((user, index) => (
+                <tr key={user.id + "_ach"}>
+                  <td style={tableCellStyle}>{index + 1}</td>
+                  <td style={tableCellStyle}>{user.name}</td>
+                  <td style={tableCellStyle}>{getAchievement(user.score)}</td>
+                </tr>
+              ))}
+              {leaderboard.length === 0 && (
+                <tr>
+                  <td colSpan="3" style={tableCellStyle}>No players found.</td>
+                </tr>
+              )}
+            </tbody>
+          </table>
+        </div>
       </div>
 
     </div>

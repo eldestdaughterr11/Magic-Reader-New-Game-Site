@@ -561,7 +561,7 @@ body.auth-page .auth-wrapper {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 60px 20px;
+    padding: 40px 20px;
 }
 
 /* Signup title: isang linya tulad ng Figma (hindi bumababa ang "Account") */
@@ -569,36 +569,51 @@ body.auth-page .auth-title {
     font-family: 'Berkshire Swash', cursive;
     font-weight: 400;
     /* Mas mababang min + vw para kasya sa isang row kahit maliit ang screen */
-    font-size: clamp(1.3rem, 3.6vw + 0.5rem, 3.25rem);
+    font-size: clamp(1.8rem, 4.5vw, 3rem);
     line-height: 1.2;
     letter-spacing: 0.02em;
     color: #e0c3fc;
     text-shadow: 0 2px 28px rgba(139, 92, 246, 0.45), 0 1px 2px rgba(0, 0, 0, 0.35);
     white-space: nowrap;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto 10px;
     max-width: 100%;
+    text-align: center;
 }
 
 body.auth-page .auth-container {
-    max-width: min(100%, 560px);
+    width: 100%;
+    max-width: 480px;
+    background: rgba(43, 24, 67, 0.85); /* Premium semi-transparent dark purple matching theme */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 40px 35px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+    margin: auto; /* Safe vertical and horizontal centering to prevent top overflow on short screens */
+    box-sizing: border-box;
 }
 
 body.auth-page .auth-subtitle {
     font-family: 'Montserrat', sans-serif;
     font-weight: 400;
-    font-size: 1rem;
-    color: #ffffff;
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 30px;
+    text-align: center;
 }
 
 body.auth-page .auth-link {
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
-    color: #ffffff;
+    color: #e0c3fc;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: color 0.2s ease;
 }
 
 body.auth-page .auth-link:hover {
-    color: #e0c3fc;
+    color: #f5e6d3;
 }
 
 body.auth-page .auth-form .form-group label {
@@ -607,31 +622,45 @@ body.auth-page .auth-form .form-group label {
     font-size: 0.8rem;
     letter-spacing: 0.12em;
     color: #ffffff;
+    margin-bottom: 8px;
+    display: block;
 }
 
 body.auth-page .auth-form .form-control {
-    border-radius: 0;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    background-color: rgba(255, 255, 255, 0.95);
     font-family: 'Montserrat', sans-serif;
     font-weight: 400;
     color: #111111;
     padding: 14px 16px;
+    transition: all 0.3s ease;
+}
+
+body.auth-page .auth-form .form-control:focus {
+    outline: none;
+    border-color: #e0c3fc;
+    box-shadow: 0 0 0 3px rgba(224, 195, 252, 0.3);
+    background-color: #ffffff;
 }
 
 body.auth-page .auth-form .btn {
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
     letter-spacing: 0.14em;
-    border-radius: 0;
-    background-color: #3d2463;
-    color: #ffffff;
-    text-decoration: underline;
-    text-underline-offset: 5px;
-    text-decoration-thickness: 2px;
+    border-radius: 8px;
+    background-color: #e0c3fc;
+    color: #21162e;
+    text-decoration: none;
+    border: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(224, 195, 252, 0.25);
 }
 
 body.auth-page .auth-form .btn:hover {
-    background-color: #322056;
-    transform: none;
+    background-color: #d1a7d1;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(209, 167, 209, 0.35);
 }
 
 .auth-container {
@@ -877,3 +906,407 @@ body.auth-page .auth-form .btn:hover {
     font-family: 'Montserrat', sans-serif;
     letter-spacing: 0.1em;
 }
+
+/* Premium Lesson Markdown Styling */
+.lesson-h4 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.35rem;
+    color: #3d2b4f;
+    margin-top: 28px;
+    margin-bottom: 14px;
+    font-weight: 700;
+    border-left: 4px solid #d4854a;
+    padding-left: 12px;
+}
+
+.lesson-p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.05rem;
+    color: #333333;
+    margin-bottom: 16px;
+    line-height: 1.75;
+}
+
+.lesson-ul, .lesson-ol {
+    padding-left: 28px;
+    margin-bottom: 18px;
+}
+
+.lesson-ul {
+    list-style-type: disc;
+}
+
+.lesson-ol {
+    list-style-type: decimal;
+}
+
+.lesson-ul li, .lesson-ol li {
+    margin-bottom: 10px;
+    color: #444444;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.lesson-spacer {
+    height: 12px;
+}
+
+.lesson-hr {
+    border: 0;
+    height: 1px;
+    background: linear-gradient(to right, rgba(61, 43, 79, 0.1), rgba(61, 43, 79, 0.4), rgba(61, 43, 79, 0.1));
+    margin: 24px 0;
+}
+
+.lesson-table-container {
+    width: 100%;
+    overflow-x: auto;
+    margin: 24px 0;
+    border-radius: 8px;
+    border: 1px solid #e0c3fc;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.lesson-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 1rem;
+    text-align: left;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.lesson-table th {
+    background-color: #3d2b4f;
+    color: #ffffff;
+    padding: 14px 18px;
+    font-weight: 600;
+    border-bottom: 2px solid #2a1838;
+}
+
+.lesson-table td {
+    padding: 14px 18px;
+    border-bottom: 1px solid #eee;
+    color: #333333;
+}
+
+.lesson-table tr:last-child td {
+    border-bottom: none;
+}
+
+.lesson-table tr:nth-child(even) {
+    background-color: #fcf8ff;
+}
+
+/* --- Mobile Responsiveness Utility Classes & Navigation Drawer --- */
+
+/* Mobile Navigation Toggle Button */
+.menu-toggle-btn {
+    display: none;
+    background: transparent;
+    border: none;
+    color: #ffffff;
+    font-size: 1.8rem;
+    cursor: pointer;
+    z-index: 1001;
+    transition: color 0.3s, transform 0.2s;
+}
+
+.menu-toggle-btn:hover {
+    color: var(--nav-active-color);
+}
+
+.menu-toggle-btn:active {
+    transform: scale(0.9);
+}
+
+/* Mobile Navigation Overlay Backdrop */
+.mobile-nav-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    z-index: 998;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.mobile-nav-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Mobile Drawer */
+.mobile-nav-drawer {
+    position: fixed;
+    top: 0;
+    right: -280px;
+    width: 280px;
+    height: 100vh;
+    background-color: var(--header-footer-bg);
+    border-left: 2px solid var(--header-rule-color);
+    box-shadow: -5px 0 25px rgba(0, 0, 0, 0.4);
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    padding: 80px 25px 40px;
+    transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mobile-nav-drawer.open {
+    right: 0;
+}
+
+.mobile-nav-drawer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.mobile-nav-drawer-links a {
+    font-family: 'Berkshire Swash', cursive;
+    font-size: 1.5rem;
+    color: #ffffff;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 6px;
+    transition: color 0.25s;
+}
+
+.mobile-nav-drawer-links a.active {
+    color: var(--nav-active-color);
+}
+
+.mobile-nav-drawer-links a:hover {
+    color: var(--nav-active-color);
+}
+
+.mobile-nav-drawer-actions {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    padding-top: 25px;
+}
+
+.mobile-nav-drawer-actions .user-profile {
+    align-self: center;
+    font-size: 2.8rem;
+}
+
+/* Scrollable Container Wrapper for Wide Elements */
+.scrollable-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin: 20px 0;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    border-radius: 8px;
+}
+
+/* Horizontal Scroll for pills on mobile */
+.horizontal-scroll-pills {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 8px;
+    margin-bottom: 25px;
+}
+
+.horizontal-scroll-pills::-webkit-scrollbar {
+    height: 4px;
+}
+
+.horizontal-scroll-pills::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.horizontal-scroll-pills::-webkit-scrollbar-thumb {
+    background: var(--nav-active-color);
+    border-radius: 10px;
+}
+
+/* Stackable Grid/Flex Helpers */
+.responsive-flex-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 30px;
+    justify-content: center;
+}
+
+.responsive-flex-row-stretch {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    gap: 30px;
+}
+
+/* Category pills styling adaptation */
+.category-pills-container {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+
+/* Media Queries for Viewports <= 768px */
+@media (max-width: 768px) {
+    /* Hide standard nav links and desktop profile action */
+    .nav-links,
+    header > div:last-child {
+        display: none !important;
+    }
+
+    /* Show hamburger icon */
+    .menu-toggle-btn {
+        display: block;
+    }
+
+    /* Header adaptations */
+    header {
+        padding: 5px 5%;
+        min-height: 80px;
+    }
+
+    .logo-img {
+        height: 70px;
+    }
+
+    .logo-img.footer-logo {
+        height: 100px;
+    }
+
+    /* Scaling general typography */
+    .section-title {
+        font-size: 2.2rem;
+        margin-bottom: 15px;
+    }
+
+    .sub-title {
+        font-size: 1.05rem;
+        margin-bottom: 20px;
+    }
+
+    /* Container adjusts */
+    .container {
+        padding: 25px 15px;
+    }
+
+    /* Stacking flex rows on mobile */
+    .responsive-flex-row {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        text-align: center;
+    }
+
+    .responsive-flex-row-stretch {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .responsive-flex-row-stretch > * {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    /* Make buttons and actions touch-friendly */
+    .btn {
+        width: 100%;
+        padding: 14px 20px;
+        font-size: 1.1rem;
+        letter-spacing: 1px;
+    }
+
+    /* Footer styling */
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        text-align: center;
+    }
+
+    .footer-col {
+        align-items: center;
+    }
+
+    /* Accordion adjustment */
+    .category-accordion-wrapper {
+        max-width: 100% !important;
+    }
+
+    /* Category pills change to horizontal scroll */
+    .category-pills-container {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 8px;
+        width: 100%;
+        margin-bottom: 25px;
+    }
+
+    .category-pills-container::-webkit-scrollbar {
+        height: 3px;
+    }
+
+    .category-pills-container::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 3px;
+    }
+
+    /* Forums controls wrap */
+    .forum-toolbar {
+        flex-direction: column;
+        align-items: stretch !important;
+        gap: 15px !important;
+    }
+
+    .forum-toolbar > * {
+        width: 100%;
+    }
+
+    .forum-toolbar button {
+        justify-content: center;
+        width: 100%;
+    }
+
+    /* Mobile Auth page styling overrides */
+    body.auth-page .auth-wrapper {
+        padding: 30px 15px;
+    }
+
+    body.auth-page .auth-container {
+        padding: 30px 20px;
+        max-width: 100%;
+        border-radius: 12px;
+    }
+
+    body.auth-page .auth-title {
+        font-size: clamp(1.8rem, 6vw, 2.2rem);
+        margin-bottom: 5px;
+    }
+
+    body.auth-page .auth-subtitle {
+        font-size: 0.88rem;
+        margin-bottom: 20px;
+    }
+
+    .auth-header {
+        min-height: 70px;
+        padding: 5px 5%;
+    }
+
+    .auth-header .logo-img {
+        height: 60px;
+    }
+}
+
+

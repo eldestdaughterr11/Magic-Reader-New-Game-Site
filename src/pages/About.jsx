@@ -48,7 +48,7 @@ function About() {
       {/* Team List */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: '50px' }}>
         {teamMembers.map((member, index) => (
-          <div key={index} style={{ display: 'flex', alignItems: 'center', gap: '40px', justifyContent: 'center' }}>
+          <div key={index} className="responsive-flex-row" style={{ gap: '30px' }}>
             
             {/* Profile Avatar Placeholder */}
             <div style={{ 

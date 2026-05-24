@@ -41,7 +41,7 @@ function Download() {
             fontFamily: 'Montserrat, sans-serif', 
             fontWeight: 'bold', 
             fontSize: '1.2rem', 
-            padding: '15px 80px',
+            padding: '15px clamp(20px, 8vw, 80px)',
             textDecoration: 'none',
             borderRadius: '5px'
           }}

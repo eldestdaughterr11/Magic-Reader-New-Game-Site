@@ -28,10 +28,10 @@ function Characters() {
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: '50px', marginTop: '60px' }}>
         {charData.map((char, index) => (
-          <div key={index} style={{ display: 'flex', alignItems: 'center', gap: '40px', justifyContent: 'center' }}>
+          <div key={index} className="responsive-flex-row" style={{ gap: '30px' }}>
             
             {/* Sprites Area */}
-            <div style={{ display: 'flex', gap: '15px', flexShrink: 0, width: '300px', justifyContent: 'flex-end' }}>
+            <div style={{ display: 'flex', gap: '15px', flexWrap: 'wrap', justifyContent: 'center', width: '100%', maxWidth: '300px', flexShrink: 0 }}>
               {Array.from({ length: char.slots }).map((_, i) => (
                 <div key={i} style={{ 
                   width: char.slots === 1 ? '160px' : '90px', 
