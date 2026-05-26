@@ -366,7 +366,8 @@ footer {
 }
 
 /* Penn row (unang section): dalawang chibi magkatabi — mas matayog na artwork */
-.character-row:first-of-type .sprite-cell {
+.character-row:nth-child(1) .sprite-cell,
+.character-row:nth-child(2) .sprite-cell {
     width: 132px;
     height: 220px;
 }
