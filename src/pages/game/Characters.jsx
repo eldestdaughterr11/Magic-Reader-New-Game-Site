@@ -46,7 +46,8 @@ function Characters() {
       sprites: [
         "/images/characters/antagonist-1.png",
         "/images/characters/antagonist-2.png",
-        "/images/characters/antagonist-3.png"
+        "/images/characters/antagonist-3.png",
+        "/images/characters/antagonist-4.png"
       ]
     },
     {
