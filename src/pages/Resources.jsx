@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { db } from '../firebase';
 import { collection, query, where, onSnapshot } from 'firebase/firestore';
 
@@ -133,6 +134,26 @@ function Resources() {
   const [cmsLessons, setCmsLessons] = useState([]);
   const [expandedCategory, setExpandedCategory] = useState(null);
   const [selectedLesson, setSelectedLesson] = useState(null);
+  const location = useLocation();
+
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const catParam = params.get('category');
+    if (catParam) {
+      setExpandedCategory(catParam);
+    } else {
+      const hashParam = decodeURIComponent(location.hash.substring(1));
+      const categories = [
+        "Vocabulary Guide",
+        "Grammar Tips",
+        "Practice Exercises",
+        "Reading Nook"
+      ];
+      if (categories.includes(hashParam)) {
+        setExpandedCategory(hashParam);
+      }
+    }
+  }, [location]);
 
   useEffect(() => {
     // Fetch only Published lessons from CMS

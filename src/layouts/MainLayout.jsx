@@ -206,23 +206,26 @@ function MainLayout() {
             </h4>
             <ul>
               <li>
-                <a href="/resources#guides" onClick={(e) => { e.preventDefault(); alert('Guides content will be available soon!'); }}>Guides</a>
+                <Link to="/resources?category=Vocabulary Guide">Vocabulary Guide</Link>
               </li>
               <li>
-                <a href="/resources#tips" onClick={(e) => { e.preventDefault(); alert('Tips content will be available soon!'); }}>Tips</a>
+                <Link to="/resources?category=Grammar Tips">Grammar Tips</Link>
               </li>
               <li>
-                <a href="/resources#lessons" onClick={(e) => { e.preventDefault(); alert('Lessons content will be available soon!'); }}>Lessons</a>
+                <Link to="/resources?category=Practice Exercises">Practice Exercises</Link>
+              </li>
+              <li>
+                <Link to="/resources?category=Reading Nook">Reading Nook</Link>
               </li>
             </ul>
           </div>
           <div className="footer-col footer-col-contact">
             <h4>
-              <a href="/about#contact">Contact</a>
+              <a href="/about#contact">Contact Us</a>
             </h4>
             <ul>
               <li>
-                <a href="mailto:support@gamename.com">Email</a>
+                <a href="mailto:support.dreampixels@gmail.com">support.dreampixels@gmail.com</a>
               </li>
               <li>
                 <a href="/about#social">Social Media</a>
