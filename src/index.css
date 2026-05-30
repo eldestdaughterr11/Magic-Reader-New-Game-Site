@@ -399,6 +399,18 @@ footer {
     height: 180px;
 }
 
+/* Antagonist (Miss Spell) row — 5th row */
+.character-row:nth-child(5) .character-sprites {
+    max-width: min(480px, 100%);
+    flex-wrap: wrap;
+}
+
+.character-row:nth-child(5) .sprite-cell {
+    width: 150px;
+    height: 180px;
+}
+
+
 
 .sprite-cell {
     position: relative;
