@@ -2,7 +2,7 @@ import os
 from PIL import Image
 
 def main():
-    img_path = r"C:\Users\tipid\.gemini\antigravity\brain\e3a14a04-1099-4b5b-8d6b-63dfaa24c2d9\media__1780151667308.png"
+    img_path = r"C:\Users\tipid\.gemini\antigravity\brain\e3a14a04-1099-4b5b-8d6b-63dfaa24c2d9\media__1780152393697.png"
     if not os.path.exists(img_path):
         print(f"Error: {img_path} not found")
         return
