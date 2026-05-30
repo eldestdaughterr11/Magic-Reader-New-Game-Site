@@ -421,12 +421,13 @@ footer {
     height: 180px;
 }
 
-/* Town Governors (House A, E, I, O, U) rows — 7th to 11th rows */
+/* Town Governors (House A, E, I, O, U) and Teacher rows — 7th to 12th rows */
 .character-row:nth-child(7) .character-sprites,
 .character-row:nth-child(8) .character-sprites,
 .character-row:nth-child(9) .character-sprites,
 .character-row:nth-child(10) .character-sprites,
-.character-row:nth-child(11) .character-sprites {
+.character-row:nth-child(11) .character-sprites,
+.character-row:nth-child(12) .character-sprites {
     max-width: min(480px, 100%);
     flex-wrap: wrap;
 }
@@ -435,10 +436,12 @@ footer {
 .character-row:nth-child(8) .sprite-cell,
 .character-row:nth-child(9) .sprite-cell,
 .character-row:nth-child(10) .sprite-cell,
-.character-row:nth-child(11) .sprite-cell {
+.character-row:nth-child(11) .sprite-cell,
+.character-row:nth-child(12) .sprite-cell {
     width: 150px;
     height: 200px;
 }
+
 
 
 
