@@ -48,9 +48,11 @@ function Gameplay() {
           </div>
 
           <div className="responsive-flex-row" style={{ gap: '20px' }}>
-            <div className="gameplay-placeholder-box">
-              I Challenge Img
-            </div>
+            <img 
+              src="/images/gameplay/challenge-i.png" 
+              alt="I Challenge Gameplay" 
+              className="gameplay-challenge-img" 
+            />
             <p style={{ flex: '1', maxWidth: '400px', fontFamily: 'Montserrat, sans-serif', fontSize: '0.9rem', textAlign: 'center' }}>
               In the I challenge, players will test their vocabulary and encoding skills. Hints will be given during cutscenes through Penny Clix' dialogue and with Pip's help.
             </p>
@@ -68,9 +70,11 @@ function Gameplay() {
           </div>
 
           <div className="responsive-flex-row" style={{ gap: '20px' }}>
-            <div className="gameplay-placeholder-box">
-              U Challenge Img
-            </div>
+            <img 
+              src="/images/gameplay/challenge-u.png" 
+              alt="U Challenge Gameplay" 
+              className="gameplay-challenge-img" 
+            />
             <p style={{ flex: '1', maxWidth: '400px', fontFamily: 'Montserrat, sans-serif', fontSize: '0.9rem', textAlign: 'center' }}>
               In the U challenge, players will test their vowel recognition skills. Hints will be given on the book at each section of the challenge and with Pip's help.
             </p>
@@ -84,9 +88,12 @@ function Gameplay() {
         <h2 className="section-title" style={{ color: '#d4854a', fontSize: '2.2rem', marginBottom: '30px' }}>Objectives</h2>
         
         <div className="responsive-flex-row" style={{ gap: '30px' }}>
-          <div className="gameplay-objectives-box">
-             Vowel Stones Img
-          </div>
+          <img 
+            src="/images/gameplay/vowel-stones.png" 
+            alt="Vowel Stones" 
+            className="gameplay-challenge-img" 
+            style={{ width: '220px', height: '220px', objectFit: 'contain' }}
+          />
           <div style={{ flex: '1', maxWidth: '500px', fontFamily: 'Montserrat, sans-serif', fontSize: '0.85rem', textAlign: 'center', lineHeight: '1.6' }}>
             <p style={{ marginBottom: '15px' }}>The main objective of the game is to restore Word Valley and defeat Miss Spell through the Ritual of Restoration. The game concludes with a test of knowledge instead of combat. After recovering all five Vowel Stones, the player must return to the plaza to perform the Ritual of Restoration. The player must complete the sentence and perform the following chant:</p>
             
