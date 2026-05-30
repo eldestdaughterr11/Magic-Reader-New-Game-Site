@@ -372,6 +372,18 @@ footer {
     height: 220px;
 }
 
+/* Archmage row — 4 sprites (now nth-child 3 since Pip removed) */
+.character-row:nth-child(3) .character-sprites {
+    max-width: min(420px, 100%);
+    flex-wrap: wrap;
+}
+
+.character-row:nth-child(3) .sprite-cell {
+    width: 100px;
+    height: 130px;
+}
+
+
 .sprite-cell {
     position: relative;
     width: 92px;

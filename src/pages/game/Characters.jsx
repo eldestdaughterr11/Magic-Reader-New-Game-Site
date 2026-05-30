@@ -21,15 +21,7 @@ function Characters() {
         "/images/characters/paige-2.png"
       ]
     },
-    {
-      name: "The Guide (Pip the Owl) NPC",
-      desc: "Pip is the Mayor of Word Valley and appears as a magical owl. He acts as a guide and tutorial system. He provides good guidance and clues to help the player navigate the challenges without revealing the direct answers.",
-      sprites: [
-        "/images/characters/guide-1.png",
-        "/images/characters/guide-2.png",
-        "/images/characters/guide-3.png"
-      ]
-    },
+
     {
       name: "The Archmage (NPC)",
       desc: "The powerful mage who serves as Word Valley's protector and guardian. She was cursed and transformed into an owl by Miss Spell. The housepeople admire her for her greatness and remarkable magical skills. She is revealed at the game's conclusion when the curse is finally broken.",
