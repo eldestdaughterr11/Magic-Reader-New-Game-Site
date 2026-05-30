@@ -410,6 +410,18 @@ footer {
     height: 180px;
 }
 
+/* Sylla Bella row — 6th row */
+.character-row:nth-child(6) .character-sprites {
+    max-width: min(480px, 100%);
+    flex-wrap: wrap;
+}
+
+.character-row:nth-child(6) .sprite-cell {
+    width: 150px;
+    height: 180px;
+}
+
+
 
 
 .sprite-cell {
