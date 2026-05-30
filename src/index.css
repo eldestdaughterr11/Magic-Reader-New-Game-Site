@@ -372,13 +372,29 @@ footer {
     height: 220px;
 }
 
-/* Archmage row — 4 sprites (now nth-child 3 since Pip removed) */
+/* The Guide (Pip the Owl) row - 3rd row */
 .character-row:nth-child(3) .character-sprites {
+    max-width: min(460px, 100%);
+}
+
+.character-row:nth-child(3) .sprite-cell {
+    width: 90px;
+    height: 160px;
+}
+
+/* Make the 3rd sprite (flying owl) wider so its scale matches the others */
+.character-row:nth-child(3) .sprite-cell:nth-child(3) {
+    width: 240px;
+    height: 160px;
+}
+
+/* Archmage row — 4 sprites (now nth-child 4 since Pip restored) */
+.character-row:nth-child(4) .character-sprites {
     max-width: min(420px, 100%);
     flex-wrap: wrap;
 }
 
-.character-row:nth-child(3) .sprite-cell {
+.character-row:nth-child(4) .sprite-cell {
     width: 100px;
     height: 130px;
 }
