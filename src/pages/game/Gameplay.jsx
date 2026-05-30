@@ -26,26 +26,30 @@ function Gameplay() {
         <div style={{ display: 'flex', flexDirection: 'column', gap: '30px' }}>
           
           <div className="responsive-flex-row" style={{ gap: '20px' }}>
-            <div style={{ width: '180px', height: '140px', backgroundColor: 'rgba(255,255,255,0.05)', border: '1px dashed rgba(255,255,255,0.2)', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#aaa', fontStyle: 'italic', fontSize: '0.8rem', flexShrink: 0 }}>
-               A Challenge Img
-            </div>
+            <img 
+              src="/images/gameplay/challenge-a.png" 
+              alt="A Challenge Gameplay" 
+              className="gameplay-challenge-img" 
+            />
             <p style={{ flex: '1', maxWidth: '400px', fontFamily: 'Montserrat, sans-serif', fontSize: '0.9rem', textAlign: 'center' }}>
               In the A challenge, players will test their letter recognition and vocabulary skills. Hints will be given during cutscenes through Sheriff Sans' dialogue and with Pip's help.
             </p>
           </div>
 
           <div className="responsive-flex-row" style={{ gap: '20px' }}>
-            <div style={{ width: '180px', height: '140px', backgroundColor: 'rgba(255,255,255,0.05)', border: '1px dashed rgba(255,255,255,0.2)', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#aaa', fontStyle: 'italic', fontSize: '0.8rem', flexShrink: 0 }}>
-               E Challenge Img
-            </div>
+            <img 
+              src="/images/gameplay/challenge-e.png" 
+              alt="E Challenge Gameplay" 
+              className="gameplay-challenge-img" 
+            />
             <p style={{ flex: '1', maxWidth: '400px', fontFamily: 'Montserrat, sans-serif', fontSize: '0.9rem', textAlign: 'center' }}>
               In the E challenge, players test their grammar skills. Pip will provide trivia related to verb rules to guide them.
             </p>
           </div>
 
           <div className="responsive-flex-row" style={{ gap: '20px' }}>
-            <div style={{ width: '180px', height: '140px', backgroundColor: 'rgba(255,255,255,0.05)', border: '1px dashed rgba(255,255,255,0.2)', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#aaa', fontStyle: 'italic', fontSize: '0.8rem', flexShrink: 0 }}>
-               I Challenge Img
+            <div className="gameplay-placeholder-box">
+              I Challenge Img
             </div>
             <p style={{ flex: '1', maxWidth: '400px', fontFamily: 'Montserrat, sans-serif', fontSize: '0.9rem', textAlign: 'center' }}>
               In the I challenge, players will test their vocabulary and encoding skills. Hints will be given during cutscenes through Penny Clix' dialogue and with Pip's help.
@@ -53,17 +57,19 @@ function Gameplay() {
           </div>
 
           <div className="responsive-flex-row" style={{ gap: '20px' }}>
-            <div style={{ width: '180px', height: '140px', backgroundColor: 'rgba(255,255,255,0.05)', border: '1px dashed rgba(255,255,255,0.2)', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#aaa', fontStyle: 'italic', fontSize: '0.8rem', flexShrink: 0 }}>
-               O Challenge Img
-            </div>
+            <img 
+              src="/images/gameplay/challenge-o.png" 
+              alt="O Challenge Gameplay" 
+              className="gameplay-challenge-img" 
+            />
             <p style={{ flex: '1', maxWidth: '400px', fontFamily: 'Montserrat, sans-serif', fontSize: '0.9rem', textAlign: 'center' }}>
               In the O challenge, players will test their phonetic skills. Hints will be given during cutscenes through Grandma Phonics' dialogue and with Pip's help.
             </p>
           </div>
 
           <div className="responsive-flex-row" style={{ gap: '20px' }}>
-            <div style={{ width: '180px', height: '140px', backgroundColor: 'rgba(255,255,255,0.05)', border: '1px dashed rgba(255,255,255,0.2)', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#aaa', fontStyle: 'italic', fontSize: '0.8rem', flexShrink: 0 }}>
-               U Challenge Img
+            <div className="gameplay-placeholder-box">
+              U Challenge Img
             </div>
             <p style={{ flex: '1', maxWidth: '400px', fontFamily: 'Montserrat, sans-serif', fontSize: '0.9rem', textAlign: 'center' }}>
               In the U challenge, players will test their vowel recognition skills. Hints will be given on the book at each section of the challenge and with Pip's help.
@@ -78,7 +84,7 @@ function Gameplay() {
         <h2 className="section-title" style={{ color: '#d4854a', fontSize: '2.2rem', marginBottom: '30px' }}>Objectives</h2>
         
         <div className="responsive-flex-row" style={{ gap: '30px' }}>
-          <div style={{ width: '220px', height: '220px', backgroundColor: 'rgba(255,255,255,0.05)', border: '1px dashed rgba(255,255,255,0.2)', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#aaa', fontStyle: 'italic', fontSize: '0.8rem', flexShrink: 0 }}>
+          <div className="gameplay-objectives-box">
              Vowel Stones Img
           </div>
           <div style={{ flex: '1', maxWidth: '500px', fontFamily: 'Montserrat, sans-serif', fontSize: '0.85rem', textAlign: 'center', lineHeight: '1.6' }}>
