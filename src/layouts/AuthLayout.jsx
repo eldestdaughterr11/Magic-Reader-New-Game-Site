@@ -89,14 +89,14 @@ function AuthLayout() {
           </div>
           <div className="footer-col footer-col-contact">
             <h4>
-              <a href="/about#contact">Contact Us</a>
+              <Link to="/contact">Contact Us</Link>
             </h4>
             <ul>
               <li>
                 <a href="mailto:support.dreampixels@gmail.com">support.dreampixels@gmail.com</a>
               </li>
               <li>
-                <a href="/about#social">Social Media</a>
+                <Link to="/contact">Social Media</Link>
               </li>
             </ul>
           </div>

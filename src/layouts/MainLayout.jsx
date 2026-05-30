@@ -72,6 +72,12 @@ function MainLayout() {
           >
             About
           </Link>
+          <Link
+            to="/contact"
+            className={currentPath.includes('/contact') ? 'active' : ''}
+          >
+            Contact
+          </Link>
         </nav>
         <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
           <Link to="/login" className="user-profile" title="Login / Sign Up">
@@ -133,6 +139,13 @@ function MainLayout() {
             onClick={() => setIsMenuOpen(false)}
           >
             About
+          </Link>
+          <Link
+            to="/contact"
+            className={currentPath.includes('/contact') ? 'active' : ''}
+            onClick={() => setIsMenuOpen(false)}
+          >
+            Contact
           </Link>
         </div>
         <div className="mobile-nav-drawer-actions">
@@ -221,14 +234,14 @@ function MainLayout() {
           </div>
           <div className="footer-col footer-col-contact">
             <h4>
-              <a href="/about#contact">Contact Us</a>
+              <Link to="/contact">Contact Us</Link>
             </h4>
             <ul>
               <li>
                 <a href="mailto:support.dreampixels@gmail.com">support.dreampixels@gmail.com</a>
               </li>
               <li>
-                <a href="/about#social">Social Media</a>
+                <Link to="/contact">Social Media</Link>
               </li>
             </ul>
           </div>

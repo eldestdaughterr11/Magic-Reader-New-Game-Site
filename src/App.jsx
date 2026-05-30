@@ -18,6 +18,7 @@ import Download from './pages/game/Download';
 import Leaderboards from './pages/Leaderboards';
 import Resources from './pages/Resources';
 import About from './pages/About';
+import Contact from './pages/Contact';
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
         <Route element={<ProtectedRoute><MainLayout /></ProtectedRoute>}>
           <Route path="/home" element={<Home />} />
           <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
           <Route path="/leaderboards" element={<Leaderboards />} />
           <Route path="/resources" element={<Resources />} />
           <Route path="/game/gameplay" element={<Gameplay />} />
