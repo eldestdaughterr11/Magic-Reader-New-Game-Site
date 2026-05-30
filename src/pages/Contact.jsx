@@ -73,8 +73,8 @@ function Contact() {
               <i className="fa-solid fa-envelope" style={{ fontSize: '1.2rem', color: '#e8c97c', marginTop: '4px' }}></i>
               <div>
                 <h4 style={{ margin: 0, fontSize: '0.95rem', color: '#fff' }}>Email Address</h4>
-                <a href="mailto:support.dreampixels@gmail.com" style={{ fontSize: '0.9rem', color: '#e0c3fc', textDecoration: 'none' }}>
-                  support.dreampixels@gmail.com
+                <a href="mailto:dreampixels2026@gmail.com" style={{ fontSize: '0.9rem', color: '#e0c3fc', textDecoration: 'none' }}>
+                  dreampixels2026@gmail.com
                 </a>
               </div>
             </div>

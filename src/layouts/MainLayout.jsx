@@ -238,7 +238,7 @@ function MainLayout() {
             </h4>
             <ul>
               <li>
-                <a href="mailto:support.dreampixels@gmail.com">support.dreampixels@gmail.com</a>
+                <a href="mailto:dreampixels2026@gmail.com">dreampixels2026@gmail.com</a>
               </li>
               <li>
                 <Link to="/contact">Social Media</Link>
