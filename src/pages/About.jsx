@@ -3,7 +3,8 @@ function About() {
     { 
       name: "Ashley Margaux A. Solis", 
       role: "Project Manager", 
-      cont: "Managing the team" 
+      cont: "Managing the team",
+      photo: "/images/team/solis.jpg"
     },
     { 
       name: "Danica Joie R. Allauigan", 
@@ -50,7 +51,7 @@ function About() {
         {teamMembers.map((member, index) => (
           <div key={index} className="responsive-flex-row" style={{ gap: '30px' }}>
             
-            {/* Profile Avatar Placeholder */}
+            {/* Profile Avatar */}
             <div style={{ 
               width: '120px', 
               height: '120px', 
@@ -63,8 +64,15 @@ function About() {
               boxShadow: '0 4px 15px rgba(0,0,0,0.3)',
               overflow: 'hidden'
             }}>
-              {/* Default icon using FontAwesome */}
-              <i className="fa-solid fa-user" style={{ fontSize: '4rem', color: '#a0a0a0', marginTop: '20px' }}></i>
+              {member.photo ? (
+                <img 
+                  src={member.photo} 
+                  alt={member.name}
+                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                />
+              ) : (
+                <i className="fa-solid fa-user" style={{ fontSize: '4rem', color: '#a0a0a0', marginTop: '20px' }}></i>
+              )}
             </div>
 
             {/* Member Details */}
