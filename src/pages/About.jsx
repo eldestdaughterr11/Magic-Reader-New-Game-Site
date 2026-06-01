@@ -10,7 +10,8 @@ function About() {
       name: "Danica Joie R. Allauigan", 
       role: "Data Analyst", 
       cont: "Budgeting for the costs of making the game and other expenses",
-      photo: "/images/team/allauigan.jpg"
+      photo: "/images/team/allauigan.jpg",
+      photoStyle: { objectPosition: "center 20%" }
     },
     { 
       name: "Christian Joseph G. Doronio", 
@@ -32,7 +33,8 @@ function About() {
       name: "Derille P. Pagayon", 
       role: "3D Artist", 
       cont: "Modeling of the characters and environment",
-      photo: "/images/team/pagayon.jpg"
+      photo: "/images/team/pagayon.jpg",
+      photoStyle: { objectPosition: "center 15%" }
     }
   ];
 
