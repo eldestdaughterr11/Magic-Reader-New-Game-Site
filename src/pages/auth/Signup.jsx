@@ -73,7 +73,7 @@ function Signup() {
               type="text"
               name="name"
               className="form-control"
-              placeholder="Ashley Solis"
+              placeholder="Your Name"
               value={name}
               onChange={(e) => setName(e.target.value)}
               required
