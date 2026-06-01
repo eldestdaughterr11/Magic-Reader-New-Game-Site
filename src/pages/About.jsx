@@ -4,15 +4,13 @@ function About() {
       name: "Ashley Margaux A. Solis", 
       role: "Project Manager", 
       cont: "Managing the team",
-      photo: "/images/team/solis.jpg",
-      photoStyle: { objectPosition: 'center 30%', transform: 'scale(1.5)' }
+      photo: "/images/team/solis.jpg"
     },
     { 
       name: "Danica Joie R. Allauigan", 
       role: "Data Analyst", 
       cont: "Budgeting for the costs of making the game and other expenses",
-      photo: "/images/team/allauigan.jpg",
-      photoStyle: { objectPosition: 'center 40%', transform: 'scale(2.2)' }
+      photo: "/images/team/allauigan.jpg"
     },
     { 
       name: "Christian Joseph G. Doronio", 
@@ -34,8 +32,7 @@ function About() {
       name: "Derille P. Pagayon", 
       role: "3D Artist", 
       cont: "Modeling of the characters and environment",
-      photo: "/images/team/pagayon.jpg",
-      photoStyle: { transform: 'rotate(-90deg) scale(1.6)', objectPosition: 'center 40%' }
+      photo: "/images/team/pagayon.jpg"
     }
   ];
 
