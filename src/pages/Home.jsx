@@ -34,7 +34,7 @@ function Home() {
       </div>
 
       <div style={{ textAlign: 'center', marginTop: '40px', marginBottom: '40px' }}>
-        <Link to="/game/gameplay" className="btn" style={{ padding: '15px 60px' }}>PLAY NOW</Link>
+        <Link to="/game/download" className="btn" style={{ padding: '15px 60px' }}>PLAY NOW</Link>
       </div>
     </>
   );

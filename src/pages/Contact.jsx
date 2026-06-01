@@ -79,33 +79,17 @@ function Contact() {
               </div>
             </div>
 
-            <div style={{ display: 'flex', alignItems: 'flex-start', gap: '15px', marginBottom: '20px' }}>
-              <i className="fa-solid fa-location-dot" style={{ fontSize: '1.2rem', color: '#e8c97c', marginTop: '4px' }}></i>
-              <div>
-                <h4 style={{ margin: 0, fontSize: '0.95rem', color: '#fff' }}>Our Studio</h4>
-                <p style={{ margin: 0, fontSize: '0.9rem', color: '#ccc', lineHeight: '1.4' }}>
-                  Dream Pixels Studio, Manila, Philippines
-                </p>
-              </div>
-            </div>
           </div>
 
-          {/* Social Media Section */}
+          {/* Contact via Email */}
           <div style={{ marginTop: '30px' }}>
             <h3 style={{ fontSize: '1.1rem', color: '#e8c97c', marginBottom: '15px', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '1px' }}>
               Follow Us
             </h3>
-            <div style={{ display: 'flex', gap: '15px' }}>
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '40px', height: '40px', backgroundColor: '#3b5998', borderRadius: '50%', color: '#fff', fontSize: '1.1rem', textDecoration: 'none', transition: 'transform 0.2s' }} onMouseOver={e=>e.currentTarget.style.transform='scale(1.1)'} onMouseOut={e=>e.currentTarget.style.transform='none'}>
-                <i className="fa-brands fa-facebook-f"></i>
-              </a>
-              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '40px', height: '40px', backgroundColor: '#1da1f2', borderRadius: '50%', color: '#fff', fontSize: '1.1rem', textDecoration: 'none', transition: 'transform 0.2s' }} onMouseOver={e=>e.currentTarget.style.transform='scale(1.1)'} onMouseOut={e=>e.currentTarget.style.transform='none'}>
-                <i className="fa-brands fa-twitter"></i>
-              </a>
-              <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '40px', height: '40px', backgroundColor: '#ff0000', borderRadius: '50%', color: '#fff', fontSize: '1.1rem', textDecoration: 'none', transition: 'transform 0.2s' }} onMouseOver={e=>e.currentTarget.style.transform='scale(1.1)'} onMouseOut={e=>e.currentTarget.style.transform='none'}>
-                <i className="fa-brands fa-youtube"></i>
-              </a>
-            </div>
+            <a href="mailto:dreampixels2026@gmail.com" style={{ display: 'inline-flex', alignItems: 'center', gap: '10px', color: '#e0c3fc', fontSize: '0.95rem', textDecoration: 'none', fontFamily: 'Montserrat, sans-serif' }}>
+              <i className="fa-solid fa-envelope" style={{ color: '#e8c97c' }}></i>
+              dreampixels2026@gmail.com
+            </a>
           </div>
         </div>
 

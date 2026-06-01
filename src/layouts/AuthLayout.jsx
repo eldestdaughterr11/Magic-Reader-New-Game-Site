@@ -63,9 +63,7 @@ function AuthLayout() {
               <li>
                 <Link to="/leaderboards">Leaderboards</Link>
               </li>
-              <li>
-                <Link to="/about">About</Link>
-              </li>
+
             </ul>
           </div>
           <div className="footer-col">
@@ -95,9 +93,7 @@ function AuthLayout() {
               <li>
                 <a href="mailto:dreampixels2026@gmail.com">dreampixels2026@gmail.com</a>
               </li>
-              <li>
-                <Link to="/contact">Social Media</Link>
-              </li>
+
             </ul>
           </div>
         </div>

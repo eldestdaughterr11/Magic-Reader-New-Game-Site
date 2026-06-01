@@ -208,7 +208,31 @@ function Resources() {
         }}
       >
         {resourceCategories.map((category, index) => {
-          const categoryLessons = cmsLessons.filter(l => (l.category || 'Vocabulary Guide') === category);
+          const categoryLessons = cmsLessons
+            .filter(l => (l.category || 'Vocabulary Guide') === category)
+            .sort((a, b) => {
+              // 1. Sort by explicit order field first
+              const orderA = a.order !== undefined ? parseInt(a.order, 10) : null;
+              const orderB = b.order !== undefined ? parseInt(b.order, 10) : null;
+              
+              if (orderA !== null && orderB !== null) {
+                if (orderA !== orderB) return orderA - orderB;
+              } else if (orderA !== null) {
+                return -1;
+              } else if (orderB !== null) {
+                return 1;
+              }
+
+              // 2. Extract lesson number from title (e.g. "Lesson 1", "Lesson 2", etc.)
+              const matchA = (a.title || '').match(/(\d+)/);
+              const matchB = (b.title || '').match(/(\d+)/);
+              const numA = matchA ? parseInt(matchA[1], 10) : Infinity;
+              const numB = matchB ? parseInt(matchB[1], 10) : Infinity;
+              if (numA !== numB) return numA - numB;
+              
+              // 3. Fallback: alphabetical by title
+              return (a.title || '').localeCompare(b.title || '');
+            });
           
           return (
             <div key={category} style={{ width: '100%' }}>

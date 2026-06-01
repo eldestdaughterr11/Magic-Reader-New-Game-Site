@@ -18,14 +18,6 @@ function MainLayout() {
 
   return (
     <>
-      <div className="top-bar">
-        <div className="dots">
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-      </div>
       <header>
         <Link to="/home" className="logo-link" onClick={() => setIsMenuOpen(false)}>
           <img
@@ -66,12 +58,7 @@ function MainLayout() {
           >
             Resources
           </Link>
-          <Link
-            to="/about"
-            className={currentPath.includes('/about') ? 'active' : ''}
-          >
-            About
-          </Link>
+
           <Link
             to="/contact"
             className={currentPath.includes('/contact') ? 'active' : ''}
@@ -133,13 +120,7 @@ function MainLayout() {
           >
             Resources
           </Link>
-          <Link
-            to="/about"
-            className={currentPath.includes('/about') ? 'active' : ''}
-            onClick={() => setIsMenuOpen(false)}
-          >
-            About
-          </Link>
+
           <Link
             to="/contact"
             className={currentPath.includes('/contact') ? 'active' : ''}
@@ -208,9 +189,7 @@ function MainLayout() {
               <li>
                 <Link to="/leaderboards">Leaderboards</Link>
               </li>
-              <li>
-                <Link to="/about">About</Link>
-              </li>
+
             </ul>
           </div>
           <div className="footer-col">
@@ -239,9 +218,6 @@ function MainLayout() {
             <ul>
               <li>
                 <a href="mailto:dreampixels2026@gmail.com">dreampixels2026@gmail.com</a>
-              </li>
-              <li>
-                <Link to="/contact">Social Media</Link>
               </li>
             </ul>
           </div>

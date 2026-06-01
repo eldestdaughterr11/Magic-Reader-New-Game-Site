@@ -13,7 +13,8 @@ function AdminLessons() {
     title: '', 
     status: 'Draft',
     category: 'Vocabulary Guide',
-    contentText: ''
+    contentText: '',
+    order: 1
   });
 
   const handleSeedMatatag = async () => {
@@ -58,6 +59,16 @@ function AdminLessons() {
         id: doc.id,
         ...doc.data()
       }));
+      // Sort in frontend: Category first, then Order asc, then createdAt desc
+      lessonsData.sort((a, b) => {
+        if (a.category !== b.category) {
+          return (a.category || '').localeCompare(b.category || '');
+        }
+        const orderA = a.order !== undefined ? parseInt(a.order, 10) : 1;
+        const orderB = b.order !== undefined ? parseInt(b.order, 10) : 1;
+        if (orderA !== orderB) return orderA - orderB;
+        return new Date(b.createdAt || 0) - new Date(a.createdAt || 0);
+      });
       setLessons(lessonsData);
     });
 
@@ -83,7 +94,8 @@ function AdminLessons() {
         title: lesson.title || '', 
         status: lesson.status || 'Draft',
         category: lesson.category || 'Vocabulary Guide',
-        contentText: lesson.contentText || ''
+        contentText: lesson.contentText || '',
+        order: lesson.order !== undefined ? parseInt(lesson.order, 10) : 1
       });
     } else {
       setEditingLesson(null);
@@ -91,7 +103,8 @@ function AdminLessons() {
         title: '', 
         status: 'Draft',
         category: 'Vocabulary Guide',
-        contentText: ''
+        contentText: '',
+        order: 1
       });
     }
     setIsModalOpen(true);
@@ -100,7 +113,7 @@ function AdminLessons() {
   const handleCloseModal = () => {
     setIsModalOpen(false);
     setEditingLesson(null);
-    setFormData({ title: '', status: 'Draft', category: 'Vocabulary Guide', contentText: '' });
+    setFormData({ title: '', status: 'Draft', category: 'Vocabulary Guide', contentText: '', order: 1 });
   };
 
   const handleSave = async (e) => {
@@ -118,7 +131,8 @@ function AdminLessons() {
           title: formData.title,
           status: formData.status,
           category: formData.category,
-          contentText: formData.contentText
+          contentText: formData.contentText,
+          order: parseInt(formData.order, 10) || 1
         });
         alert('Lesson updated successfully.');
       } else {
@@ -128,6 +142,7 @@ function AdminLessons() {
           status: formData.status,
           category: formData.category,
           contentText: formData.contentText,
+          order: parseInt(formData.order, 10) || 1,
           createdAt: new Date().toISOString()
         });
         alert('New lesson added successfully.');
@@ -173,6 +188,7 @@ function AdminLessons() {
               <th>ID</th>
               <th>Lesson Title</th>
               <th>Category</th>
+              <th>Order</th>
               <th>Status</th>
               <th>Actions</th>
             </tr>
@@ -183,6 +199,7 @@ function AdminLessons() {
                 <td style={{ fontSize: '0.8em', color: '#ccc' }}>{lesson.id.substring(0, 5)}...</td>
                 <td><strong>{lesson.title}</strong></td>
                 <td>{lesson.category || 'N/A'}</td>
+                <td>{lesson.order !== undefined ? lesson.order : 1}</td>
                 <td>
                   <span style={{ 
                     padding: '5px 10px', 
@@ -214,7 +231,7 @@ function AdminLessons() {
             ))}
             {lessons.length === 0 && (
               <tr>
-                <td colSpan="5" style={{ textAlign: 'center', padding: '20px' }}>No lessons found. Create one now!</td>
+                <td colSpan="6" style={{ textAlign: 'center', padding: '20px' }}>No lessons found. Create one now!</td>
               </tr>
             )}
           </tbody>
@@ -261,6 +278,18 @@ function AdminLessons() {
                   <option value="Practice Exercises">Practice Exercises</option>
                   <option value="Reading Nook">Reading Nook</option>
                 </select>
+              </div>
+
+              <div style={{ marginBottom: '15px' }}>
+                <label style={{ display: 'block', marginBottom: '8px', color: '#e0c3fc', fontWeight: 'bold' }}>Lesson Order (e.g., 1-4)</label>
+                <input 
+                  type="number" 
+                  min="1"
+                  value={formData.order}
+                  onChange={(e) => setFormData({...formData, order: parseInt(e.target.value, 10) || 1})}
+                  style={{ width: '100%', padding: '10px', borderRadius: '5px', border: '1px solid #ccc', backgroundColor: '#fff', color: '#333' }}
+                  required
+                />
               </div>
 
               <div style={{ marginBottom: '15px' }}>
@@ -743,9 +772,14 @@ That evening, as they shared a sweet bowl of lanzones, Clara's father said, "Our
   }
 ];
 
-const matatagLessons = rawMatatagLessons.map(lesson => ({
-  ...lesson,
-  contentText: lesson.contentText ? lesson.contentText.replace(/\*/g, '') : ''
-}));
+const matatagLessons = rawMatatagLessons.map(lesson => {
+  const match = (lesson.title || '').match(/(\d+)/);
+  const order = match ? parseInt(match[1], 10) : 1;
+  return {
+    ...lesson,
+    order,
+    contentText: lesson.contentText ? lesson.contentText.replace(/\*/g, '') : ''
+  };
+});
 
 export default AdminLessons;

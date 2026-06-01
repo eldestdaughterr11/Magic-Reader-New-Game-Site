@@ -1,6 +1,33 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 function Gameplay() {
+  const [lightboxSrc, setLightboxSrc] = useState(null);
+  const [isZoomed, setIsZoomed] = useState(false);
+  const [zoomOrigin, setZoomOrigin] = useState({ x: 50, y: 50 });
+
+  const openLightbox = (src) => {
+    setLightboxSrc(src);
+    setIsZoomed(false);
+  };
+  const closeLightbox = () => {
+    setLightboxSrc(null);
+    setIsZoomed(false);
+  };
+
+  const handleMouseMove = (e) => {
+    if (!isZoomed) return;
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width) * 100;
+    const y = ((e.clientY - rect.top) / rect.height) * 100;
+    setZoomOrigin({ x, y });
+  };
+
+  const toggleZoom = (e) => {
+    e.stopPropagation();
+    setIsZoomed(!isZoomed);
+  };
+
   return (
     <div style={{ maxWidth: '1000px', margin: '0 auto', padding: '40px 20px', color: '#fff' }}>
       
@@ -25,60 +52,34 @@ function Gameplay() {
         
         <div style={{ display: 'flex', flexDirection: 'column', gap: '30px' }}>
           
-          <div className="responsive-flex-row" style={{ gap: '20px' }}>
-            <img 
-              src="/images/gameplay/challenge-a.png" 
-              alt="A Challenge Gameplay" 
-              className="gameplay-challenge-img" 
-            />
-            <p style={{ flex: '1', maxWidth: '400px', fontFamily: 'Montserrat, sans-serif', fontSize: '0.9rem', textAlign: 'center' }}>
-              In the A challenge, players will test their letter recognition and vocabulary skills. Hints will be given during cutscenes through Sheriff Sans' dialogue and with Pip's help.
-            </p>
-          </div>
-
-          <div className="responsive-flex-row" style={{ gap: '20px' }}>
-            <img 
-              src="/images/gameplay/challenge-e.png" 
-              alt="E Challenge Gameplay" 
-              className="gameplay-challenge-img" 
-            />
-            <p style={{ flex: '1', maxWidth: '400px', fontFamily: 'Montserrat, sans-serif', fontSize: '0.9rem', textAlign: 'center' }}>
-              In the E challenge, players test their grammar skills. Pip will provide trivia related to verb rules to guide them.
-            </p>
-          </div>
-
-          <div className="responsive-flex-row" style={{ gap: '20px' }}>
-            <img 
-              src="/images/gameplay/challenge-i.png" 
-              alt="I Challenge Gameplay" 
-              className="gameplay-challenge-img" 
-            />
-            <p style={{ flex: '1', maxWidth: '400px', fontFamily: 'Montserrat, sans-serif', fontSize: '0.9rem', textAlign: 'center' }}>
-              In the I challenge, players will test their vocabulary and encoding skills. Hints will be given during cutscenes through Penny Clix' dialogue and with Pip's help.
-            </p>
-          </div>
-
-          <div className="responsive-flex-row" style={{ gap: '20px' }}>
-            <img 
-              src="/images/gameplay/challenge-o.png" 
-              alt="O Challenge Gameplay" 
-              className="gameplay-challenge-img" 
-            />
-            <p style={{ flex: '1', maxWidth: '400px', fontFamily: 'Montserrat, sans-serif', fontSize: '0.9rem', textAlign: 'center' }}>
-              In the O challenge, players will test their phonetic skills. Hints will be given during cutscenes through Grandma Phonics' dialogue and with Pip's help.
-            </p>
-          </div>
-
-          <div className="responsive-flex-row" style={{ gap: '20px' }}>
-            <img 
-              src="/images/gameplay/challenge-u.png" 
-              alt="U Challenge Gameplay" 
-              className="gameplay-challenge-img" 
-            />
-            <p style={{ flex: '1', maxWidth: '400px', fontFamily: 'Montserrat, sans-serif', fontSize: '0.9rem', textAlign: 'center' }}>
-              In the U challenge, players will test their vowel recognition skills. Hints will be given on the book at each section of the challenge and with Pip's help.
-            </p>
-          </div>
+          {[
+            { src: '/images/gameplay/challenge-a.png', alt: 'A Challenge Gameplay', desc: "In the A challenge, players will test their letter recognition and vocabulary skills. Hints will be given during cutscenes through Sheriff Sans' dialogue and with Pip's help." },
+            { src: '/images/gameplay/challenge-e.png', alt: 'E Challenge Gameplay', desc: "In the E challenge, players test their grammar skills. Pip will provide trivia related to verb rules to guide them." },
+            { src: '/images/gameplay/challenge-i.png', alt: 'I Challenge Gameplay', desc: "In the I challenge, players will test their vocabulary and encoding skills. Hints will be given during cutscenes through Penny Clix' dialogue and with Pip's help." },
+            { src: '/images/gameplay/challenge-o.png', alt: 'O Challenge Gameplay', desc: "In the O challenge, players will test their phonetic skills. Hints will be given during cutscenes through Grandma Phonics' dialogue and with Pip's help." },
+            { src: '/images/gameplay/challenge-u.png', alt: 'U Challenge Gameplay', desc: "In the U challenge, players will test their vowel recognition skills. Hints will be given on the book at each section of the challenge and with Pip's help." },
+          ].map((item) => (
+            <div key={item.src} className="responsive-flex-row" style={{ gap: '20px' }}>
+              <div 
+                className="gameplay-img-wrapper"
+                onClick={() => openLightbox(item.src)}
+                style={{ position: 'relative', cursor: 'zoom-in', flexShrink: 0 }}
+              >
+                <img
+                  src={item.src}
+                  alt={item.alt}
+                  className="gameplay-challenge-img"
+                />
+                <span className="tap-to-enlarge-hint">
+                  <i className="fa-solid fa-magnifying-glass-plus" style={{ marginRight: '4px' }}></i>
+                  Tap to view
+                </span>
+              </div>
+              <p style={{ flex: '1', maxWidth: '400px', fontFamily: 'Montserrat, sans-serif', fontSize: '0.9rem', textAlign: 'center' }}>
+                {item.desc}
+              </p>
+            </div>
+          ))}
 
         </div>
       </div>
@@ -88,12 +89,22 @@ function Gameplay() {
         <h2 className="section-title" style={{ color: '#d4854a', fontSize: '2.2rem', marginBottom: '30px' }}>Objectives</h2>
         
         <div className="responsive-flex-row" style={{ gap: '30px' }}>
-          <img 
-            src="/images/gameplay/vowel-stones.png" 
-            alt="Vowel Stones" 
-            className="gameplay-challenge-img" 
-            style={{ width: '220px', height: '220px', objectFit: 'contain' }}
-          />
+          <div 
+            className="gameplay-img-wrapper"
+            onClick={() => openLightbox('/images/gameplay/vowel-stones.png')}
+            style={{ position: 'relative', cursor: 'zoom-in', flexShrink: 0 }}
+          >
+            <img 
+              src="/images/gameplay/vowel-stones.png" 
+              alt="Vowel Stones" 
+              className="gameplay-challenge-img" 
+              style={{ width: '220px', height: '220px', objectFit: 'contain' }}
+            />
+            <span className="tap-to-enlarge-hint">
+              <i className="fa-solid fa-magnifying-glass-plus" style={{ marginRight: '4px' }}></i>
+              Tap to view
+            </span>
+          </div>
           <div style={{ flex: '1', maxWidth: '500px', fontFamily: 'Montserrat, sans-serif', fontSize: '0.85rem', textAlign: 'center', lineHeight: '1.6' }}>
             <p style={{ marginBottom: '15px' }}>The main objective of the game is to restore Word Valley and defeat Miss Spell through the Ritual of Restoration. The game concludes with a test of knowledge instead of combat. After recovering all five Vowel Stones, the player must return to the plaza to perform the Ritual of Restoration. The player must complete the sentence and perform the following chant:</p>
             
@@ -128,21 +139,93 @@ function Gameplay() {
                 </tr>
               </thead>
               <tbody>
-                <tr><td style={{ padding: '10px', border: '1px solid #d1a7d1' }}>W</td><td style={{ padding: '10px', border: '1px solid #d1a7d1' }}>Move Forward</td></tr>
-                <tr><td style={{ padding: '10px', border: '1px solid #d1a7d1' }}>A</td><td style={{ padding: '10px', border: '1px solid #d1a7d1' }}>Move Left</td></tr>
-                <tr><td style={{ padding: '10px', border: '1px solid #d1a7d1' }}>S</td><td style={{ padding: '10px', border: '1px solid #d1a7d1' }}>Move Backward</td></tr>
-                <tr><td style={{ padding: '10px', border: '1px solid #d1a7d1' }}>D</td><td style={{ padding: '10px', border: '1px solid #d1a7d1' }}>Move Right</td></tr>
-                <tr><td style={{ padding: '10px', border: '1px solid #d1a7d1' }}>Spacebar</td><td style={{ padding: '10px', border: '1px solid #d1a7d1' }}>Jump</td></tr>
-                <tr><td style={{ padding: '10px', border: '1px solid #d1a7d1' }}>Left Mouse Button</td><td style={{ padding: '10px', border: '1px solid #d1a7d1' }}>Interaction (Puzzles)</td></tr>
-                <tr><td style={{ padding: '10px', border: '1px solid #d1a7d1' }}>Mouse</td><td style={{ padding: '10px', border: '1px solid #d1a7d1' }}>Look Around</td></tr>
-                <tr><td style={{ padding: '10px', border: '1px solid #d1a7d1' }}>E</td><td style={{ padding: '10px', border: '1px solid #d1a7d1' }}>Interact with NPCs</td></tr>
-                <tr><td style={{ padding: '10px', border: '1px solid #d1a7d1' }}>Esc</td><td style={{ padding: '10px', border: '1px solid #d1a7d1' }}>Menu/Pause</td></tr>
-                <tr><td style={{ padding: '10px', border: '1px solid #d1a7d1' }}>Left Shift</td><td style={{ padding: '10px', border: '1px solid #d1a7d1' }}>Sprint</td></tr>
+                {[
+                  ['W', 'Move Forward'], ['A', 'Move Left'], ['S', 'Move Backward'], ['D', 'Move Right'],
+                  ['Spacebar', 'Jump'], ['Left Mouse Button', 'Interaction (Puzzles)'],
+                  ['Mouse', 'Look Around'], ['E', 'Interact with NPCs'],
+                  ['Esc', 'Menu/Pause'], ['Left Shift', 'Sprint'],
+                ].map(([key, action]) => (
+                  <tr key={key}>
+                    <td style={{ padding: '10px', border: '1px solid #d1a7d1' }}>{key}</td>
+                    <td style={{ padding: '10px', border: '1px solid #d1a7d1' }}>{action}</td>
+                  </tr>
+                ))}
               </tbody>
             </table>
           </div>
         </div>
       </div>
+
+      {/* Lightbox Modal */}
+      {lightboxSrc && (
+        <div
+          onClick={closeLightbox}
+          style={{
+            position: 'fixed',
+            top: 0, left: 0, right: 0, bottom: 0,
+            backgroundColor: 'rgba(0,0,0,0.92)',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+            zIndex: 2000,
+            cursor: 'zoom-out',
+            padding: '20px'
+          }}
+        >
+          <button
+            onClick={closeLightbox}
+            style={{
+              position: 'absolute', top: '20px', right: '24px',
+              background: 'none', border: 'none', color: '#fff',
+              fontSize: '2rem', cursor: 'pointer', lineHeight: 1,
+              zIndex: 2001
+            }}
+          >✕</button>
+          
+          <div 
+            style={{ 
+              position: 'relative', 
+              overflow: 'hidden', 
+              borderRadius: '10px',
+              boxShadow: '0 0 40px rgba(0,0,0,0.9)',
+              maxWidth: '90vw',
+              maxHeight: '80vh',
+            }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <img
+              src={lightboxSrc}
+              alt="Full view"
+              onClick={toggleZoom}
+              onMouseMove={handleMouseMove}
+              style={{
+                display: 'block',
+                maxWidth: '90vw',
+                maxHeight: '80vh',
+                objectFit: 'contain',
+                cursor: isZoomed ? 'zoom-out' : 'zoom-in',
+                transition: isZoomed ? 'none' : 'transform 0.3s ease, transform-origin 0.3s ease',
+                transform: isZoomed ? 'scale(2.2)' : 'scale(1)',
+                transformOrigin: `${zoomOrigin.x}% ${zoomOrigin.y}%`
+              }}
+            />
+          </div>
+          
+          <p style={{ 
+            color: '#e8c97c', 
+            marginTop: '15px', 
+            fontFamily: 'Montserrat, sans-serif', 
+            fontSize: '0.85rem', 
+            textAlign: 'center',
+            pointerEvents: 'none',
+            textShadow: '0 2px 4px rgba(0,0,0,0.8)'
+          }}>
+            <i className="fa-solid fa-magnifying-glass" style={{ marginRight: '6px' }}></i>
+            {isZoomed ? "Move mouse to explore details. Click image to Zoom Out." : "Click image to Zoom In & inspect details."}
+          </p>
+        </div>
+      )}
 
     </div>
   );
