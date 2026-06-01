@@ -401,24 +401,7 @@ footer {
     height: 180px;
 }
 
-/* Subtle bg for Archmage, Sylla Bella, Sheriff Sans sprites (transparent PNGs) */
-.character-row:nth-child(4) .sprite-cell,
-.character-row:nth-child(6) .sprite-cell,
-.character-row:nth-child(7) .sprite-cell {
-    background: linear-gradient(135deg, rgba(82, 38, 115, 0.6) 0%, rgba(57, 18, 93, 0.7) 100%);
-    border: 2px solid rgba(224, 195, 252, 0.35);
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(139, 92, 246, 0.15), inset 0 0 10px rgba(139, 92, 246, 0.2);
-    transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
-}
 
-.character-row:nth-child(4) .sprite-cell:hover,
-.character-row:nth-child(6) .sprite-cell:hover,
-.character-row:nth-child(7) .sprite-cell:hover {
-    border-color: rgba(224, 195, 252, 0.85);
-    box-shadow: 0 6px 20px rgba(139, 92, 246, 0.35), inset 0 0 15px rgba(139, 92, 246, 0.3);
-    transform: translateY(-2px);
-}
 
 /* Town Governors (House A, E, I, O, U) and Teacher rows — 7th to 12th rows */
 .character-row:nth-child(7) .character-sprites,
