@@ -1284,7 +1284,7 @@ body.auth-page .auth-form .btn:hover {
 }
 
 /* Media Queries for Viewports <= 768px */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
     /* Hide standard nav links and desktop profile action */
     .nav-links,
     header > div:last-child {
