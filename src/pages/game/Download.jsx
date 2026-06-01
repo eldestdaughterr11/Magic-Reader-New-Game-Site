@@ -14,7 +14,7 @@ function Download() {
       <div style={{ marginTop: '50px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
         
         {/* Poster Image */}
-        <div style={{ width: '100%', maxWidth: '400px', marginBottom: '30px', border: '5px solid #000', borderRadius: '5px', overflow: 'hidden', boxShadow: '0 10px 30px rgba(0,0,0,0.5)' }}>
+        <div style={{ width: '100%', maxWidth: '400px', marginBottom: '30px', borderRadius: '5px', overflow: 'hidden', boxShadow: '0 10px 30px rgba(0,0,0,0.5)' }}>
           <img 
             src="/images/poster.png" 
             alt="The Sound Keeper Game Poster" 
