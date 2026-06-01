@@ -37,6 +37,15 @@ function Signup() {
         timestamp: new Date().toISOString()
       });
 
+      // 4. Log to detailed user_logs in the database
+      await addDoc(collection(db, 'user_logs'), {
+        userId: user.uid,
+        email: email,
+        name: name,
+        action: 'Signup',
+        timestamp: new Date().toISOString()
+      });
+
       alert('Account created successfully!');
       navigate('/login'); // Redirect to login
     } catch (err) {

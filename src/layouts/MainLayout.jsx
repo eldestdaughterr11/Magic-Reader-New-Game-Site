@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { Link, Outlet, useLocation } from 'react-router-dom';
-import { auth } from '../firebase';
+import { auth, db } from '../firebase';
 import { signOut } from 'firebase/auth';
+import { collection, addDoc, doc, getDoc } from 'firebase/firestore';
 
 function MainLayout() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -10,6 +11,34 @@ function MainLayout() {
 
   const handleLogout = async () => {
     try {
+      const user = auth.currentUser;
+      if (user) {
+        let userName = user.email;
+        try {
+          const userDoc = await getDoc(doc(db, 'users', user.uid));
+          if (userDoc.exists()) {
+            userName = userDoc.data().name || user.email;
+          }
+        } catch (e) {
+          console.error("Error fetching user name on logout:", e);
+        }
+
+        // Log to activities for Admin Dashboard
+        await addDoc(collection(db, 'activities'), {
+          action: 'Logged Out',
+          user: userName,
+          timestamp: new Date().toISOString()
+        });
+
+        // Log to detailed user_logs database history
+        await addDoc(collection(db, 'user_logs'), {
+          userId: user.uid,
+          email: user.email,
+          name: userName,
+          action: 'Logout',
+          timestamp: new Date().toISOString()
+        });
+      }
       await signOut(auth);
     } catch (err) {
       console.error(err);

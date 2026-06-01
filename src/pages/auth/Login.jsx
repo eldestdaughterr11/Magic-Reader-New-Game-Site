@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { auth, db } from '../../firebase';
 import { signInWithEmailAndPassword, signOut } from 'firebase/auth';
-import { doc, getDoc } from 'firebase/firestore';
+import { doc, getDoc, collection, addDoc } from 'firebase/firestore';
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -18,11 +18,15 @@ function Login() {
 
     try {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
       
       // Check if user is admin
-      const userDocRef = doc(db, 'users', userCredential.user.uid);
+      const userDocRef = doc(db, 'users', user.uid);
       const userDocSnap = await getDoc(userDocRef);
       
+      let userName = email;
+      let isAdmin = false;
+
       if (userDocSnap.exists()) {
         const userData = userDocSnap.data();
 
@@ -33,16 +37,32 @@ function Login() {
           return;
         }
 
-        alert('Login successful!');
+        userName = userData.name || email;
+        isAdmin = userData.role === 'admin';
+      }
 
-        if (userData.role === 'admin') {
-          navigate('/admin'); // Redirect admins to dashboard
-        } else {
-          navigate('/home'); // Redirect students to home
-        }
+      // Log to activities for the real-time Admin Dashboard
+      await addDoc(collection(db, 'activities'), {
+        action: 'Logged In',
+        user: userName,
+        timestamp: new Date().toISOString()
+      });
+
+      // Log to detailed user_logs database history
+      await addDoc(collection(db, 'user_logs'), {
+        userId: user.uid,
+        email: user.email,
+        name: userName,
+        action: 'Login',
+        timestamp: new Date().toISOString()
+      });
+
+      alert('Login successful!');
+
+      if (isAdmin) {
+        navigate('/admin'); // Redirect admins to dashboard
       } else {
-        alert('Login successful!');
-        navigate('/home');
+        navigate('/home'); // Redirect students to home
       }
     } catch (err) {
       console.error(err);
