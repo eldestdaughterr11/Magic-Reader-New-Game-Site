@@ -105,10 +105,13 @@ header {
     object-fit: contain;
     border-radius: 0;
     background-color: transparent;
+    mix-blend-mode: screen;
+    filter: drop-shadow(0 0 2px rgba(0,0,0,0.1));
 }
 
 .logo-img.footer-logo {
     height: 90px;
+    mix-blend-mode: screen;
 }
 
 .user-profile {
