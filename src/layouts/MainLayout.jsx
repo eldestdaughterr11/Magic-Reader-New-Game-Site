@@ -65,6 +65,12 @@ function MainLayout() {
           >
             Contact
           </Link>
+          <Link
+            to="/about"
+            className={currentPath.includes('/about') ? 'active' : ''}
+          >
+            About
+          </Link>
         </nav>
         <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
           <Link to="/login" className="user-profile" title="Login / Sign Up">
@@ -127,6 +133,13 @@ function MainLayout() {
             onClick={() => setIsMenuOpen(false)}
           >
             Contact
+          </Link>
+          <Link
+            to="/about"
+            className={currentPath.includes('/about') ? 'active' : ''}
+            onClick={() => setIsMenuOpen(false)}
+          >
+            About
           </Link>
         </div>
         <div className="mobile-nav-drawer-actions">

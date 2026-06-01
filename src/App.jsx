@@ -29,7 +29,7 @@ function App() {
         {/* Wrap MainLayout with ProtectedRoute so you can't access /home without logging in */}
         <Route element={<ProtectedRoute><MainLayout /></ProtectedRoute>}>
           <Route path="/home" element={<Home />} />
-          {/* <Route path="/about" element={<About />} /> */}
+          <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/leaderboards" element={<Leaderboards />} />
           <Route path="/resources" element={<Resources />} />
