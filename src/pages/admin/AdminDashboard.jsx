@@ -3,7 +3,7 @@ import { db } from '../../firebase';
 import { collection, onSnapshot, query, where, orderBy, limit } from 'firebase/firestore';
 
 function AdminDashboard() {
-  const [stats, setStats] = useState({ totalUsers: 0, activeLessons: 0, recentLogins: 89 });
+  const [stats, setStats] = useState({ totalUsers: 0, activeLessons: 0, recentLogins: 0 });
   const [activities, setActivities] = useState([]);
 
   useEffect(() => {
@@ -24,6 +24,12 @@ function AdminDashboard() {
       setStats(prev => ({ ...prev, activeLessons: snapshot.size }));
     });
 
+    // Listen to Recent Logins (Login actions in user_logs)
+    const qLogins = query(collection(db, 'user_logs'), where("action", "==", "Login"));
+    const unsubscribeLogins = onSnapshot(qLogins, (snapshot) => {
+      setStats(prev => ({ ...prev, recentLogins: snapshot.size }));
+    });
+
     // Listen to Recent Activities
     const qActivities = query(collection(db, 'activities'), orderBy('timestamp', 'desc'), limit(5));
     const unsubscribeActivities = onSnapshot(qActivities, (snapshot) => {
@@ -34,6 +40,7 @@ function AdminDashboard() {
     return () => {
       unsubscribeUsers();
       unsubscribeLessons();
+      unsubscribeLogins();
       unsubscribeActivities();
     };
   }, []);

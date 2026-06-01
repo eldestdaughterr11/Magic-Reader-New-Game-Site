@@ -653,6 +653,7 @@ body.auth-page .auth-container {
     box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
     margin: auto; /* Safe vertical and horizontal centering to prevent top overflow on short screens */
     box-sizing: border-box;
+    text-align: center;
 }
 
 body.auth-page .auth-subtitle {
