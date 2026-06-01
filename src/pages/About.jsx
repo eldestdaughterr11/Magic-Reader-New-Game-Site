@@ -11,7 +11,7 @@ function About() {
       role: "Data Analyst", 
       cont: "Budgeting for the costs of making the game and other expenses",
       photo: "/images/team/allauigan.jpg",
-      photoStyle: { objectPosition: "center 20%" }
+      photoStyle: { objectPosition: "center 15%" }
     },
     { 
       name: "Christian Joseph G. Doronio", 
@@ -34,7 +34,7 @@ function About() {
       role: "3D Artist", 
       cont: "Modeling of the characters and environment",
       photo: "/images/team/pagayon.jpg",
-      photoStyle: { objectPosition: "center 15%" }
+      photoStyle: { objectPosition: "center 20%" }
     }
   ];
 
