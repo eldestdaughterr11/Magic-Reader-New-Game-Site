@@ -61,7 +61,7 @@ function ProtectedRoute({ children, requireAdmin = false }) {
         color: '#fff',
         fontFamily: 'Montserrat, sans-serif'
       }}>
-        <h2>Loading Magic Reader...</h2>
+        <h2>Loading The Sound Keeper...</h2>
       </div>
     );
   }

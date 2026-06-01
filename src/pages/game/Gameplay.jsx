@@ -11,11 +11,11 @@ function Gameplay() {
         <Link to="/game/download" className="game-subnav__link">Download</Link>
       </div>
 
-      {/* What is Magic Reader? */}
+      {/* What is The Sound Keeper? */}
       <div style={{ textAlign: 'center', marginBottom: '60px' }}>
-        <h2 className="section-title" style={{ color: '#d4854a', fontSize: '2.2rem', marginBottom: '15px' }}>What is Magic Reader?</h2>
+        <h2 className="section-title" style={{ color: '#d4854a', fontSize: '2.2rem', marginBottom: '15px' }}>What is The Sound Keeper?</h2>
         <p style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '0.95rem', lineHeight: '1.6', maxWidth: '600px', margin: '0 auto' }}>
-          Magic Reader is an educational game that combines animation, puzzles, and storytelling. In this game, the player will encounter educational challenges as they progress through each stage of the map. The gameplay will consist of three types; Shooting game, Puzzle Game, and a Platformer Game with brainy tasks for learning, where you are on a hunt, a mission to mend "Word Valley" wrecked by this villain named Miss Spell who stirred up total disorder.
+          The Sound Keeper is an educational game that combines animation, puzzles, and storytelling. In this game, the player will encounter educational challenges as they progress through each stage of the map. The gameplay will consist of three types; Shooting game, Puzzle Game, and a Platformer Game with brainy tasks for learning, where you are on a hunt, a mission to mend "Word Valley" wrecked by this villain named Miss Spell who stirred up total disorder.
         </p>
       </div>
 

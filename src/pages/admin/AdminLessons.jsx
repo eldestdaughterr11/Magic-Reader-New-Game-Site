@@ -436,7 +436,7 @@ There are two main types of nouns:
 2. **Proper Nouns (Pangngalang Pantangi):**
    *   These are specific names of people, places, things, etc.
    *   They **ALWAYS** start with a capital letter (malalaking titik).
-   *   *Examples:* Teacher Maria, Magic Reader School, Bruno, Philippines, Christmas Day.
+   *   *Examples:* Teacher Maria, The Sound Keeper School, Bruno, Philippines, Christmas Day.
 
 **Comparison Table:**
 | Common Noun | Proper Noun |

@@ -20,8 +20,8 @@ function AuthLayout() {
         <div className="logo-text-centered">
           <Link to="/home" className="logo-link">
             <img
-              src="/images/magic-reader-logo.png"
-              alt="Magic Reader"
+              src="/images/sound-keeper-logo.png"
+              alt="The Sound Keeper"
               className="logo-img"
             />
           </Link>
@@ -40,8 +40,8 @@ function AuthLayout() {
           <div className="footer-col">
             <Link to="/home" className="logo-link">
               <img
-                src="/images/magic-reader-logo.png"
-                alt="Magic Reader"
+                src="/images/sound-keeper-logo.png"
+                alt="The Sound Keeper"
                 className="logo-img footer-logo"
               />
             </Link>

@@ -17,7 +17,7 @@ function Download() {
         <div style={{ width: '100%', maxWidth: '400px', marginBottom: '30px', border: '5px solid #000', borderRadius: '5px', overflow: 'hidden', boxShadow: '0 10px 30px rgba(0,0,0,0.5)' }}>
           <img 
             src="/images/poster.png" 
-            alt="Magic Reader Game Poster" 
+            alt="The Sound Keeper Game Poster" 
             style={{ width: '100%', height: 'auto', display: 'block' }} 
             onError={(e) => {
               e.target.onerror = null; 
@@ -28,7 +28,7 @@ function Download() {
 
         {/* Text */}
         <h3 style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '1.4rem', color: '#e8c97c', marginBottom: '20px', fontWeight: '600' }}>
-          Download Magic Reader
+          Download The Sound Keeper
         </h3>
 
         {/* Download Button */}

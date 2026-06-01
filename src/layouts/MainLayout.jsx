@@ -29,8 +29,8 @@ function MainLayout() {
       <header>
         <Link to="/home" className="logo-link" onClick={() => setIsMenuOpen(false)}>
           <img
-            src="/images/magic-reader-logo.png"
-            alt="Magic Reader"
+            src="/images/sound-keeper-logo.png"
+            alt="The Sound Keeper"
             className="logo-img"
           />
         </Link>
@@ -185,8 +185,8 @@ function MainLayout() {
           <div className="footer-col">
             <Link to="/home" className="logo-link">
               <img
-                src="/images/magic-reader-logo.png"
-                alt="Magic Reader"
+                src="/images/sound-keeper-logo.png"
+                alt="The Sound Keeper"
                 className="logo-img footer-logo"
               />
             </Link>
