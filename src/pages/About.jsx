@@ -9,7 +9,8 @@ function About() {
     { 
       name: "Danica Joie R. Allauigan", 
       role: "Data Analyst", 
-      cont: "Budgeting for the costs of making the game and other expenses" 
+      cont: "Budgeting for the costs of making the game and other expenses",
+      photo: "/images/team/allauigan.jpg"
     },
     { 
       name: "Christian Joseph G. Doronio", 
@@ -19,7 +20,8 @@ function About() {
     { 
       name: "Van Ryan M. Navarez", 
       role: "Programmer (Website)", 
-      cont: "Developing the whole website" 
+      cont: "Developing the whole website",
+      photo: "/images/team/navarez.jpg"
     },
     { 
       name: "Carlos Miguel A. Agila", 
@@ -29,7 +31,9 @@ function About() {
     { 
       name: "Derille P. Pagayon", 
       role: "3D Artist", 
-      cont: "Modeling of the characters and environment" 
+      cont: "Modeling of the characters and environment",
+      photo: "/images/team/pagayon.jpg",
+      photoStyle: { transform: 'rotate(-90deg)', scale: '1.4' }
     }
   ];
 
@@ -68,7 +72,7 @@ function About() {
                 <img 
                   src={member.photo} 
                   alt={member.name}
-                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', ...member.photoStyle }}
                 />
               ) : (
                 <i className="fa-solid fa-user" style={{ fontSize: '4rem', color: '#a0a0a0', marginTop: '20px' }}></i>
