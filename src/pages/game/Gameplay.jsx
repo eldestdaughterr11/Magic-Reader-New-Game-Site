@@ -98,7 +98,7 @@ function Gameplay() {
               src="/images/gameplay/vowel-stones.png" 
               alt="Vowel Stones" 
               className="gameplay-challenge-img" 
-              style={{ width: '220px', height: '220px', objectFit: 'contain' }}
+              style={{ width: '220px', height: '220px', objectFit: 'contain', mixBlendMode: 'screen' }}
             />
             <span className="tap-to-enlarge-hint">
               <i className="fa-solid fa-magnifying-glass-plus" style={{ marginRight: '4px' }}></i>
@@ -207,7 +207,8 @@ function Gameplay() {
                 cursor: isZoomed ? 'zoom-out' : 'zoom-in',
                 transition: isZoomed ? 'none' : 'transform 0.3s ease, transform-origin 0.3s ease',
                 transform: isZoomed ? 'scale(2.2)' : 'scale(1)',
-                transformOrigin: `${zoomOrigin.x}% ${zoomOrigin.y}%`
+                transformOrigin: `${zoomOrigin.x}% ${zoomOrigin.y}%`,
+                mixBlendMode: lightboxSrc === '/images/gameplay/vowel-stones.png' ? 'screen' : 'normal'
               }}
             />
           </div>
