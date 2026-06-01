@@ -14,7 +14,7 @@ function Download() {
       <div style={{ marginTop: '50px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
         
         {/* Poster Image */}
-        <div style={{ width: '100%', maxWidth: '400px', marginBottom: '30px', borderRadius: '5px', overflow: 'hidden', boxShadow: '0 10px 30px rgba(0,0,0,0.5)' }}>
+        <div style={{ width: '100%', maxWidth: '400px', marginBottom: '30px', borderRadius: '5px', overflow: 'hidden', boxShadow: '0 10px 30px rgba(0,0,0,0.5)', position: 'relative' }}>
           <img 
             src="/images/poster.png" 
             alt="The Sound Keeper Game Poster" 
@@ -24,6 +24,24 @@ function Download() {
               e.target.src = "https://via.placeholder.com/400x600/2a1a3d/ffffff?text=Save+your+image+as+poster.png+in+public/images"
             }}
           />
+          {/* Overlay to cover the "Magic Reader" text baked into the poster image */}
+          <div style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            height: '23%',
+            background: '#08061e',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}>
+            <img
+              src="/images/sound-keeper-logo.png"
+              alt="The Sound Keeper"
+              style={{ width: '75%', height: 'auto' }}
+            />
+          </div>
         </div>
 
         {/* Text */}
