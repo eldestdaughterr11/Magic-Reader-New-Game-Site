@@ -100,16 +100,15 @@ header {
 }
 
 .logo-img {
-    height: 132px;
+    height: 80px;
     width: auto;
     object-fit: contain;
-    border-radius: 5px;
-    /* Seamless sa olive header/footer (--header-footer-bg) kapag may 1px halo ang PNG */
-    background-color: var(--header-footer-bg);
+    border-radius: 0;
+    background-color: transparent;
 }
 
 .logo-img.footer-logo {
-    height: 150px;
+    height: 90px;
 }
 
 .user-profile {
@@ -1321,11 +1320,11 @@ body.auth-page .auth-form .btn:hover {
     }
 
     .logo-img {
-        height: 70px;
+        height: 60px;
     }
 
     .logo-img.footer-logo {
-        height: 100px;
+        height: 70px;
     }
 
     /* Scaling general typography */
