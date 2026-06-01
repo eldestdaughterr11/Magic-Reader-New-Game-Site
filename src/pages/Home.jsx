@@ -26,7 +26,7 @@ function Home() {
         
         <br />
         
-        <p>They land in Word Valley—a once beautiful place built from big, colorful letters and singing sounds. A guide called Pip, a wise owl, immediately comes down to greet you. Pip explains the world and the mission, an adventure that they need to do. What was once a bright and colorful world is being tormented by the "mush-mush" curse, inflicted by Miss Spell, the envious witch. The 5 houses: A, E, I, O, U and their vowel stones are sealed because of the curse, so the goal of the player is to recover the vowel stones and restore the world to its former glory.</p>
+        <p>They land in Word Valley - a once beautiful place built from big, colorful letters and singing sounds. A guide called Pip, a wise owl, immediately comes down to greet you. Pip explains the world and the mission, an adventure that they need to do. What was once a bright and colorful world is being tormented by the "mush-mush" curse, inflicted by Miss Spell, the envious witch. The 5 houses: A, E, I, O, U and their vowel stones are sealed because of the curse, so the goal of the player is to recover the vowel stones and restore the world to its former glory.</p>
         
         <br />
         
