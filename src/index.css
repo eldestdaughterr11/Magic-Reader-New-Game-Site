@@ -690,8 +690,8 @@ body.auth-page .auth-form .form-group label {
 
 body.auth-page .auth-form .form-control {
     border-radius: 8px;
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    background-color: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
     font-family: 'Montserrat', sans-serif;
     font-weight: 400;
     color: #111111;
@@ -701,8 +701,8 @@ body.auth-page .auth-form .form-control {
 
 body.auth-page .auth-form .form-control:focus {
     outline: none;
-    border-color: #e0c3fc;
-    box-shadow: 0 0 0 3px rgba(224, 195, 252, 0.3);
+    border-color: #aaaaaa;
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.08);
     background-color: #ffffff;
 }
 
