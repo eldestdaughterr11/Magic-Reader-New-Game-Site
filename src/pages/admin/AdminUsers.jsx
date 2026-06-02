@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
-import { db } from '../../firebase';
+import { db, functions } from '../../firebase';
 import { collection, onSnapshot, doc, query, orderBy, updateDoc, where, getDocs } from 'firebase/firestore';
+import { httpsCallable } from 'firebase/functions';
 
 function AdminUsers() {
   const [users, setUsers] = useState([]);
@@ -60,6 +61,19 @@ function AdminUsers() {
     }
   };
 
+  const handleDeleteUser = async (user) => {
+    if (!window.confirm(`⚠️ Permanently delete "${user.name}"?\n\nThis will remove them from the database AND revoke their login access forever. This cannot be undone.`)) return;
+
+    try {
+      const deleteUser = httpsCallable(functions, 'deleteUser');
+      await deleteUser({ uid: user.id, email: user.email });
+      alert(`✅ ${user.name}'s account has been permanently deleted.`);
+    } catch (err) {
+      console.error('Error deleting user:', err);
+      alert(`❌ Failed to delete account: ${err.message}`);
+    }
+  };
+
   return (
     <div>
       <h2 className="admin-page-title">Manage Users</h2>
@@ -73,6 +87,7 @@ function AdminUsers() {
                 <th>Name</th>
                 <th>Email</th>
                 <th>Total Score</th>
+                <th>Status</th>
                 <th>Actions</th>
               </tr>
             </thead>
@@ -83,7 +98,19 @@ function AdminUsers() {
                   <td><strong>{user.name}</strong></td>
                   <td>{user.email}</td>
                   <td>{user.score || 0}</td>
-                  <td style={{ display: 'flex', gap: '10px' }}>
+                  <td>
+                    <span style={{
+                      padding: '3px 10px',
+                      borderRadius: '12px',
+                      fontSize: '0.8em',
+                      fontWeight: '600',
+                      backgroundColor: user.isBanned ? '#b71c1c' : '#1b5e20',
+                      color: '#fff'
+                    }}>
+                      {user.isBanned ? 'Banned' : 'Active'}
+                    </span>
+                  </td>
+                  <td style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
                     <button 
                       className="cms-btn cms-btn-warning" 
                       style={{ padding: '5px 10px', fontSize: '0.8rem' }}
@@ -104,6 +131,13 @@ function AdminUsers() {
                       onClick={() => handleToggleBan(user.id, user.name, user.isBanned)}
                     >
                       {user.isBanned ? 'Unban User' : 'Ban User'}
+                    </button>
+                    <button 
+                      className="cms-btn cms-btn-danger"
+                      style={{ padding: '5px 10px', fontSize: '0.8rem', backgroundColor: '#c62828', color: '#fff' }}
+                      onClick={() => handleDeleteUser(user)}
+                    >
+                      🗑 Delete
                     </button>
                   </td>
                 </tr>

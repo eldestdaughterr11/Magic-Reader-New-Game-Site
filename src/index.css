@@ -1284,8 +1284,8 @@ body.auth-page .auth-form .btn:hover {
     flex-wrap: wrap;
 }
 
-/* Media Queries for Viewports <= 768px */
-@media (max-width: 1024px) {
+/* Media Queries for Viewports <= 1180px (covers all iPads) */
+@media (max-width: 1180px) {
     /* Hide standard nav links and desktop profile action */
     .nav-links,
     header > div:last-child {

@@ -27,19 +27,25 @@ function Login() {
       let userName = email;
       let isAdmin = false;
 
-      if (userDocSnap.exists()) {
-        const userData = userDocSnap.data();
-
-        if (userData.isBanned) {
-          await signOut(auth);
-          setError('Your account has been banned. Please contact support.');
-          setLoading(false);
-          return;
-        }
-
-        userName = userData.name || email;
-        isAdmin = userData.role === 'admin';
+      if (!userDocSnap.exists()) {
+        // Account was deleted from the database — block access
+        await signOut(auth);
+        setError('This account no longer exists. Please sign up for a new account.');
+        setLoading(false);
+        return;
       }
+
+      const userData = userDocSnap.data();
+
+      if (userData.isBanned) {
+        await signOut(auth);
+        setError('Your account has been banned. Please contact support.');
+        setLoading(false);
+        return;
+      }
+
+      userName = userData.name || email;
+      isAdmin = userData.role === 'admin';
 
       // Log to activities for the real-time Admin Dashboard
       await addDoc(collection(db, 'activities'), {
