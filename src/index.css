@@ -644,14 +644,14 @@ body.auth-page .auth-title {
 body.auth-page .auth-container {
     width: 100%;
     max-width: 480px;
-    background: rgba(43, 24, 67, 0.85); /* Premium semi-transparent dark purple matching theme */
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 16px;
+    background: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border: none;
+    border-radius: 0;
     padding: 40px 35px;
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
-    margin: auto; /* Safe vertical and horizontal centering to prevent top overflow on short screens */
+    box-shadow: none;
+    margin: auto;
     box-sizing: border-box;
     text-align: center;
 }
