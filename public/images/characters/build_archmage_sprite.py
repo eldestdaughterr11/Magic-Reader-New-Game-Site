@@ -2,22 +2,26 @@ from PIL import Image
 from pathlib import Path
 from collections import deque
 
-def clean_and_crop_sprite(rgba, x_start, x_end):
+def clean_and_crop_sprite(rgba, x_start, x_end, y_start=0, y_end=None):
     # Crop the raw sprite from the source
     w_src, h_src = rgba.size
-    sprite = rgba.crop((x_start, 0, x_end, h_src))
+    if y_end is None:
+        y_end = h_src
+    sprite = rgba.crop((x_start, y_start, x_end, y_end))
     w, h = sprite.size
     px = sprite.load()
     
     # Flood fill starting from all border pixels to make the background transparent
-    visited = [[False] * w for _ in range(h)]
+    visited = [[False] * w for _ in range(h)]\
+    
     q = deque()
     
     # Initialize queue with border pixels
     for x in range(w):
         for y in (0, h - 1):
-            q.append((x, y))
-            visited[y][x] = True
+            if not visited[y][x]:
+                q.append((x, y))
+                visited[y][x] = True
         
     for y in range(h):
         for x in (0, w - 1):
@@ -29,8 +33,8 @@ def clean_and_crop_sprite(rgba, x_start, x_end):
         cx, cy = q.popleft()
         r, g, b, a = px[cx, cy]
         
-        # Background is dark brown close to (40, 28, 29)
-        if abs(r - 40) + abs(g - 28) + abs(b - 29) < 25:
+        # Background is white/near-white (255, 255, 255)
+        if r > 230 and g > 230 and b > 230:
             px[cx, cy] = (0, 0, 0, 0)
             
             # Check 4-connected neighbors
@@ -66,12 +70,16 @@ def main():
         
     im = Image.open(src)
     rgba = im.convert("RGBA")
+    w_src, h_src = rgba.size
+    print(f"Source image size: {w_src} x {h_src}")
     
-    # Precise active boundaries of the 4 sprites in archmage-source.png
-    sprite1 = clean_and_crop_sprite(rgba, 20, 170)
-    sprite2 = clean_and_crop_sprite(rgba, 240, 400)
-    sprite3 = clean_and_crop_sprite(rgba, 500, 610)
-    sprite4 = clean_and_crop_sprite(rgba, 730, 840)
+    # New source (Mayor_20260216215457.png) is 1754x1240 with white background
+    # 4 sprites spread horizontally
+    quarter = w_src // 4
+    sprite1 = clean_and_crop_sprite(rgba, 0,         quarter)
+    sprite2 = clean_and_crop_sprite(rgba, quarter,   quarter*2)
+    sprite3 = clean_and_crop_sprite(rgba, quarter*2, quarter*3)
+    sprite4 = clean_and_crop_sprite(rgba, quarter*3, w_src)
     
     sprite1.save(here / "archmage-1.png", optimize=True)
     sprite2.save(here / "archmage-2.png", optimize=True)
