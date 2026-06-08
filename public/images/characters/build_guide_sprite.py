@@ -29,8 +29,8 @@ def clean_and_crop_sprite(rgba, x_start, x_end):
         cx, cy = q.popleft()
         r, g, b, a = px[cx, cy]
         
-        # Background is dark purple close to (80, 57, 88)
-        if abs(r - 80) + abs(g - 57) + abs(b - 88) < 15:
+        # Background is dark brown close to (40, 28, 29)
+        if abs(r - 40) + abs(g - 28) + abs(b - 29) < 25:
             px[cx, cy] = (0, 0, 0, 0)
             
             # Check 4-connected neighbors
@@ -67,10 +67,10 @@ def main():
     im = Image.open(src)
     rgba = im.convert("RGBA")
     
-    # Precise active boundaries of the 3 sprites in guide-source.png
-    sprite1 = clean_and_crop_sprite(rgba, 18, 73)
-    sprite2 = clean_and_crop_sprite(rgba, 110, 161)
-    sprite3 = clean_and_crop_sprite(rgba, 202, 353)
+    # Precise active boundaries of the 3 sprites in the new guide-source.png
+    sprite1 = clean_and_crop_sprite(rgba, 40, 160)
+    sprite2 = clean_and_crop_sprite(rgba, 220, 340)
+    sprite3 = clean_and_crop_sprite(rgba, 410, 725)
     
     sprite1.save(here / "guide-1.png", optimize=True)
     sprite2.save(here / "guide-2.png", optimize=True)
@@ -84,3 +84,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
