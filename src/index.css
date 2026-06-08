@@ -63,7 +63,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 10px 5%;
+    padding: 10px clamp(15px, 4vw, 5%);
     position: relative;
     z-index: 100;
     border-bottom: 2px solid var(--header-rule-color);
@@ -81,7 +81,7 @@ header {
 }
 
 .logo-img {
-    height: 80px;
+    height: clamp(65px, 6vw, 80px);
     width: auto;
     object-fit: contain;
     border-radius: 0;
@@ -107,10 +107,10 @@ header {
 
 .nav-links {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     align-items: center;
     justify-content: center;
-    gap: clamp(18px, 3vw, 40px);
+    gap: clamp(12px, 2.2vw, 36px);
 }
 
 .nav-links a {
@@ -121,8 +121,9 @@ header {
     color: #ffffff;
     font-family: 'Berkshire Swash', cursive;
     font-weight: 400;
-    font-size: clamp(1.35rem, 2.5vw, 1.75rem);
+    font-size: clamp(1.15rem, 1.9vw, 1.65rem);
     letter-spacing: 0.02em;
+    white-space: nowrap;
     transition: color 0.25s ease, text-decoration-color 0.25s ease;
 }
 
@@ -1284,8 +1285,11 @@ body.auth-page .auth-form .btn:hover {
     flex-wrap: wrap;
 }
 
-/* Media Queries for Viewports <= 1180px (covers all iPads) */
-@media (max-width: 1180px) {
+/* Media Queries for Viewports:
+   - Always for screens <= 1024px (covers mobile, standard tablets)
+   - Also for screens <= 1366px on touch devices (covers all iPads/Tablets in landscape, e.g. iPad Pro 11" and 12.9")
+*/
+@media (max-width: 1024px), (max-width: 1366px) and (pointer: coarse) {
     /* Hide standard nav links and desktop profile action */
     .nav-links,
     header > div:last-child {
