@@ -398,8 +398,14 @@ footer {
 }
 
 .character-row:nth-child(6) .sprite-cell {
-    width: 220px;
-    height: 280px;
+    width: 300px;
+    height: 380px;
+    overflow: hidden;
+}
+
+.character-row:nth-child(6) .sprite-cell img {
+    transform: scale(2);
+    transform-origin: center bottom;
 }
 
 
