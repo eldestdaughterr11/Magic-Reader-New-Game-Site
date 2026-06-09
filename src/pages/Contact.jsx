@@ -135,20 +135,7 @@ function Contact() {
             dreampixels2026@gmail.com
           </a>
 
-          {/* Fun note at bottom */}
-          <div style={{
-            marginTop: 'auto',
-            paddingTop: '24px',
-            backgroundColor: 'rgba(224,195,252,0.07)',
-            borderRadius: '10px',
-            padding: '14px',
-            textAlign: 'center'
-          }}>
-            <span style={{ fontSize: '1.4rem' }}>📖✨</span>
-            <p style={{ margin: '6px 0 0', fontSize: '0.78rem', color: 'rgba(255,255,255,0.5)', lineHeight: '1.4' }}>
-              We're a student team building something magical!
-            </p>
-          </div>
+
 
         </div>
 
