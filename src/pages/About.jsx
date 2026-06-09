@@ -16,7 +16,8 @@ function About() {
     { 
       name: "Christian Joseph G. Doronio", 
       role: "Document Specialist", 
-      cont: "Formatting of the manuscript and other documents" 
+      cont: "Formatting of the manuscript and other documents",
+      photo: "/images/team/doronio.jpg"
     },
     { 
       name: "Van Ryan M. Navarez", 
