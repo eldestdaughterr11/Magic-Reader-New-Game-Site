@@ -62,7 +62,8 @@ function Contact() {
           border: '1px solid rgba(255,255,255,0.1)', 
           display: 'flex', 
           flexDirection: 'column', 
-          justifyContent: 'space-between' 
+          justifyContent: 'space-between',
+          textAlign: 'left'
         }}>
           <div>
             <h3 style={{ fontSize: '1.3rem', color: '#e0c3fc', marginBottom: '20px', fontWeight: '700' }}>
@@ -94,7 +95,7 @@ function Contact() {
         </div>
 
         {/* Contact Form Column */}
-        <div style={{ flex: '1.2', minWidth: '300px', backgroundColor: '#4a3b5a', borderRadius: '15px', padding: '30px', border: '1px solid #d1a7d1', boxShadow: '0 8px 25px rgba(0,0,0,0.3)' }}>
+        <div style={{ flex: '1.2', minWidth: '300px', backgroundColor: '#4a3b5a', borderRadius: '15px', padding: '30px', border: '1px solid #d1a7d1', boxShadow: '0 8px 25px rgba(0,0,0,0.3)', textAlign: 'left' }}>
           <form onSubmit={handleContactSubmit}>
             <div style={{ marginBottom: '15px' }}>
               <label style={{ display: 'block', marginBottom: '6px', fontFamily: 'Montserrat, sans-serif', fontWeight: '700', fontSize: '0.85rem', color: '#e8c97c', textTransform: 'uppercase', letterSpacing: '1px' }}>
