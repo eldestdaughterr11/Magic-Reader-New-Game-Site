@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { db } from '../firebase';
 import { collection, onSnapshot } from 'firebase/firestore';
 
@@ -54,31 +53,7 @@ function Leaderboards() {
         Leaderboard Table
       </h2>
 
-      {/* Submit Score CTA */}
-      <div style={{ textAlign: 'center', marginBottom: '30px' }}>
-        <Link
-          to="/submit-score"
-          style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: '8px',
-            backgroundColor: '#d4854a',
-            color: '#fff',
-            padding: '12px 30px',
-            borderRadius: '25px',
-            fontFamily: 'Montserrat, sans-serif',
-            fontWeight: '700',
-            fontSize: '0.95rem',
-            textDecoration: 'none',
-            boxShadow: '0 4px 15px rgba(212, 133, 74, 0.4)',
-            transition: 'background-color 0.3s'
-          }}
-          onMouseOver={e => e.currentTarget.style.backgroundColor = '#c5743b'}
-          onMouseOut={e => e.currentTarget.style.backgroundColor = '#d4854a'}
-        >
-          🏆 Submit Your Score
-        </Link>
-      </div>
+
       
       <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '60px', width: '100%' }}>
         <div className="scrollable-wrapper" style={{ margin: 0, maxWidth: '700px', width: '100%' }}>
