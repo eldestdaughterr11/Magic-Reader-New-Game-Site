@@ -82,13 +82,6 @@ function MainLayout() {
             Leaderboards
           </Link>
           <Link
-            to="/submit-score"
-            className={currentPath.includes('/submit-score') ? 'active' : ''}
-            style={currentPath.includes('/submit-score') ? {} : { color: '#e8c97c' }}
-          >
-            🏆 Submit Score
-          </Link>
-          <Link
             to="/resources"
             className={currentPath.includes('/resources') ? 'active' : ''}
           >
@@ -160,14 +153,6 @@ function MainLayout() {
             onClick={() => setIsMenuOpen(false)}
           >
             Leaderboards
-          </Link>
-          <Link
-            to="/submit-score"
-            className={currentPath.includes('/submit-score') ? 'active' : ''}
-            onClick={() => setIsMenuOpen(false)}
-            style={currentPath.includes('/submit-score') ? {} : { color: '#e8c97c' }}
-          >
-            🏆 Submit Score
           </Link>
           <Link
             to="/resources"
@@ -258,9 +243,6 @@ function MainLayout() {
               </li>
               <li>
                 <Link to="/leaderboards">Leaderboards</Link>
-              </li>
-              <li>
-                <Link to="/submit-score">Submit Score</Link>
               </li>
               <li>
                 <Link to="/forum">Forum</Link>
