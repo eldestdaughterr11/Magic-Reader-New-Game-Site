@@ -82,10 +82,23 @@ function MainLayout() {
             Leaderboards
           </Link>
           <Link
+            to="/submit-score"
+            className={currentPath.includes('/submit-score') ? 'active' : ''}
+            style={currentPath.includes('/submit-score') ? {} : { color: '#e8c97c' }}
+          >
+            🏆 Submit Score
+          </Link>
+          <Link
             to="/resources"
             className={currentPath.includes('/resources') ? 'active' : ''}
           >
             Resources
+          </Link>
+          <Link
+            to="/forum"
+            className={currentPath.includes('/forum') ? 'active' : ''}
+          >
+            Forum
           </Link>
 
           <Link
@@ -149,11 +162,26 @@ function MainLayout() {
             Leaderboards
           </Link>
           <Link
+            to="/submit-score"
+            className={currentPath.includes('/submit-score') ? 'active' : ''}
+            onClick={() => setIsMenuOpen(false)}
+            style={currentPath.includes('/submit-score') ? {} : { color: '#e8c97c' }}
+          >
+            🏆 Submit Score
+          </Link>
+          <Link
             to="/resources"
             className={currentPath.includes('/resources') ? 'active' : ''}
             onClick={() => setIsMenuOpen(false)}
           >
             Resources
+          </Link>
+          <Link
+            to="/forum"
+            className={currentPath.includes('/forum') ? 'active' : ''}
+            onClick={() => setIsMenuOpen(false)}
+          >
+            Forum
           </Link>
 
           <Link
@@ -230,6 +258,12 @@ function MainLayout() {
               </li>
               <li>
                 <Link to="/leaderboards">Leaderboards</Link>
+              </li>
+              <li>
+                <Link to="/submit-score">Submit Score</Link>
+              </li>
+              <li>
+                <Link to="/forum">Forum</Link>
               </li>
 
             </ul>

@@ -16,9 +16,11 @@ import AdminUsers from './pages/admin/AdminUsers';
 import Characters from './pages/game/Characters';
 import Download from './pages/game/Download';
 import Leaderboards from './pages/Leaderboards';
+import ScoreSubmit from './pages/ScoreSubmit';
 import Resources from './pages/Resources';
 import About from './pages/About';
 import Contact from './pages/Contact';
+import Forum from './pages/Forum';
 
 function App() {
   return (
@@ -32,10 +34,12 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/leaderboards" element={<Leaderboards />} />
+          <Route path="/submit-score" element={<ScoreSubmit />} />
           <Route path="/resources" element={<Resources />} />
           <Route path="/game/gameplay" element={<Gameplay />} />
           <Route path="/game/characters" element={<Characters />} />
           <Route path="/game/download" element={<Download />} />
+          <Route path="/forum" element={<Forum />} />
         </Route>
         
         <Route element={<AuthLayout />}>
