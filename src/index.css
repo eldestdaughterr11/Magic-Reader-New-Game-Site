@@ -1360,7 +1360,7 @@ body.auth-page .auth-form .btn:hover {
 
     /* Footer styling */
     .footer-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
         gap: 30px;
         text-align: center;
     }
@@ -1438,6 +1438,20 @@ body.auth-page .auth-form .btn:hover {
 
     .auth-header .logo-img {
         height: 60px;
+    }
+}
+
+/* Mobile footer layout override */
+@media (max-width: 640px) {
+    .footer-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Landscape tablet / desktop footer layout override */
+@media (min-width: 1025px) {
+    .footer-grid {
+        grid-template-columns: repeat(4, 1fr);
     }
 }
 
