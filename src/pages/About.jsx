@@ -28,7 +28,8 @@ function About() {
     { 
       name: "Carlos Miguel A. Agila", 
       role: "Programmer (Game)", 
-      cont: "Developing the whole game" 
+      cont: "Developing the whole game",
+      photo: "/images/team/agila.jpg"
     },
     { 
       name: "Derille P. Pagayon", 
