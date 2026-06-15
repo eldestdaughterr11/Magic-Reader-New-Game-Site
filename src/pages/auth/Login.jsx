@@ -133,11 +133,6 @@ function Login() {
           Don't have an account? <Link to="/signup" className="auth-link">Sign Up</Link>
         </p>
 
-        <div style={{ backgroundColor: 'rgba(212, 133, 74, 0.15)', border: '1px solid #d4854a', borderRadius: '8px', padding: '10px', marginBottom: '15px', color: '#fff', fontSize: '0.85rem', textAlign: 'center', fontFamily: 'Montserrat, sans-serif' }}>
-          💡 <strong>Need Admin Access?</strong><br />
-          Just go to <strong>Sign Up</strong> and register an email containing <u>admin</u> (e.g. <code>admin2@example.com</code>) to automatically get Admin rights!
-        </div>
-
         {error && <div style={{ color: 'red', marginBottom: '15px', textAlign: 'center' }}>{error}</div>}
 
         <form className="auth-form" onSubmit={handleLogin}>
