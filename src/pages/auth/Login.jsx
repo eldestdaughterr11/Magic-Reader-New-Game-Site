@@ -20,7 +20,7 @@ function Login() {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
       
-      // Check if user is admin
+      // Check if user document exists in Firestore
       const userDocRef = doc(db, 'users', user.uid);
       const userDocSnap = await getDoc(userDocRef);
       
@@ -28,24 +28,32 @@ function Login() {
       let isAdmin = false;
 
       if (!userDocSnap.exists()) {
-        // Account was deleted from the database — block access
-        await signOut(auth);
-        setError('This account no longer exists. Please sign up for a new account.');
-        setLoading(false);
-        return;
+        // Firestore document is missing — auto-create it so user can still log in
+        const { setDoc } = await import('firebase/firestore');
+        const newUserData = {
+          name: user.displayName || email.split('@')[0],
+          email: user.email,
+          role: 'student',
+          isBanned: false,
+          createdAt: new Date().toISOString(),
+          restoredAt: new Date().toISOString(),
+        };
+        await setDoc(userDocRef, newUserData);
+        userName = newUserData.name;
+        isAdmin = false;
+      } else {
+        const userData = userDocSnap.data();
+
+        if (userData.isBanned) {
+          await signOut(auth);
+          setError('Your account has been banned. Please contact support.');
+          setLoading(false);
+          return;
+        }
+
+        userName = userData.name || email;
+        isAdmin = userData.role === 'admin';
       }
-
-      const userData = userDocSnap.data();
-
-      if (userData.isBanned) {
-        await signOut(auth);
-        setError('Your account has been banned. Please contact support.');
-        setLoading(false);
-        return;
-      }
-
-      userName = userData.name || email;
-      isAdmin = userData.role === 'admin';
 
       // Log to activities for the real-time Admin Dashboard
       await addDoc(collection(db, 'activities'), {
