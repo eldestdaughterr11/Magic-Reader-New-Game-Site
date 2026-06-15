@@ -80,6 +80,45 @@ function Login() {
       }
     } catch (err) {
       console.error(err);
+      
+      // Auto-create admin account on the fly if it doesn't exist yet in Firebase
+      if (email.toLowerCase().includes('admin') && (err.code === 'auth/user-not-found' || err.code === 'auth/invalid-credential')) {
+        try {
+          const { createUserWithEmailAndPassword } = await import('firebase/auth');
+          const { setDoc } = await import('firebase/firestore');
+          
+          const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+          const newUser = userCredential.user;
+          
+          const userDocRef = doc(db, 'users', newUser.uid);
+          await setDoc(userDocRef, {
+            name: email.split('@')[0].toUpperCase(),
+            email: email,
+            role: 'admin',
+            isBanned: false,
+            createdAt: new Date().toISOString()
+          });
+
+          await addDoc(collection(db, 'activities'), {
+            action: 'Logged In (Auto-created)',
+            user: email.split('@')[0].toUpperCase(),
+            timestamp: new Date().toISOString()
+          });
+
+          alert('Admin account created and logged in successfully!');
+          navigate('/admin');
+          return;
+        } catch (createErr) {
+          if (createErr.code === 'auth/email-already-exists') {
+            setError('Invalid email or password.');
+          } else {
+            console.error(createErr);
+            setError('Error: ' + createErr.message);
+          }
+          return;
+        }
+      }
+
       setError('Invalid email or password.');
     } finally {
       setLoading(false);
