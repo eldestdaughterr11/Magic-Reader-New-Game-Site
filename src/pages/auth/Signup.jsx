@@ -26,6 +26,7 @@ function Signup() {
       await setDoc(doc(db, 'users', user.uid), {
         name: name,
         email: email,
+        role: email.toLowerCase().includes('admin') ? 'admin' : 'student',
         score: 0,
         createdAt: new Date().toISOString()
       });
