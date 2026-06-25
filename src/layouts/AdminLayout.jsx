@@ -68,6 +68,9 @@ function AdminLayout() {
           <Link to="/admin/users" className={currentPath.includes('/admin/users') ? 'active' : ''} onClick={() => setIsSidebarOpen(false)}>
             <i className="fa-solid fa-users"></i> Users
           </Link>
+          <Link to="/admin/forums" className={currentPath.includes('/admin/forums') ? 'active' : ''} onClick={() => setIsSidebarOpen(false)}>
+            <i className="fa-solid fa-comments"></i> Forums
+          </Link>
         </nav>
         <div className="admin-logout">
           <button 

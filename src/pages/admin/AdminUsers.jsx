@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { db, functions } from '../../firebase';
-import { collection, onSnapshot, doc, query, orderBy, updateDoc, where, getDocs } from 'firebase/firestore';
+import { collection, onSnapshot, doc, query, orderBy, updateDoc, where, getDocs, deleteDoc, addDoc } from 'firebase/firestore';
 import { httpsCallable } from 'firebase/functions';
 
 function AdminUsers() {
@@ -70,7 +70,28 @@ function AdminUsers() {
       alert(`✅ ${user.name}'s account has been permanently deleted.`);
     } catch (err) {
       console.error('Error deleting user:', err);
-      alert(`❌ Failed to delete account: ${err.message}`);
+      
+      const errorMessage = err.message || '';
+      const fallbackPrompt = `❌ Failed to delete account via Cloud Function: ${errorMessage}\n\nWould you like to delete this user directly from the Firestore database instead?\n\n(Note: This removes their profile from the CMS, but their login credentials will remain active until Cloud Functions are deployed/updated).`;
+      
+      if (window.confirm(fallbackPrompt)) {
+        try {
+          // Delete from users collection
+          await deleteDoc(doc(db, 'users', user.id));
+          
+          // Log to activities
+          await addDoc(collection(db, 'activities'), {
+            action: `Admin Deleted User Profile directly: ${user.email || user.id}`,
+            user: 'Admin Moderator',
+            timestamp: new Date().toISOString()
+          });
+
+          alert(`✅ ${user.name}'s profile has been deleted from Firestore database.`);
+        } catch (dbErr) {
+          console.error('Error deleting user doc directly:', dbErr);
+          alert(`❌ Failed to delete Firestore document: ${dbErr.message}`);
+        }
+      }
     }
   };
 

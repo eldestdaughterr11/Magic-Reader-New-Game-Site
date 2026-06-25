@@ -12,6 +12,7 @@ import Signup from './pages/auth/Signup';
 import AdminDashboard from './pages/admin/AdminDashboard';
 import AdminLessons from './pages/admin/AdminLessons';
 import AdminUsers from './pages/admin/AdminUsers';
+import AdminForums from './pages/admin/AdminForums';
 
 import Characters from './pages/game/Characters';
 import Download from './pages/game/Download';
@@ -52,6 +53,7 @@ function App() {
           <Route index element={<AdminDashboard />} />
           <Route path="lessons" element={<AdminLessons />} />
           <Route path="users" element={<AdminUsers />} />
+          <Route path="forums" element={<AdminForums />} />
         </Route>
       </Routes>
     </BrowserRouter>
