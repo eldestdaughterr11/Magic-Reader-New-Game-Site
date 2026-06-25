@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { db, functions } from '../../firebase';
-import { collection, onSnapshot, doc, query, orderBy, updateDoc, where, getDocs, deleteDoc, addDoc } from 'firebase/firestore';
+import { collection, onSnapshot, doc, query, orderBy, updateDoc, where, getDocs, deleteDoc, addDoc, getDoc } from 'firebase/firestore';
 import { httpsCallable } from 'firebase/functions';
 
 function AdminUsers() {
@@ -61,13 +61,67 @@ function AdminUsers() {
     }
   };
 
+  const cleanupUserData = async (userId) => {
+    try {
+      // 1. Delete all forum posts written by this user
+      const postsQuery = query(collection(db, 'forums'), where('authorId', '==', userId));
+      const postsSnapshot = await getDocs(postsQuery);
+      
+      for (const postDoc of postsSnapshot.docs) {
+        const postId = postDoc.id;
+        // Delete all comments/replies on this post
+        const commentsQuery = query(collection(db, 'forum_comments'), where('forumId', '==', postId));
+        const commentsSnapshot = await getDocs(commentsQuery);
+        const deleteCommentsPromises = commentsSnapshot.docs.map(docSnapshot => deleteDoc(docSnapshot.ref));
+        await Promise.all(deleteCommentsPromises);
+        
+        // Delete the post itself
+        await deleteDoc(postDoc.ref);
+      }
+
+      // 2. Delete all comments/replies written by this user in other discussions
+      const userCommentsQuery = query(collection(db, 'forum_comments'), where('authorId', '==', userId));
+      const userCommentsSnapshot = await getDocs(userCommentsQuery);
+      
+      for (const commentDoc of userCommentsSnapshot.docs) {
+        const commentData = commentDoc.data();
+        const forumId = commentData.forumId;
+        
+        // Delete the comment itself
+        await deleteDoc(commentDoc.ref);
+        
+        // Decrement commentsCount of parent post if it still exists
+        if (forumId) {
+          try {
+            const forumDocRef = doc(db, 'forums', forumId);
+            const forumDoc = await getDoc(forumDocRef);
+            if (forumDoc.exists()) {
+              const currentCount = forumDoc.data().commentsCount || 0;
+              await updateDoc(forumDocRef, {
+                commentsCount: Math.max(0, currentCount - 1)
+              });
+            }
+          } catch (e) {
+            console.error("Error updating comment count during user cleanup:", e);
+          }
+        }
+      }
+    } catch (err) {
+      console.error("Error during user data cleanup:", err);
+    }
+  };
+
   const handleDeleteUser = async (user) => {
     if (!window.confirm(`⚠️ Permanently delete "${user.name}"?\n\nThis will remove them from the database AND revoke their login access forever. This cannot be undone.`)) return;
 
     try {
       const deleteUser = httpsCallable(functions, 'deleteUser');
       await deleteUser({ uid: user.id, email: user.email });
-      alert(`✅ ${user.name}'s account has been permanently deleted.`);
+      
+      // Cascade delete posts and comments
+      await cleanupUserData(user.id);
+      
+      alert(`✅ ${user.name}'s account and their discussions/replies have been permanently deleted.`);
     } catch (err) {
       console.error('Error deleting user:', err);
       
@@ -79,6 +133,9 @@ function AdminUsers() {
           // Delete from users collection
           await deleteDoc(doc(db, 'users', user.id));
           
+          // Cascade delete posts and comments
+          await cleanupUserData(user.id);
+          
           // Log to activities
           await addDoc(collection(db, 'activities'), {
             action: `Admin Deleted User Profile directly: ${user.email || user.id}`,
@@ -86,7 +143,7 @@ function AdminUsers() {
             timestamp: new Date().toISOString()
           });
 
-          alert(`✅ ${user.name}'s profile has been deleted from Firestore database.`);
+          alert(`✅ ${user.name}'s profile and their discussions/replies have been deleted from Firestore database.`);
         } catch (dbErr) {
           console.error('Error deleting user doc directly:', dbErr);
           alert(`❌ Failed to delete Firestore document: ${dbErr.message}`);

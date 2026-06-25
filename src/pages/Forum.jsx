@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { db, auth } from '../firebase';
-import { collection, query, orderBy, onSnapshot, addDoc, doc, getDoc, deleteDoc, where, updateDoc } from 'firebase/firestore';
+import { collection, query, orderBy, onSnapshot, addDoc, doc, getDoc, deleteDoc, where, updateDoc, getDocs } from 'firebase/firestore';
 
 function Forum() {
   const [posts, setPosts] = useState([]);
@@ -152,7 +152,15 @@ function Forum() {
   const handleDeletePost = async (postId, postTitle) => {
     if (window.confirm(`Are you sure you want to delete your forum post "${postTitle}"?`)) {
       try {
+        // 1. Fetch and delete comments/replies associated with the post
+        const commentsQuery = query(collection(db, 'forum_comments'), where('forumId', '==', postId));
+        const commentsSnapshot = await getDocs(commentsQuery);
+        const deletePromises = commentsSnapshot.docs.map(docSnapshot => deleteDoc(docSnapshot.ref));
+        await Promise.all(deletePromises);
+
+        // 2. Delete the post itself
         await deleteDoc(doc(db, 'forums', postId));
+        
         setSelectedPost(null);
         alert("Post deleted successfully.");
       } catch (err) {
