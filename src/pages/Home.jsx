@@ -18,14 +18,16 @@ function Home() {
       <div className="qr-code-section">
         <h3 className="qr-code-title">Scan the Survey</h3>
         <div className="qr-code-image-wrapper">
-          <img 
-            src="/images/qrcode.png" 
-            alt="Scan QR Code to Play" 
-            className="qr-code-image"
-          />
+          <a href="#" target="_blank" rel="noopener noreferrer">
+            <img 
+              src="/images/qrcode.png" 
+              alt="Scan QR Code for Survey" 
+              className="qr-code-image"
+            />
+          </a>
         </div>
         <p className="qr-code-description">
-          Scan this QR code with your smartphone or mobile device to quickly download and launch the game application!
+          Scan this QR code with your smartphone or mobile device to access and answer our survey!
         </p>
       </div>
 
