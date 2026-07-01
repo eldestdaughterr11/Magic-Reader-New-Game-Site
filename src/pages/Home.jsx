@@ -15,6 +15,20 @@ function Home() {
         </video>
       </div>
 
+      <div className="qr-code-section">
+        <h3 className="qr-code-title">Scan to Play on Mobile</h3>
+        <div className="qr-code-image-wrapper">
+          <img 
+            src="/images/qrcode.png" 
+            alt="Scan QR Code to Play" 
+            className="qr-code-image"
+          />
+        </div>
+        <p className="qr-code-description">
+          Scan this QR code with your smartphone or mobile device to quickly download and launch the game application!
+        </p>
+      </div>
+
       <h2 className="section-title" style={{ marginTop: '50px' }}>Story</h2>
       
       <div style={{ textAlign: 'center', color: 'var(--text-muted)', fontSize: '1.1rem', lineHeight: '1.8' }}>

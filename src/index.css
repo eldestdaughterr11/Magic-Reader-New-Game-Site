@@ -1455,4 +1455,69 @@ body.auth-page .auth-form .btn:hover {
     }
 }
 
+/* QR Code Section styled with premium glassmorphism and animations */
+.qr-code-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 20px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    max-width: 450px;
+    margin: 30px auto;
+    text-align: center;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease, border-color 0.4s ease;
+}
+
+.qr-code-section:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(209, 167, 209, 0.2);
+    border-color: rgba(209, 167, 209, 0.3);
+}
+
+.qr-code-title {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 15px;
+    letter-spacing: 0.02em;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.qr-code-image-wrapper {
+    background: #ffffff;
+    padding: 16px;
+    border-radius: 16px;
+    display: inline-block;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+}
+
+.qr-code-section:hover .qr-code-image-wrapper {
+    transform: scale(1.04) rotate(1deg);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+}
+
+.qr-code-image {
+    width: 190px;
+    height: 190px;
+    display: block;
+    border-radius: 8px;
+}
+
+.qr-code-description {
+    margin-top: 18px;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 500;
+}
+
 
