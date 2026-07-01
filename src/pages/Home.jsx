@@ -16,7 +16,7 @@ function Home() {
       </div>
 
       <div className="qr-code-section">
-        <h3 className="qr-code-title">Scan to Play on Mobile</h3>
+        <h3 className="qr-code-title">Scan the Survey</h3>
         <div className="qr-code-image-wrapper">
           <img 
             src="/images/qrcode.png" 
