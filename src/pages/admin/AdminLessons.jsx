@@ -7,6 +7,7 @@ function AdminLessons() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingLesson, setEditingLesson] = useState(null);
   const [isSeeding, setIsSeeding] = useState(false);
+  const [showArchived, setShowArchived] = useState(false);
   
   // Form State
   const [formData, setFormData] = useState({ 
@@ -87,6 +88,21 @@ function AdminLessons() {
     }
   };
 
+  const handleArchive = async (lesson) => {
+    const isArchived = lesson.status === 'Archived';
+    const action = isArchived ? 'restore' : 'archive';
+    if (window.confirm(`Are you sure you want to ${action} "${lesson.title}"?`)) {
+      try {
+        const lessonRef = doc(db, 'lessons', lesson.id);
+        await updateDoc(lessonRef, { status: isArchived ? 'Draft' : 'Archived' });
+        alert(`Lesson "${lesson.title}" has been ${isArchived ? 'restored to Draft' : 'archived'}.`);
+      } catch (err) {
+        console.error('Error archiving document: ', err);
+        alert('Failed to update lesson status.');
+      }
+    }
+  };
+
   const handleOpenModal = (lesson = null) => {
     if (lesson) {
       setEditingLesson(lesson);
@@ -154,30 +170,57 @@ function AdminLessons() {
     }
   };
 
+  const activeLessons = lessons.filter(l => l.status !== 'Archived');
+  const archivedLessons = lessons.filter(l => l.status === 'Archived');
+  const displayedLessons = showArchived ? archivedLessons : activeLessons;
+
   return (
     <div>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px', flexWrap: 'wrap', gap: '15px' }}>
-        <h2 className="admin-page-title" style={{ margin: 0 }}>Manage Lessons</h2>
-        <div style={{ display: 'flex', gap: '10px' }}>
-          <button 
-            className="cms-btn" 
-            style={{ 
-              backgroundColor: '#3b82f6', 
-              color: '#fff', 
-              border: '1px solid #60a5fa',
+        <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
+          <h2 className="admin-page-title" style={{ margin: 0 }}>Manage Lessons</h2>
+          <button
+            className="cms-btn"
+            style={{
+              backgroundColor: showArchived ? 'rgba(243,156,18,0.15)' : 'rgba(255,255,255,0.08)',
+              color: showArchived ? '#f39c12' : '#ccc',
+              border: `1px solid ${showArchived ? '#f39c12' : 'rgba(255,255,255,0.2)'}`,
               display: 'flex',
               alignItems: 'center',
-              gap: '8px'
-            }} 
-            onClick={handleSeedMatatag}
-            disabled={isSeeding}
+              gap: '6px',
+              fontSize: '0.82rem',
+              padding: '6px 12px'
+            }}
+            onClick={() => setShowArchived(prev => !prev)}
           >
-            <i className={isSeeding ? "fa-solid fa-spinner fa-spin" : "fa-solid fa-cloud-arrow-down"}></i>
-            {isSeeding ? 'Loading...' : 'Load MATATAG Materials'}
+            <i className={showArchived ? 'fa-solid fa-box-open' : 'fa-solid fa-box-archive'}></i>
+            {showArchived ? `Active (${activeLessons.length})` : `Archived (${archivedLessons.length})`}
           </button>
-          <button className="cms-btn cms-btn-primary" onClick={() => handleOpenModal()}>
-            <i className="fa-solid fa-plus"></i> Add New Lesson
-          </button>
+        </div>
+        <div style={{ display: 'flex', gap: '10px' }}>
+          {!showArchived && (
+            <>
+              <button 
+                className="cms-btn" 
+                style={{ 
+                  backgroundColor: '#3b82f6', 
+                  color: '#fff', 
+                  border: '1px solid #60a5fa',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '8px'
+                }} 
+                onClick={handleSeedMatatag}
+                disabled={isSeeding}
+              >
+                <i className={isSeeding ? "fa-solid fa-spinner fa-spin" : "fa-solid fa-cloud-arrow-down"}></i>
+                {isSeeding ? 'Loading...' : 'Load MATATAG Materials'}
+              </button>
+              <button className="cms-btn cms-btn-primary" onClick={() => handleOpenModal()}>
+                <i className="fa-solid fa-plus"></i> Add New Lesson
+              </button>
+            </>
+          )}
         </div>
       </div>
 
@@ -194,7 +237,7 @@ function AdminLessons() {
             </tr>
           </thead>
           <tbody>
-            {lessons.map(lesson => (
+            {displayedLessons.map(lesson => (
               <tr key={lesson.id}>
                 <td style={{ fontSize: '0.8em', color: '#ccc' }}>{lesson.id.substring(0, 5)}...</td>
                 <td><strong>{lesson.title}</strong></td>
@@ -205,19 +248,35 @@ function AdminLessons() {
                     padding: '5px 10px', 
                     borderRadius: '20px', 
                     fontSize: '0.8rem',
-                    backgroundColor: lesson.status === 'Published' ? 'rgba(72, 187, 120, 0.2)' : 'rgba(243, 156, 18, 0.2)',
-                    color: lesson.status === 'Published' ? '#a8e6cf' : '#f39c12'
+                    backgroundColor: lesson.status === 'Published' ? 'rgba(72, 187, 120, 0.2)' : lesson.status === 'Archived' ? 'rgba(156,163,175,0.2)' : 'rgba(243, 156, 18, 0.2)',
+                    color: lesson.status === 'Published' ? '#a8e6cf' : lesson.status === 'Archived' ? '#9ca3af' : '#f39c12'
                   }}>
                     {lesson.status}
                   </span>
                 </td>
-                <td style={{ display: 'flex', gap: '10px' }}>
+                <td style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+                  {!showArchived && (
+                    <button 
+                      className="cms-btn cms-btn-warning" 
+                      style={{ padding: '5px 10px', fontSize: '0.8rem' }}
+                      onClick={() => handleOpenModal(lesson)}
+                    >
+                      Edit
+                    </button>
+                  )}
                   <button 
-                    className="cms-btn cms-btn-warning" 
-                    style={{ padding: '5px 10px', fontSize: '0.8rem' }}
-                    onClick={() => handleOpenModal(lesson)}
+                    className="cms-btn" 
+                    style={{ 
+                      padding: '5px 10px', 
+                      fontSize: '0.8rem',
+                      backgroundColor: showArchived ? 'rgba(72,187,120,0.15)' : 'rgba(156,163,175,0.15)',
+                      color: showArchived ? '#a8e6cf' : '#9ca3af',
+                      border: `1px solid ${showArchived ? 'rgba(72,187,120,0.4)' : 'rgba(156,163,175,0.4)'}`
+                    }}
+                    onClick={() => handleArchive(lesson)}
                   >
-                    Edit
+                    <i className={showArchived ? 'fa-solid fa-box-open' : 'fa-solid fa-box-archive'} style={{ marginRight: '4px' }}></i>
+                    {showArchived ? 'Restore' : 'Archive'}
                   </button>
                   <button 
                     className="cms-btn cms-btn-danger" 
@@ -229,9 +288,11 @@ function AdminLessons() {
                 </td>
               </tr>
             ))}
-            {lessons.length === 0 && (
+            {displayedLessons.length === 0 && (
               <tr>
-                <td colSpan="6" style={{ textAlign: 'center', padding: '20px' }}>No lessons found. Create one now!</td>
+                <td colSpan="6" style={{ textAlign: 'center', padding: '20px' }}>
+                  {showArchived ? 'No archived lessons.' : 'No lessons found. Create one now!'}
+                </td>
               </tr>
             )}
           </tbody>
