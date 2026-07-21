@@ -33,7 +33,9 @@ function Download() {
 
         {/* Download Button */}
         <a 
-          href="#" 
+          href="https://drive.google.com/file/d/1c2Drlo4ZB03zyKGdIlSwYji01HxtYhWE/view?usp=drive_link" 
+          target="_blank"
+          rel="noopener noreferrer"
           className="btn" 
           style={{ 
             backgroundColor: '#2a1a3d', 
@@ -44,10 +46,6 @@ function Download() {
             padding: '15px clamp(20px, 8vw, 80px)',
             textDecoration: 'none',
             borderRadius: '5px'
-          }}
-          onClick={(e) => {
-            e.preventDefault();
-            alert("The download link will be placed here once the game file is ready!");
           }}
         >
           DOWNLOAD
