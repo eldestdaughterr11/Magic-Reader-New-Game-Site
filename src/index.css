@@ -1,6 +1,12 @@
 /* @import must be first — otherwise browsers ignore it and webfonts never load */
 @import url('https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Fredoka:wght@400;600;700&family=MedievalSharp&family=Montserrat:wght@400;600;700&family=Quicksand:wght@400;500;700&display=swap');
-@import "tailwindcss";
+
+/* Basic CSS Reset (replaces Tailwind Preflight) */
+button, input, select, textarea {
+    font-family: inherit;
+    border: none;
+    outline: none;
+}
 
 :root {
     --primary-bg: #3d2b4f;
