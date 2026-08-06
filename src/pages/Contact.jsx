@@ -49,11 +49,10 @@ function Contact() {
         </p>
       </div>
 
-      <div className="responsive-flex-row" style={{ gap: '30px', alignItems: 'stretch' }}>
+      <div className="responsive-flex-row-stretch contact-wrapper" style={{ gap: '30px' }}>
 
         {/* Left Info Column */}
-        <div style={{
-          flex: '0 0 280px',
+        <div className="contact-left-col" style={{
           fontFamily: 'Montserrat, sans-serif',
           backgroundColor: 'rgba(255,255,255,0.05)',
           borderRadius: '15px',
@@ -140,7 +139,7 @@ function Contact() {
         </div>
 
         {/* Contact Form Column */}
-        <div style={{ flex: '1', minWidth: '300px', backgroundColor: '#4a3b5a', borderRadius: '15px', padding: '30px', border: '1px solid #d1a7d1', boxShadow: '0 8px 25px rgba(0,0,0,0.3)', textAlign: 'left' }}>
+        <div className="contact-right-col" style={{ backgroundColor: '#4a3b5a', borderRadius: '15px', padding: '30px', border: '1px solid #d1a7d1', boxShadow: '0 8px 25px rgba(0,0,0,0.3)', textAlign: 'left' }}>
           <form onSubmit={handleContactSubmit}>
             <div style={{ marginBottom: '15px' }}>
               <label style={{ display: 'block', marginBottom: '6px', fontFamily: 'Montserrat, sans-serif', fontWeight: '700', fontSize: '0.85rem', color: '#e8c97c', textTransform: 'uppercase', letterSpacing: '1px' }}>

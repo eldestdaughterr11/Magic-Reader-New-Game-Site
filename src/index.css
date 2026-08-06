@@ -1526,4 +1526,20 @@ body.auth-page .auth-form .btn:hover {
     font-weight: 500;
 }
 
+/* Contact Page Responsive Fix */
+.contact-left-col {
+    flex: 0 0 280px;
+}
 
+.contact-right-col {
+    flex: 1;
+    min-width: 300px;
+}
+
+@media (max-width: 1024px), (max-width: 1366px) and (pointer: coarse) {
+    .contact-left-col, .contact-right-col {
+        flex: none;
+        width: 100%;
+        min-width: 0;
+    }
+}

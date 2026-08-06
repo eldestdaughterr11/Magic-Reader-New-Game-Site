@@ -169,6 +169,17 @@ function Resources() {
     return () => unsubscribe();
   }, []);
 
+  useEffect(() => {
+    if (selectedLesson) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [selectedLesson]);
+
   const resourceCategories = [
     "Vocabulary Guide",
     "Grammar Tips",
