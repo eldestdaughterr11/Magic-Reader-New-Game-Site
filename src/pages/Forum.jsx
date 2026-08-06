@@ -75,6 +75,19 @@ function Forum() {
     return () => unsubscribe();
   }, [selectedPost]);
 
+  // Prevent background scrolling when modals are open
+  useEffect(() => {
+    if (isCreateModalOpen || selectedPost) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isCreateModalOpen, selectedPost]);
+
   const handleCreatePost = async (e) => {
     e.preventDefault();
     if (!formData.title.trim() || !formData.content.trim()) {
