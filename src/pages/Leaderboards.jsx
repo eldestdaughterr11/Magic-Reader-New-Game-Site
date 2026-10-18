@@ -46,6 +46,7 @@ function Leaderboards() {
   };
 
   return (
+    <div className="page-bg page-bg--leaderboards">
     <div style={{ maxWidth: '900px', margin: '0 auto', padding: '40px 20px', color: '#fff', textAlign: 'center' }}>
       
       {/* Leaderboard Table Section */}
@@ -136,6 +137,7 @@ function Leaderboards() {
         </div>
       </div>
 
+    </div>
     </div>
   );
 }

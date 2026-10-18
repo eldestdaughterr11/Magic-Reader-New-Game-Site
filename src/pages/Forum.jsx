@@ -193,6 +193,7 @@ function Forum() {
   });
 
   return (
+    <div className="page-bg page-bg--forum">
     <div style={{ maxWidth: '900px', margin: '0 auto', padding: '60px 20px', color: '#fff' }}>
       
       {/* Page Title */}
@@ -703,6 +704,7 @@ function Forum() {
         </div>
       )}
 
+    </div>
     </div>
   );
 }

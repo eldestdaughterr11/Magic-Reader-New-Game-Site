@@ -199,6 +199,7 @@ function Resources() {
   };
 
   return (
+    <div className="page-bg page-bg--resources">
     <div style={{ maxWidth: '800px', margin: '0 auto', padding: '60px 20px', color: '#fff', textAlign: 'center' }}>
       
       {/* Title */}
@@ -391,6 +392,7 @@ function Resources() {
         </div>
       )}
 
+    </div>
     </div>
   );
 }

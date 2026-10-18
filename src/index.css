@@ -2286,3 +2286,296 @@ body.auth-page .auth-form .btn:hover {
         transition-duration: 0.15s;
     }
 }
+
+/* ═══════════════════════════════════════════════════
+   PAGE BACKGROUNDS — unique animated effects per page
+   ═══════════════════════════════════════════════════ */
+
+/* Base wrapper — covers full viewport behind the container */
+.page-bg {
+  min-height: calc(100vh - var(--header-height) - 12px);
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ── GAME PAGE — electric arcade energy ──────────────
+   Deep teal-to-purple diagonal sweep with animated
+   scanning beam, like a game screen booting up        */
+@keyframes gameScan {
+  0%   { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+
+.page-bg--game {
+  background:
+    radial-gradient(ellipse at 10% 20%, rgba(0, 200, 180, 0.12) 0%, transparent 55%),
+    radial-gradient(ellipse at 90% 80%, rgba(120, 0, 220, 0.14) 0%, transparent 55%),
+    linear-gradient(135deg, #2a1a3d 0%, #1a2e3a 50%, #2a1a3d 100%);
+}
+
+.page-bg--game::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 38px,
+    rgba(0, 220, 200, 0.04) 38px,
+    rgba(0, 220, 200, 0.04) 40px
+  );
+  pointer-events: none;
+}
+
+.page-bg--game::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, rgba(0, 220, 200, 0.5), transparent);
+  animation: gameScan 5s linear infinite;
+  pointer-events: none;
+}
+
+/* ── LEADERBOARDS — gold trophy glow ─────────────────
+   Rich amber/gold radial glow from top center like a
+   spotlight on the winners podium                     */
+@keyframes leaderGlow {
+  0%, 100% { opacity: 0.7; transform: scale(1); }
+  50%       { opacity: 1;   transform: scale(1.05); }
+}
+@keyframes starFloat {
+  0%   { transform: translateY(0) rotate(0deg);   opacity: 0.6; }
+  50%  { transform: translateY(-18px) rotate(180deg); opacity: 1; }
+  100% { transform: translateY(0) rotate(360deg); opacity: 0.6; }
+}
+
+.page-bg--leaderboards {
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(232, 201, 124, 0.2) 0%, rgba(200, 140, 40, 0.08) 40%, transparent 70%),
+    radial-gradient(ellipse at 20% 80%, rgba(180, 100, 20, 0.1) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 80%, rgba(180, 100, 20, 0.1) 0%, transparent 50%),
+    linear-gradient(180deg, #2e1f0f 0%, #3d2b4f 30%, #3d2b4f 100%);
+}
+
+.page-bg--leaderboards::before {
+  content: 'star  star  star  star  star  star  star  star';
+  position: absolute;
+  top: 18px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 0.7rem;
+  color: rgba(232, 201, 124, 0.0);
+  letter-spacing: 8px;
+  pointer-events: none;
+  background: linear-gradient(90deg, transparent 0%, rgba(232,201,124,0.2) 20%, rgba(232,201,124,0.4) 50%, rgba(232,201,124,0.2) 80%, transparent 100%);
+  height: 2px;
+  top: 0;
+  display: block;
+  content: '';
+}
+
+.page-bg--leaderboards::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 320px;
+  height: 320px;
+  background: radial-gradient(circle, rgba(232, 201, 124, 0.15) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  animation: leaderGlow 3.5s ease-in-out infinite;
+}
+
+/* ── RESOURCES — ancient library / parchment ─────────
+   Warm amber-green bookish tones, like candlelight
+   in a wizard library                                 */
+.page-bg--resources {
+  background:
+    radial-gradient(ellipse at 5%  10%, rgba(180, 130, 40, 0.12) 0%, transparent 45%),
+    radial-gradient(ellipse at 95% 90%, rgba(60,  130, 80, 0.10) 0%, transparent 45%),
+    radial-gradient(ellipse at 50% 50%, rgba(140, 90,  20, 0.06) 0%, transparent 70%),
+    linear-gradient(160deg, #2a1f10 0%, #3d2b4f 40%, #1a2e20 100%);
+}
+
+.page-bg--resources::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 15% 30%, rgba(200, 150, 50, 0.08) 0%, transparent 3%),
+    radial-gradient(circle at 70% 20%, rgba(200, 150, 50, 0.06) 0%, transparent 2%),
+    radial-gradient(circle at 40% 75%, rgba(200, 150, 50, 0.08) 0%, transparent 2.5%),
+    radial-gradient(circle at 85% 60%, rgba(200, 150, 50, 0.05) 0%, transparent 2%),
+    radial-gradient(circle at 55% 45%, rgba(200, 150, 50, 0.07) 0%, transparent 1.5%);
+  pointer-events: none;
+}
+
+.page-bg--resources::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    -60deg,
+    transparent,
+    transparent 80px,
+    rgba(180, 130, 40, 0.025) 80px,
+    rgba(180, 130, 40, 0.025) 81px
+  );
+  pointer-events: none;
+}
+
+/* ── FORUM — community chat / social bubbles ─────────
+   Soft indigo-to-blue, warm and inviting community feel */
+@keyframes forumWave {
+  0%   { transform: translateX(-50%) scaleY(1); }
+  50%  { transform: translateX(-50%) scaleY(1.2); }
+  100% { transform: translateX(-50%) scaleY(1); }
+}
+
+.page-bg--forum {
+  background:
+    radial-gradient(ellipse at 0%   100%, rgba(80, 60, 180, 0.18) 0%, transparent 50%),
+    radial-gradient(ellipse at 100% 0%,   rgba(60, 100, 200, 0.15) 0%, transparent 50%),
+    radial-gradient(ellipse at 50%  50%, rgba(100, 60, 160, 0.08) 0%, transparent 70%),
+    linear-gradient(135deg, #1a1a3d 0%, #3d2b4f 50%, #1a2040 100%);
+}
+
+.page-bg--forum::before {
+  content: '';
+  position: absolute;
+  bottom: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120%;
+  height: 160px;
+  background: radial-gradient(ellipse at center, rgba(100, 80, 200, 0.12) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  animation: forumWave 8s ease-in-out infinite;
+}
+
+.page-bg--forum::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 10% 85%, rgba(100, 80, 220, 0.15) 0%, transparent 4%),
+    radial-gradient(circle at 30% 70%, rgba(80, 100, 220, 0.12) 0%, transparent 3%),
+    radial-gradient(circle at 60% 80%, rgba(100, 80, 200, 0.14) 0%, transparent 3.5%),
+    radial-gradient(circle at 80% 65%, rgba(80, 100, 220, 0.10) 0%, transparent 2.5%),
+    radial-gradient(circle at 50% 90%, rgba(100, 60, 200, 0.12) 0%, transparent 3%);
+  pointer-events: none;
+}
+
+/* ── CONTACT — soft teal / crystal clarity ───────────
+   Clean teal-to-violet shimmer, like a magical crystal */
+@keyframes contactShimmer {
+  0%   { transform: rotate(0deg)   scale(1);    opacity: 0.3; }
+  50%  { transform: rotate(180deg) scale(1.15); opacity: 0.5; }
+  100% { transform: rotate(360deg) scale(1);    opacity: 0.3; }
+}
+
+.page-bg--contact {
+  background:
+    radial-gradient(ellipse at 50% 50%, rgba(0, 200, 200, 0.1) 0%, transparent 60%),
+    radial-gradient(ellipse at 10% 50%, rgba(0, 180, 160, 0.1) 0%, transparent 45%),
+    radial-gradient(ellipse at 90% 50%, rgba(120, 0, 200, 0.1) 0%, transparent 45%),
+    linear-gradient(180deg, #0e2a2a 0%, #3d2b4f 40%, #1a0e2a 100%);
+}
+
+.page-bg--contact::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 600px;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    rgba(0, 200, 200, 0.04) 60deg,
+    transparent 120deg,
+    rgba(120, 0, 200, 0.04) 180deg,
+    transparent 240deg,
+    rgba(0, 200, 200, 0.03) 300deg,
+    transparent 360deg
+  );
+  border-radius: 50%;
+  pointer-events: none;
+  animation: contactShimmer 20s linear infinite;
+}
+
+.page-bg--contact::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 60px,
+    rgba(0, 200, 200, 0.02) 60px,
+    rgba(0, 200, 200, 0.02) 61px
+  );
+  pointer-events: none;
+}
+
+/* ── ABOUT — rose-gold constellation / starfield ─────
+   Warm rose-gold on deep space purple, twinkling star
+   dots like a team portrait under the night sky       */
+@keyframes starTwinkle {
+  0%, 100% { opacity: 0.3; }
+  50%       { opacity: 1; }
+}
+@keyframes roseGlow {
+  0%, 100% { opacity: 0.5; }
+  50%       { opacity: 0.85; }
+}
+
+.page-bg--about {
+  background:
+    radial-gradient(ellipse at 80% 20%, rgba(220, 130, 150, 0.15) 0%, transparent 50%),
+    radial-gradient(ellipse at 20% 80%, rgba(180, 100, 200, 0.12) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 50%, rgba(150, 80, 120, 0.06) 0%, transparent 70%),
+    linear-gradient(135deg, #1f0a1a 0%, #3d2b4f 50%, #1a0f25 100%);
+}
+
+.page-bg--about::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 8%  15%, rgba(220,160,180,0.55) 0%, transparent 0.6%),
+    radial-gradient(circle at 22% 42%, rgba(220,160,180,0.40) 0%, transparent 0.4%),
+    radial-gradient(circle at 65% 8%,  rgba(220,160,180,0.50) 0%, transparent 0.5%),
+    radial-gradient(circle at 78% 35%, rgba(220,160,180,0.35) 0%, transparent 0.4%),
+    radial-gradient(circle at 92% 18%, rgba(220,160,180,0.45) 0%, transparent 0.5%),
+    radial-gradient(circle at 14% 68%, rgba(220,160,180,0.40) 0%, transparent 0.4%),
+    radial-gradient(circle at 45% 55%, rgba(220,160,180,0.30) 0%, transparent 0.3%),
+    radial-gradient(circle at 55% 82%, rgba(220,160,180,0.45) 0%, transparent 0.5%),
+    radial-gradient(circle at 88% 75%, rgba(220,160,180,0.38) 0%, transparent 0.4%),
+    radial-gradient(circle at 33% 90%, rgba(220,160,180,0.42) 0%, transparent 0.4%),
+    radial-gradient(circle at 72% 62%, rgba(220,160,180,0.35) 0%, transparent 0.4%),
+    radial-gradient(circle at 5%  92%, rgba(220,160,180,0.40) 0%, transparent 0.4%);
+  pointer-events: none;
+  animation: starTwinkle 4s ease-in-out infinite alternate;
+}
+
+.page-bg--about::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 280px;
+  height: 280px;
+  background: radial-gradient(circle, rgba(220, 130, 160, 0.18) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  animation: roseGlow 5s ease-in-out infinite;
+}

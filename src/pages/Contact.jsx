@@ -37,6 +37,7 @@ function Contact() {
   };
 
   return (
+    <div className="page-bg page-bg--contact">
     <div style={{ maxWidth: '900px', margin: '0 auto', padding: '60px 20px', color: '#fff' }}>
 
       {/* Title */}
@@ -222,6 +223,7 @@ function Contact() {
         </div>
 
       </div>
+    </div>
     </div>
   );
 }

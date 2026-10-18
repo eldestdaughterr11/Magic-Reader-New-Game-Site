@@ -41,6 +41,7 @@ function About() {
   ];
 
   return (
+    <div className="page-bg page-bg--about">
     <div style={{ maxWidth: '800px', margin: '0 auto', padding: '60px 20px', color: '#fff' }}>
       
       {/* Title */}
@@ -150,6 +151,7 @@ function About() {
         </p>
       </div>
 
+    </div>
     </div>
   );
 }

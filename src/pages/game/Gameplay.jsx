@@ -29,6 +29,7 @@ function Gameplay() {
   };
 
   return (
+    <div className="page-bg page-bg--game">
     <div style={{ maxWidth: '1000px', margin: '0 auto', padding: '40px 20px', color: '#fff' }}>
       
       {/* Sub Navigation */}
@@ -227,6 +228,7 @@ function Gameplay() {
         </div>
       )}
 
+    </div>
     </div>
   );
 }
