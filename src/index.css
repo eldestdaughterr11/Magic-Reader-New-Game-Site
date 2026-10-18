@@ -119,6 +119,18 @@ header {
     gap: clamp(12px, 2.2vw, 36px);
 }
 
+/* Shimmer animation for nav hover */
+@keyframes navShimmer {
+    0%   { background-position: -200% center; }
+    100% { background-position: 200% center; }
+}
+
+/* Soft pulsing glow for active tab */
+@keyframes navGlow {
+    0%, 100% { box-shadow: 0 3px 12px rgba(224,195,252,0.25), inset 0 1px 0 rgba(255,255,255,0.2); }
+    50%      { box-shadow: 0 3px 18px rgba(224,195,252,0.45), inset 0 1px 0 rgba(255,255,255,0.25); }
+}
+
 .nav-links a {
     text-decoration: none;
     color: #ffffff;
@@ -127,53 +139,95 @@ header {
     font-size: clamp(1rem, 1.7vw, 1.45rem);
     letter-spacing: 0.02em;
     white-space: nowrap;
-    padding: 8px 18px;
-    border: 2px solid rgba(255, 255, 255, 0.35);
-    border-radius: 10px 10px 4px 4px;
-    background: linear-gradient(180deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.03) 100%);
-    box-shadow: 0 2px 6px rgba(0,0,0,0.18), inset 0 1px 0 rgba(255,255,255,0.15);
+    padding: 9px 20px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-bottom: 3px solid rgba(224, 195, 252, 0.35);
+    border-radius: 12px 12px 4px 4px;
+    background: linear-gradient(170deg, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0.04) 50%, rgba(224,195,252,0.06) 100%);
+    box-shadow:
+        0 2px 8px rgba(0,0,0,0.2),
+        inset 0 1px 0 rgba(255,255,255,0.18),
+        inset 0 -1px 0 rgba(0,0,0,0.08);
     position: relative;
-    transition: all 0.25s ease;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.3);
 }
 
-/* Small decorative bottom ribbon accent */
+/* Shimmer overlay on hover */
+.nav-links a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        110deg,
+        transparent 20%,
+        rgba(255,255,255,0.15) 40%,
+        rgba(255,255,255,0.25) 50%,
+        rgba(255,255,255,0.15) 60%,
+        transparent 80%
+    );
+    background-size: 200% 100%;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    border-radius: inherit;
+}
+
+/* Decorative bottom ribbon accent */
 .nav-links a::after {
     content: '';
     position: absolute;
-    bottom: -2px;
-    left: 20%;
-    right: 20%;
+    bottom: -3px;
+    left: 25%;
+    right: 25%;
     height: 3px;
     border-radius: 2px;
-    background: rgba(224, 195, 252, 0.4);
-    transition: all 0.25s ease;
+    background: linear-gradient(90deg, transparent, rgba(224,195,252,0.5), transparent);
+    transition: all 0.3s ease;
 }
 
 .nav-links a:hover {
     color: var(--nav-active-color);
-    border-color: rgba(224, 195, 252, 0.55);
-    background: linear-gradient(180deg, rgba(224,195,252,0.18) 0%, rgba(224,195,252,0.05) 100%);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.2);
+    border-color: rgba(224, 195, 252, 0.5);
+    border-bottom-color: rgba(224, 195, 252, 0.7);
+    background: linear-gradient(170deg, rgba(224,195,252,0.2) 0%, rgba(224,195,252,0.08) 50%, rgba(224,195,252,0.12) 100%);
+    transform: translateY(-3px);
+    box-shadow:
+        0 6px 16px rgba(0,0,0,0.25),
+        0 0 12px rgba(224,195,252,0.2),
+        inset 0 1px 0 rgba(255,255,255,0.22);
+    text-shadow: 0 0 8px rgba(224,195,252,0.4), 0 1px 3px rgba(0,0,0,0.3);
+}
+
+.nav-links a:hover::before {
+    opacity: 1;
+    animation: navShimmer 1.2s ease-in-out;
 }
 
 .nav-links a:hover::after {
     left: 10%;
     right: 10%;
-    background: rgba(224, 195, 252, 0.7);
+    background: linear-gradient(90deg, transparent, rgba(224,195,252,0.8), transparent);
+    height: 3px;
 }
 
 .nav-links a.active {
     color: var(--nav-active-color);
-    border-color: rgba(224, 195, 252, 0.6);
-    background: linear-gradient(180deg, rgba(224,195,252,0.22) 0%, rgba(224,195,252,0.08) 100%);
-    box-shadow: 0 3px 10px rgba(0,0,0,0.22), inset 0 1px 0 rgba(255,255,255,0.2);
+    border-color: rgba(224, 195, 252, 0.55);
+    border-bottom-color: var(--nav-active-color);
+    background: linear-gradient(170deg, rgba(224,195,252,0.22) 0%, rgba(224,195,252,0.08) 50%, rgba(224,195,252,0.14) 100%);
+    animation: navGlow 2.5s ease-in-out infinite;
+    text-shadow: 0 0 10px rgba(224,195,252,0.35), 0 1px 3px rgba(0,0,0,0.3);
 }
 
 .nav-links a.active::after {
-    left: 10%;
-    right: 10%;
-    background: var(--nav-active-color);
+    left: 5%;
+    right: 5%;
+    background: linear-gradient(90deg, transparent, var(--nav-active-color), transparent);
     height: 3px;
 }
 
