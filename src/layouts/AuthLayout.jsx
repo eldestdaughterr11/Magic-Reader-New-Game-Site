@@ -1,5 +1,5 @@
-import { Link, Outlet, useLocation } from 'react-router-dom';
-import { useEffect } from 'react';
+import { Link, Outlet } from 'react-router-dom';
+import { useEffect, useRef } from 'react';
 
 function AuthLayout() {
   useEffect(() => {
@@ -8,6 +8,15 @@ function AuthLayout() {
       document.body.classList.remove('auth-page');
     };
   }, []);
+
+  const sparkles = useRef(
+    Array.from({ length: 24 }, () => ({
+      left: `${Math.random() * 100}%`,
+      top: `${Math.random() * 100}%`,
+      delay: `${Math.random() * 6}s`,
+      dur: `${3 + Math.random() * 4}s`,
+    }))
+  );
 
   return (
     <>
@@ -32,6 +41,19 @@ function AuthLayout() {
       </header>
 
       <main className="auth-main">
+        <div className="auth-hero__bg">
+          <img src="/images/poster.png" alt="" aria-hidden="true" />
+        </div>
+        <div className="auth-hero__overlay" />
+
+        {sparkles.current.map((s, i) => (
+          <span
+            key={i}
+            className="home-hero__sparkle"
+            style={{ left: s.left, top: s.top, animationDelay: s.delay, animationDuration: s.dur }}
+          />
+        ))}
+
         <Outlet />
       </main>
 
@@ -63,7 +85,6 @@ function AuthLayout() {
               <li>
                 <Link to="/leaderboards">Leaderboards</Link>
               </li>
-
             </ul>
           </div>
           <div className="footer-col">
@@ -93,7 +114,6 @@ function AuthLayout() {
               <li>
                 <a href="mailto:dreampixels2026@gmail.com">dreampixels2026@gmail.com</a>
               </li>
-
             </ul>
           </div>
         </div>

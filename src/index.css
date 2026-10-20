@@ -679,13 +679,12 @@ body.auth-page {
     flex-direction: column;
     min-height: 100vh;
     min-height: 100dvh;
-    background-color: var(--auth-gradient-deep);
+    background-color: var(--primary-bg);
 }
 
-/* Parehong violet family sa gradient — hindi #3d2b4f (mukhang ibang lilà / band) */
 body.auth-page .top-bar,
 body.auth-page .header-bottom-bar {
-    background-color: var(--auth-gradient-base);
+    background-color: var(--primary-bg);
 }
 
 .auth-page #root > .top-bar,
@@ -695,22 +694,47 @@ body.auth-page .header-bottom-bar {
     flex-shrink: 0;
 }
 
-/* Login/signup: malambot na isang violet gradient (mas kaunti layer = mas walang harsh band) */
 body.auth-page .auth-main {
     flex: 1;
     display: flex;
     flex-direction: column;
     width: 100%;
     min-height: 0;
-    background-color: var(--auth-gradient-base);
-    background-image: url('/images/mr_bg.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    background-attachment: scroll;
+    position: relative;
+    overflow: hidden;
+    background-color: var(--primary-bg);
+}
+
+.auth-hero__bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+}
+
+.auth-hero__bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 30%;
+    filter: blur(2px) brightness(0.55);
+    transform: scale(1.05);
+}
+
+.auth-hero__overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(
+        180deg,
+        rgba(61, 43, 79, 0.45) 0%,
+        rgba(61, 43, 79, 0.75) 50%,
+        rgba(61, 43, 79, 0.95) 100%
+    );
 }
 
 body.auth-page .auth-wrapper {
+    position: relative;
+    z-index: 3;
     flex: 1;
     width: 100%;
     min-height: 0;
