@@ -715,8 +715,8 @@ body.auth-page .auth-main {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center 25%;
-    filter: brightness(0.65);
+    object-position: center center;
+    filter: brightness(0.85);
 }
 
 .auth-hero__overlay {
@@ -725,9 +725,9 @@ body.auth-page .auth-main {
     z-index: 1;
     background: linear-gradient(
         180deg,
-        rgba(61, 43, 79, 0.25) 0%,
-        rgba(61, 43, 79, 0.5) 45%,
-        rgba(61, 43, 79, 0.85) 100%
+        rgba(61, 43, 79, 0.15) 0%,
+        rgba(61, 43, 79, 0.35) 50%,
+        rgba(61, 43, 79, 0.7) 100%
     );
 }
 
@@ -797,14 +797,14 @@ body.auth-page .auth-title {
 
 body.auth-page .auth-container {
     width: 100%;
-    max-width: 480px;
-    background: transparent;
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-    border: none;
-    border-radius: 0;
-    padding: 40px 35px;
-    box-shadow: none;
+    max-width: 460px;
+    background: rgba(30, 18, 44, 0.72);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(224, 195, 252, 0.22);
+    border-radius: 20px;
+    padding: 35px 30px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
     margin: auto;
     box-sizing: border-box;
     text-align: center;

@@ -42,7 +42,7 @@ function AuthLayout() {
 
       <main className="auth-main">
         <div className="auth-hero__bg">
-          <img src="/images/the-sound-keeper-bg.jpg" alt="" aria-hidden="true" />
+          <img src="/images/sound-book-bg.png" alt="" aria-hidden="true" />
         </div>
         <div className="auth-hero__overlay" />
 
