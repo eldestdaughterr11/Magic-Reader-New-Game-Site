@@ -715,9 +715,8 @@ body.auth-page .auth-main {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center 30%;
-    filter: blur(2px) brightness(0.55);
-    transform: scale(1.05);
+    object-position: center 25%;
+    filter: brightness(0.65);
 }
 
 .auth-hero__overlay {
@@ -726,10 +725,45 @@ body.auth-page .auth-main {
     z-index: 1;
     background: linear-gradient(
         180deg,
-        rgba(61, 43, 79, 0.45) 0%,
-        rgba(61, 43, 79, 0.75) 50%,
-        rgba(61, 43, 79, 0.95) 100%
+        rgba(61, 43, 79, 0.25) 0%,
+        rgba(61, 43, 79, 0.5) 45%,
+        rgba(61, 43, 79, 0.85) 100%
     );
+}
+
+/* Compact Auth Footer */
+.auth-footer {
+    background-color: var(--header-footer-bg);
+    padding: 16px 20px;
+    text-align: center;
+    border-top: 2px solid var(--header-rule-color);
+    position: relative;
+    z-index: 10;
+}
+
+.auth-footer__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.auth-footer .footer-logo {
+    max-height: 48px;
+    width: auto;
+    display: block;
+    transition: transform 0.25s ease;
+}
+
+.auth-footer .footer-logo:hover {
+    transform: scale(1.05);
+}
+
+.auth-footer .copyright {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0;
 }
 
 body.auth-page .auth-wrapper {

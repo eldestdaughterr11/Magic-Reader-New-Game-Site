@@ -42,7 +42,7 @@ function AuthLayout() {
 
       <main className="auth-main">
         <div className="auth-hero__bg">
-          <img src="/images/poster.png" alt="" aria-hidden="true" />
+          <img src="/images/the-sound-keeper-bg.jpg" alt="" aria-hidden="true" />
         </div>
         <div className="auth-hero__overlay" />
 
@@ -57,67 +57,17 @@ function AuthLayout() {
         <Outlet />
       </main>
 
-      <footer>
-        <div className="footer-grid">
-          <div className="footer-col">
-            <Link to="/home" className="logo-link">
-              <img
-                src="/images/sound-keeper-logo.png"
-                alt="The Sound Keeper"
-                className="logo-img footer-logo"
-              />
-            </Link>
-            <p style={{ marginTop: '10px' }}>
-              Explore, Learn, and Play with Words!
-            </p>
-          </div>
-          <div className="footer-col">
-            <h4>
-              <Link to="/home">Navigation</Link>
-            </h4>
-            <ul>
-              <li>
-                <Link to="/home">Home</Link>
-              </li>
-              <li>
-                <Link to="/game/gameplay">Game</Link>
-              </li>
-              <li>
-                <Link to="/leaderboards">Leaderboards</Link>
-              </li>
-            </ul>
-          </div>
-          <div className="footer-col">
-            <h4>
-              <Link to="/resources">Resources</Link>
-            </h4>
-            <ul>
-              <li>
-                <Link to="/resources?category=Vocabulary Guide">Vocabulary Guide</Link>
-              </li>
-              <li>
-                <Link to="/resources?category=Grammar Tips">Grammar Tips</Link>
-              </li>
-              <li>
-                <Link to="/resources?category=Practice Exercises">Practice Exercises</Link>
-              </li>
-              <li>
-                <Link to="/resources?category=Reading Nook">Reading Nook</Link>
-              </li>
-            </ul>
-          </div>
-          <div className="footer-col footer-col-contact">
-            <h4>
-              <Link to="/contact">Contact Us</Link>
-            </h4>
-            <ul>
-              <li>
-                <a href="mailto:dreampixels2026@gmail.com">dreampixels2026@gmail.com</a>
-              </li>
-            </ul>
-          </div>
+      <footer className="auth-footer">
+        <div className="auth-footer__inner">
+          <Link to="/home" className="logo-link">
+            <img
+              src="/images/sound-keeper-logo.png"
+              alt="The Sound Keeper"
+              className="logo-img footer-logo"
+            />
+          </Link>
+          <p className="copyright">© 2026 Dream Pixels. All Rights Reserved.</p>
         </div>
-        <p className="copyright">© 2026 Dream Pixels. All Rights Reserved.</p>
       </footer>
     </>
   );
