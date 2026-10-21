@@ -59,13 +59,6 @@ function AuthLayout() {
 
       <footer className="auth-footer">
         <div className="auth-footer__inner">
-          <Link to="/home" className="logo-link">
-            <img
-              src="/images/sound-keeper-logo.png"
-              alt="The Sound Keeper"
-              className="logo-img footer-logo"
-            />
-          </Link>
           <p className="copyright">© 2026 Dream Pixels. All Rights Reserved.</p>
         </div>
       </footer>
