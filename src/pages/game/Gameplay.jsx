@@ -98,7 +98,7 @@ function Gameplay() {
         </span>
       ))}
 
-      <div style={{ maxWidth: '1000px', margin: '0 auto', padding: '40px 20px', color: '#fff', position: 'relative', zIndex: 2 }}>
+      <div style={{ maxWidth: '1000px', margin: '0 auto', padding: '24px 20px 60px', color: '#fff', position: 'relative', zIndex: 2 }}>
         
         {/* Sub Navigation */}
         <div className="game-subnav-container">
@@ -210,7 +210,7 @@ function Gameplay() {
                 boxShadow: '0 4px 15px rgba(0, 0, 0, 0.2)'
               }}>
                 <strong style={{ color: '#f5e6d3', display: 'block', marginBottom: '4px', letterSpacing: '0.04em' }}>
-                  ✨ The Vowel Chant:
+                  The Vowel Chant:
                 </strong>
                 <span style={{ fontStyle: 'italic', color: '#fff', fontSize: '0.95rem' }}>
                   &ldquo;To keep Word Valley bright and loud, I AIM high, and EVERYONE can try, my voice is my OWN, facing the great UNKNOWN.&rdquo;

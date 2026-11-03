@@ -194,15 +194,21 @@ function Forum() {
 
   return (
     <div className="page-bg page-bg--forum">
-    <div style={{ maxWidth: '900px', margin: '0 auto', padding: '60px 20px', color: '#fff' }}>
+    <div style={{ maxWidth: '950px', margin: '0 auto', padding: '24px 20px 60px', color: '#fff', position: 'relative', zIndex: 2 }}>
       
-      {/* Page Title */}
-      <h2 style={{ fontFamily: 'Berkshire Swash, cursive', fontSize: '2.8rem', color: '#e0c3fc', marginBottom: '10px', textAlign: 'center', fontWeight: '400' }}>
-        Community Forums
-      </h2>
-      <p style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '1.1rem', color: '#f5e6d3', textAlign: 'center', marginBottom: '40px' }}>
-        Connect, ask questions, share stories, and study together!
-      </p>
+      {/* Page Title Card */}
+      <div className="gameplay-info-card" style={{ textAlign: 'center', marginBottom: '35px' }}>
+        <span className="gameplay-badge" style={{ marginBottom: '10px' }}>
+          <span className="gameplay-badge__letter">✦</span>
+          <span>Discussion Community</span>
+        </span>
+        <h2 className="section-title" style={{ color: '#d4854a', fontSize: '2.4rem', marginBottom: '8px', textShadow: '0 0 20px rgba(212, 133, 74, 0.45)' }}>
+          Community Forums
+        </h2>
+        <p style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '1.02rem', color: 'rgba(255, 255, 255, 0.9)', maxWidth: '600px', margin: '0 auto' }}>
+          Connect, ask questions, share reading stories, and master English phonetics together!
+        </p>
+      </div>
 
       {/* Toolbar */}
       <div className="forum-toolbar" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '20px', marginBottom: '30px', flexWrap: 'wrap' }}>

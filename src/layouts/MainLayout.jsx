@@ -76,12 +76,6 @@ function MainLayout() {
             Game
           </Link>
           <Link
-            to="/leaderboards"
-            className={currentPath.includes('/leaderboards') ? 'active' : ''}
-          >
-            Leaderboards
-          </Link>
-          <Link
             to="/resources"
             className={currentPath.includes('/resources') ? 'active' : ''}
           >
@@ -93,18 +87,17 @@ function MainLayout() {
           >
             Forum
           </Link>
-
-          <Link
-            to="/contact"
-            className={currentPath.includes('/contact') ? 'active' : ''}
-          >
-            Contact
-          </Link>
           <Link
             to="/about"
             className={currentPath.includes('/about') ? 'active' : ''}
           >
             About
+          </Link>
+          <Link
+            to="/contact"
+            className={currentPath.includes('/contact') ? 'active' : ''}
+          >
+            Contact
           </Link>
         </nav>
         <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
@@ -148,13 +141,6 @@ function MainLayout() {
             Game
           </Link>
           <Link
-            to="/leaderboards"
-            className={currentPath.includes('/leaderboards') ? 'active' : ''}
-            onClick={() => setIsMenuOpen(false)}
-          >
-            Leaderboards
-          </Link>
-          <Link
             to="/resources"
             className={currentPath.includes('/resources') ? 'active' : ''}
             onClick={() => setIsMenuOpen(false)}
@@ -168,20 +154,19 @@ function MainLayout() {
           >
             Forum
           </Link>
-
-          <Link
-            to="/contact"
-            className={currentPath.includes('/contact') ? 'active' : ''}
-            onClick={() => setIsMenuOpen(false)}
-          >
-            Contact
-          </Link>
           <Link
             to="/about"
             className={currentPath.includes('/about') ? 'active' : ''}
             onClick={() => setIsMenuOpen(false)}
           >
             About
+          </Link>
+          <Link
+            to="/contact"
+            className={currentPath.includes('/contact') ? 'active' : ''}
+            onClick={() => setIsMenuOpen(false)}
+          >
+            Contact
           </Link>
         </div>
         <div className="mobile-nav-drawer-actions">
@@ -210,8 +195,6 @@ function MainLayout() {
         </div>
       </div>
 
-      <div className="header-bottom-bar"></div>
-
       <main className="container fade-in">
         <Outlet />
       </main>
@@ -226,7 +209,7 @@ function MainLayout() {
                 className="logo-img footer-logo"
               />
             </Link>
-            <p style={{ marginTop: '10px', fontSize: '1.1rem', fontWeight: '500' }}>
+            <p style={{ marginTop: '10px', fontSize: '1.05rem', fontWeight: '500', color: 'rgba(255, 255, 255, 0.9)' }}>
               Explore, Learn, and Play with Words!
             </p>
           </div>
@@ -234,38 +217,43 @@ function MainLayout() {
             <h4>
               <Link to="/home">Navigation</Link>
             </h4>
-            <ul>
+            <ul className="footer-nav-list">
               <li>
-                <Link to="/home">Home</Link>
+                <Link to="/home"><i className="fa-solid fa-house" style={{ marginRight: '8px' }}></i>Home</Link>
               </li>
               <li>
-                <Link to="/game/gameplay">Game</Link>
+                <Link to="/game/gameplay"><i className="fa-solid fa-gamepad" style={{ marginRight: '8px' }}></i>Game</Link>
               </li>
               <li>
-                <Link to="/leaderboards">Leaderboards</Link>
+                <Link to="/resources"><i className="fa-solid fa-book" style={{ marginRight: '8px' }}></i>Resources</Link>
               </li>
               <li>
-                <Link to="/forum">Forum</Link>
+                <Link to="/forum"><i className="fa-solid fa-comments" style={{ marginRight: '8px' }}></i>Forum</Link>
               </li>
-
+              <li>
+                <Link to="/about"><i className="fa-solid fa-circle-info" style={{ marginRight: '8px' }}></i>About</Link>
+              </li>
+              <li>
+                <Link to="/contact"><i className="fa-solid fa-envelope" style={{ marginRight: '8px' }}></i>Contact</Link>
+              </li>
             </ul>
           </div>
           <div className="footer-col">
             <h4>
               <Link to="/resources">Resources</Link>
             </h4>
-            <ul>
+            <ul className="footer-nav-list">
               <li>
-                <Link to="/resources?category=Vocabulary Guide">Vocabulary Guide</Link>
+                <Link to="/resources?category=Vocabulary Guide"><i className="fa-solid fa-spell-check" style={{ marginRight: '8px' }}></i>Vocabulary Guide</Link>
               </li>
               <li>
-                <Link to="/resources?category=Grammar Tips">Grammar Tips</Link>
+                <Link to="/resources?category=Grammar Tips"><i className="fa-solid fa-pen-nib" style={{ marginRight: '8px' }}></i>Grammar Tips</Link>
               </li>
               <li>
-                <Link to="/resources?category=Practice Exercises">Practice Exercises</Link>
+                <Link to="/resources?category=Practice Exercises"><i className="fa-solid fa-clipboard-question" style={{ marginRight: '8px' }}></i>Practice Exercises</Link>
               </li>
               <li>
-                <Link to="/resources?category=Reading Nook">Reading Nook</Link>
+                <Link to="/resources?category=Reading Nook"><i className="fa-solid fa-book-open" style={{ marginRight: '8px' }}></i>Reading Nook</Link>
               </li>
             </ul>
           </div>
@@ -273,9 +261,12 @@ function MainLayout() {
             <h4>
               <Link to="/contact">Contact Us</Link>
             </h4>
-            <ul>
+            <ul className="footer-nav-list">
               <li>
-                <a href="mailto:dreampixels2026@gmail.com">dreampixels2026@gmail.com</a>
+                <a href="mailto:dreampixels2026@gmail.com" className="footer-email-chip">
+                  <i className="fa-solid fa-envelope" style={{ marginRight: '8px' }}></i>
+                  dreampixels2026@gmail.com
+                </a>
               </li>
             </ul>
           </div>
