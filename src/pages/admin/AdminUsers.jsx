@@ -112,7 +112,7 @@ function AdminUsers() {
   };
 
   const handleDeleteUser = async (user) => {
-    if (!window.confirm(`⚠️ Permanently delete "${user.name}"?\n\nThis will remove them from the database AND revoke their login access forever. This cannot be undone.`)) return;
+    if (!window.confirm(`Permanently delete "${user.name}"?\n\nThis will remove them from the database AND revoke their login access forever. This cannot be undone.`)) return;
 
     try {
       const deleteUser = httpsCallable(functions, 'deleteUser');
@@ -121,12 +121,12 @@ function AdminUsers() {
       // Cascade delete posts and comments
       await cleanupUserData(user.id);
       
-      alert(`✅ ${user.name}'s account and their discussions/replies have been permanently deleted.`);
+      alert(`${user.name}'s account and their discussions/replies have been permanently deleted.`);
     } catch (err) {
       console.error('Error deleting user:', err);
       
       const errorMessage = err.message || '';
-      const fallbackPrompt = `❌ Failed to delete account via Cloud Function: ${errorMessage}\n\nWould you like to delete this user directly from the Firestore database instead?\n\n(Note: This removes their profile from the CMS, but their login credentials will remain active until Cloud Functions are deployed/updated).`;
+      const fallbackPrompt = `Failed to delete account via Cloud Function: ${errorMessage}\n\nWould you like to delete this user directly from the Firestore database instead?\n\n(Note: This removes their profile from the CMS, but their login credentials will remain active until Cloud Functions are deployed/updated).`;
       
       if (window.confirm(fallbackPrompt)) {
         try {
@@ -143,10 +143,10 @@ function AdminUsers() {
             timestamp: new Date().toISOString()
           });
 
-          alert(`✅ ${user.name}'s profile and their discussions/replies have been deleted from Firestore database.`);
+          alert(`${user.name}'s profile and their discussions/replies have been deleted from Firestore database.`);
         } catch (dbErr) {
           console.error('Error deleting user doc directly:', dbErr);
-          alert(`❌ Failed to delete Firestore document: ${dbErr.message}`);
+          alert(`Failed to delete Firestore document: ${dbErr.message}`);
         }
       }
     }
@@ -215,7 +215,7 @@ function AdminUsers() {
                       style={{ padding: '5px 10px', fontSize: '0.8rem', backgroundColor: '#c62828', color: '#fff' }}
                       onClick={() => handleDeleteUser(user)}
                     >
-                      🗑 Delete
+                      <i className="fa-solid fa-trash" style={{ marginRight: '4px' }} /> Delete
                     </button>
                   </td>
                 </tr>

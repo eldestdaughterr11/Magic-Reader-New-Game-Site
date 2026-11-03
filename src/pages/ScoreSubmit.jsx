@@ -13,12 +13,12 @@ function ScoreSubmit() {
   // Achievement levels
   const getAchievement = (score) => {
     const s = score || 0;
-    if (s >= 5000) return { title: 'Word Master', color: '#FFD700', icon: '👑' };
-    if (s >= 4000) return { title: 'Fast Solver', color: '#C0C0C0', icon: '⚡' };
-    if (s >= 3000) return { title: 'Minigames Fanatic', color: '#CD7F32', icon: '🎮' };
-    if (s >= 2000) return { title: 'Grammar Wizard', color: '#e0c3fc', icon: '🔮' };
-    if (s >= 1000) return { title: 'Spelling Bee', color: '#e8c97c', icon: '🐝' };
-    return { title: 'Beginner Reader', color: '#aaa', icon: '📖' };
+    if (s >= 5000) return { title: 'Word Master', color: '#FFD700', icon: 'fa-crown' };
+    if (s >= 4000) return { title: 'Fast Solver', color: '#C0C0C0', icon: 'fa-bolt' };
+    if (s >= 3000) return { title: 'Minigames Fanatic', color: '#CD7F32', icon: 'fa-gamepad' };
+    if (s >= 2000) return { title: 'Grammar Wizard', color: '#e0c3fc', icon: 'fa-wand-magic-sparkles' };
+    if (s >= 1000) return { title: 'Spelling Bee', color: '#e8c97c', icon: 'fa-spell-check' };
+    return { title: 'Beginner Reader', color: '#aaa', icon: 'fa-book-open' };
   };
 
   // Fetch current user profile and score from Firestore
@@ -92,7 +92,9 @@ function ScoreSubmit() {
   if (loading) {
     return (
       <div style={{ textAlign: 'center', color: '#fff', padding: '100px 20px', fontFamily: 'Montserrat, sans-serif' }}>
-        <div style={{ fontSize: '2rem', marginBottom: '15px' }}>⏳</div>
+        <div style={{ fontSize: '2rem', marginBottom: '15px', color: '#e0c3fc' }}>
+          <i className="fa-solid fa-spinner fa-spin" />
+        </div>
         <p>Loading your profile...</p>
       </div>
     );
@@ -149,7 +151,9 @@ function ScoreSubmit() {
           padding: '8px 20px',
           marginBottom: '20px'
         }}>
-          <span style={{ fontSize: '1.2rem' }}>{achievement.icon}</span>
+          <span style={{ fontSize: '1.2rem', color: achievement.color }}>
+            <i className={`fa-solid ${achievement.icon}`} />
+          </span>
           <span style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: '700', fontSize: '0.95rem', color: achievement.color }}>
             {achievement.title}
           </span>
@@ -174,7 +178,8 @@ function ScoreSubmit() {
         )}
         {currentScore >= 5000 && (
           <p style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '0.9rem', color: '#FFD700' }}>
-            🏆 Maximum rank achieved! You are a Word Master!
+            <i className="fa-solid fa-trophy" style={{ marginRight: '6px' }} />
+            Maximum rank achieved! You are a Word Master!
           </p>
         )}
       </div>
@@ -188,7 +193,8 @@ function ScoreSubmit() {
         marginBottom: '30px'
       }}>
         <h4 style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '0.9rem', color: '#e8c97c', marginBottom: '12px', textTransform: 'uppercase', letterSpacing: '1px' }}>
-          📋 How to Submit Your Score
+          <i className="fa-solid fa-clipboard-list" style={{ marginRight: '8px' }} />
+          How to Submit Your Score
         </h4>
         <ol style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '0.88rem', color: 'rgba(255,255,255,0.7)', lineHeight: '1.9', paddingLeft: '18px', margin: 0 }}>
           <li>Download and play <strong style={{ color: '#e0c3fc' }}>The Sound Keeper</strong></li>
@@ -270,9 +276,9 @@ function ScoreSubmit() {
             onMouseOut={e => { if (!isSubmitting) e.currentTarget.style.backgroundColor = '#d4854a'; }}
           >
             {isSubmitting ? (
-              <>⏳ Saving score...</>
+              <><i className="fa-solid fa-spinner fa-spin" style={{ marginRight: '6px' }} /> Saving score...</>
             ) : (
-              <>🏆 Submit to Leaderboard</>
+              <><i className="fa-solid fa-trophy" style={{ marginRight: '6px' }} /> Submit to Leaderboard</>
             )}
           </button>
 
@@ -289,7 +295,8 @@ function ScoreSubmit() {
               fontSize: '0.95rem',
               color: '#4ade80'
             }}>
-              🎉 <strong>New high score saved!</strong> Check the Leaderboard to see your rank!
+              <i className="fa-solid fa-circle-check" style={{ marginRight: '6px' }} />
+              <strong>New high score saved!</strong> Check the Leaderboard to see your rank!
             </div>
           )}
           {submitStatus === 'no-change' && (
@@ -304,7 +311,8 @@ function ScoreSubmit() {
               fontSize: '0.9rem',
               color: '#e8c97c'
             }}>
-              ⚠️ Your current high score is already <strong>{currentScore.toLocaleString()}</strong>. Only scores higher than this will be saved!
+              <i className="fa-solid fa-triangle-exclamation" style={{ marginRight: '6px' }} />
+              Your current high score is already <strong>{currentScore.toLocaleString()}</strong>. Only scores higher than this will be saved!
             </div>
           )}
           {submitStatus === 'error' && (
@@ -319,7 +327,8 @@ function ScoreSubmit() {
               fontSize: '0.9rem',
               color: '#f87171'
             }}>
-              ❌ Failed to save score. Please try again.
+              <i className="fa-solid fa-circle-xmark" style={{ marginRight: '6px' }} />
+              Failed to save score. Please try again.
             </div>
           )}
         </form>
@@ -350,7 +359,9 @@ function ScoreSubmit() {
               border: currentScore >= rank.min && (rank.max === null || currentScore <= rank.max)
                 ? `1px solid ${rank.color}44` : '1px solid rgba(255,255,255,0.06)',
             }}>
-              <span style={{ fontSize: '1.4rem', minWidth: '30px', textAlign: 'center' }}>{rank.icon}</span>
+              <span style={{ fontSize: '1.3rem', minWidth: '30px', textAlign: 'center', color: rank.color }}>
+                <i className={`fa-solid ${rank.icon}`} />
+              </span>
               <div style={{ flex: 1, fontFamily: 'Montserrat, sans-serif' }}>
                 <span style={{ fontWeight: '700', color: rank.color, fontSize: '0.95rem' }}>{rank.title}</span>
               </div>

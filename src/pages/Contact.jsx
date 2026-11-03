@@ -115,7 +115,7 @@ function Contact() {
               </div>
               <div>
                 <h4 style={{ margin: '0 0 4px', fontSize: '0.82rem', color: 'rgba(255,255,255,0.5)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Based In</h4>
-                <span style={{ fontSize: '0.9rem', color: '#fff' }}>Philippines 🇵🇭</span>
+                <span style={{ fontSize: '0.9rem', color: '#fff' }}>Philippines</span>
               </div>
             </div>
 

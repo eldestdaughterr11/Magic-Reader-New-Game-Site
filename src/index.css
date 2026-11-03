@@ -1909,16 +1909,17 @@ body.auth-page .auth-form .btn:hover {
 }
 
 .qr-code-title {
-    font-family: 'Berkshire Swash', cursive;
-    font-size: 1.85rem;
-    font-weight: 400;
-    color: #e0c3fc;
-    margin-bottom: 15px;
-    letter-spacing: 0.02em;
-    text-shadow: 0 0 15px rgba(224, 195, 252, 0.4);
+    font-family: 'Montserrat', 'Fredoka', sans-serif;
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 16px;
+    letter-spacing: 0.03em;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    gap: 10px;
 }
 
 .qr-code-image-wrapper {
@@ -1943,12 +1944,13 @@ body.auth-page .auth-form .btn:hover {
 }
 
 .qr-code-description {
-    margin-top: 18px;
-    font-size: 0.98rem;
+    margin-top: 16px;
+    font-size: 0.95rem;
     color: rgba(255, 255, 255, 0.88);
     line-height: 1.6;
     font-family: 'Montserrat', sans-serif;
     font-weight: 500;
+    max-width: 380px;
 }
 
 /* Contact Page Responsive Fix */

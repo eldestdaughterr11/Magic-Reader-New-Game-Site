@@ -219,20 +219,22 @@ function Home() {
         </section>
 
         {/* ════════════ QR CODE ════════════ */}
-        <div className="qr-code-section reveal">
-          <h3 className="qr-code-title">
-            <i className="fa-solid fa-qrcode" style={{ marginRight: '10px', color: '#e0c3fc' }} />
-            Scan the Survey
-          </h3>
-          <div className="qr-code-image-wrapper">
-            <a href="#" target="_blank" rel="noopener noreferrer">
-              <img src="/images/qrcode.png" alt="Scan QR Code for Survey" className="qr-code-image" />
-            </a>
+        <section className="reveal" style={{ marginTop: '50px' }}>
+          <div className="qr-code-section">
+            <h3 className="qr-code-title">
+              <i className="fa-solid fa-qrcode" style={{ color: '#e0c3fc' }} />
+              Scan the Survey
+            </h3>
+            <div className="qr-code-image-wrapper">
+              <a href="#" target="_blank" rel="noopener noreferrer">
+                <img src="/images/qrcode.png" alt="Scan QR Code for Survey" className="qr-code-image" />
+              </a>
+            </div>
+            <p className="qr-code-description">
+              Scan this QR code with your smartphone to access and answer our survey!
+            </p>
           </div>
-          <p className="qr-code-description">
-            Scan this QR code with your smartphone to access and answer our survey!
-          </p>
-        </div>
+        </section>
       </div>
     </>
   );
